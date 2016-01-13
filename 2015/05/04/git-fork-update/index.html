@@ -29,6 +29,8 @@
 1.进入本地的项目目录，我的目录名称是 Flagwind.UI
 1cd Flagw">
   
+    <link rel="alternative" href="/atom.xml" title="Sugar" type="application/atom+xml">
+  
   
     <link rel="icon" href="/favicon.png">
   
@@ -75,6 +77,8 @@
 						<div class="social">
 							
 								<a class="github" target="_blank" href="https://github.com/hongliya" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
 					        
 						</div>
 					</nav>
@@ -126,6 +130,8 @@
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/hongliya" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
 			        
 				</div>
 			</nav>
@@ -247,7 +253,7 @@
 <script>
 	var yiliaConfig = {
 		fancybox: true,
-		mathjax: true,
+		mathjax: undefined,
 		animate: true,
 		isHome: false,
 		isPost: true,
@@ -263,27 +269,6 @@
 
 
 
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 
   </div>
