@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>js中变量和函数声明提前 | Sugar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在看《JavaScript权威指南》闭包，牵扯到作用域，温故知新，做下笔记。
+有道词典上这样解释hosit：
+
+hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索，起重机等）使升起
+
+在《JavaScript权威指南》中解释为“提前”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js中变量和函数声明提前">
+<meta property="og:url" content="http://hongliya.github.io/2016/02/24/js-hosit/index.html">
+<meta property="og:site_name" content="Sugar">
+<meta property="og:description" content="最近在看《JavaScript权威指南》闭包，牵扯到作用域，温故知新，做下笔记。
+有道词典上这样解释hosit：
+
+hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索，起重机等）使升起
+
+在《JavaScript权威指南》中解释为“提前”。">
+<meta property="og:updated_time" content="2016-02-24T09:03:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js中变量和函数声明提前">
+<meta name="twitter:description" content="最近在看《JavaScript权威指南》闭包，牵扯到作用域，温故知新，做下笔记。
+有道词典上这样解释hosit：
+
+hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索，起重机等）使升起
+
+在《JavaScript权威指南》中解释为“提前”。">
+  
+    <link rel="alternative" href="/atom.xml" title="Sugar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/assets/blogimg/s.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">sugar</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">全部</a></li>
+				        
+							<li><a href="/categories/技术">技术</a></li>
+				        
+							<li><a href="/categories/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/hongliya" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">sugar</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/assets/blogimg/s.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">sugar</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">全部</a></li>
+		        
+					<li><a href="/categories/技术">技术</a></li>
+		        
+					<li><a href="/categories/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/hongliya" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-js-hosit" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/24/js-hosit/" class="article-date">
+  	<time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js中变量和函数声明提前
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在看《JavaScript权威指南》闭包，牵扯到作用域，温故知新，做下笔记。</p>
+<p>有道词典上这样解释hosit：</p>
+<blockquote>
+<p>hosit [hɔɪst]<br>n. 起重机；升起，吊起<br>vi. 升起；吊起<br>vt.（用绳索，起重机等）使升起</p>
+</blockquote>
+<p>在《JavaScript权威指南》中解释为“提前”。</p>
+<a id="more"></a>
+<h2 id="u53D8_u91CF_u58F0_u660E_u63D0_u524D"><a href="#u53D8_u91CF_u58F0_u660E_u63D0_u524D" class="headerlink" title="变量声明提前"></a>变量声明提前</h2><p><strong>代码一：打印没有定义的变量会报变量未定义错误</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// Uncaught ReferenceError: scope is not defined</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>代码二：变量声明之前打印，值是undefined</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// global</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码第一行打印的结果是<code>undefined</code>，第三行的结果是<code>global</code>。<br>为什么会出现这样的结果？这是因为<strong>javascript解析器将作用域内的变量声明提前了</strong>，但赋值还保留在原地，所以上面的代码对解析器来说是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope;          <span class="comment">// 声明被提到作用域的最开始处了</span></span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// undefined</span></span><br><span class="line">    scope = <span class="string">'global'</span>;   <span class="comment">// 赋值操作还在原地</span></span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// global</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>根据javascript语法的定义，<strong>已声明而未被赋值的变量会被自动赋值为undefined</strong>，所以第一句打印出<code>undefined</code>，赋值后第二句打印出<code>global</code>。</p>
+<h2 id="u51FD_u6570_u58F0_u660E_u63D0_u524D"><a href="#u51FD_u6570_u58F0_u660E_u63D0_u524D" class="headerlink" title="函数声明提前"></a>函数声明提前</h2><p>前面说的是变量声明提前，下面说函数声明提前。</p>
+<p>函数声明提前分为两种：</p>
+<ol>
+<li>函数声明</li>
+<li>函数作为值赋给变量</li>
+</ol>
+<p><strong>代码一：函数声明提前</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">isHosited(); <span class="comment">// 我被提前了</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isHosited</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数声明提前并不是只有函数声明被提前了，整个函数都被提前了，所以上述代码能够正确执行。对解释器来说上面的代码是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isHosited</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">isHosited(); <span class="comment">// 我被提前了</span></span><br></pre></td></tr></table></figure>
+<p><strong>代码二：函数作为值赋给变量</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">isHosited(); <span class="comment">// Uncaught TypeError: isHosited is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isHosited = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了?'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据变量声明提前来看，上面代码对解析器来说是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isHosited;</span><br><span class="line"></span><br><span class="line">isHosited(); <span class="comment">// Uncaught TypeError: isHosited is not a function</span></span><br><span class="line"></span><br><span class="line">isHosited = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了?'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于“变量提前”的默认值是<code>undefined</code>，所以报的错误是“isHosited is not a function（类型不匹配）”。</p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>变量的声明被提前到作用域的顶部，默认值是‘undefined’，赋值保留在原地。</li>
+<li>函数声明整个被提前。</li>
+<li>函数作为值赋给变量时，只有变量声明被提前，函数没有被提前。</li>
+<li>声明变量时尽量把声明写在作用域的顶部，这是一个好习惯。</li>
+</ol>
+<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.bootcss.com/article/variable-and-function-hoisting-in-javascript/" target="_blank" rel="external">JavaScript 中对变量和函数声明的“提前（hoist）”</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/12/hexo-hi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hi Hexo</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 sugar
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>
