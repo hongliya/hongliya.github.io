@@ -1463,7 +1463,8 @@ a {
 }
 .article-entry pre,
 .article-entry .highlight {
-  background: #272822;
+  /*background: #272822;*/
+  background: #444;
   margin: 10px 0;
   padding: 10px 10px;
   overflow: auto;
