@@ -286,14 +286,6 @@
         <h2 id="javascript_u4E2D_u7684_u53D8_u91CF_u58F0_u660E"><a href="#javascript_u4E2D_u7684_u53D8_u91CF_u58F0_u660E" class="headerlink" title="javascript中的变量声明"></a>javascript中的变量声明</h2><p>javascript使用var关键字来声明变量。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i;                      <span class="comment">// 声明一个变量i，初始值是undefined</span></span><br><span class="line"><span class="keyword">var</span> sum;                    <span class="comment">// 声明一个变量sum，初始值是undefined</span></span><br><span class="line"><span class="keyword">var</span> i, sum;                 <span class="comment">// 声明多个变量，i和sum的初始值都是undefined</span></span><br><span class="line"><span class="keyword">var</span> message = <span class="string">'hello'</span>;      <span class="comment">// 声明一个变量并赋值，message的初始值是hello</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) <span class="comment">// 在for循环中声明变量</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上名声明变量的几种形式，在代码中经常用到，值得注意的是：在声明一个变量的时候如果没有指定初始值，那么它的初始值就是undefined。</p>
-<h2 id="javascript_u53D8_u91CF_u58F0_u660E_u4E0D_u7528_u6307_u5B9A_u6570_u636E_u7C7B_u578B"><a href="#javascript_u53D8_u91CF_u58F0_u660E_u4E0D_u7528_u6307_u5B9A_u6570_u636E_u7C7B_u578B" class="headerlink" title="javascript变量声明不用指定数据类型"></a>javascript变量声明不用指定数据类型</h2><p>javascript是弱类型语言，跟强类型语言不同，在声明变量时不用指定变量的数据类型，变量可以是任意类型。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>; <span class="comment">// 这里a的值是一个数字</span></span><br><span class="line">a = <span class="string">'ten'</span>; <span class="comment">// 这里将一个字符串赋值给a，这样是完全合法的</span></span><br></pre></td></tr></table></figure>
-<h2 id="u91CD_u590D_u7684_u58F0_u660E"><a href="#u91CD_u590D_u7684_u58F0_u660E" class="headerlink" title="重复的声明"></a>重复的声明</h2><blockquote>
-<p>使用var语句重复声明变量是合法且无害的。如果重复声明带有初始化器，那么这就和一条简单的赋值语句没什么两样。</p>
-</blockquote>
-<p>《javascript权威指南》中是这样解释重复的声明的，但我不知道重复声明带初始化的变量时，会不会重新分配一块内存？</p>
-<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><p>《javascript权威指南第六版》</p>
-
       
     </div>
     
@@ -310,6 +302,10 @@
 	</div>
 
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/23/js-declare/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
