@@ -124,6 +124,98 @@
 
       <div class="body-wrap">
   
+    <article id="post-js-function" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/27/js-function/" class="article-date">
+  	<time datetime="2016-02-27T00:00:00.000Z" itemprop="datePublished">2016-02-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/27/js-function/">javascript函数定义</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="u51FD_u6570_u662F_u4EC0_u4E48_uFF1F"><a href="#u51FD_u6570_u662F_u4EC0_u4E48_uFF1F" class="headerlink" title="函数是什么？"></a>函数是什么？</h2><p>《JavaScript权威指南》第六版中这样定义函数：</p>
+<blockquote>
+<p>函数是这样一段JavaScript代码，它只定义一次，但可能被执行或调用任意次。</p>
+</blockquote>
+<h2 id="u51FD_u6570_u5B9A_u4E49"><a href="#u51FD_u6570_u5B9A_u4E49" class="headerlink" title="函数定义"></a>函数定义</h2><p>下面这两种函数都是使用function关键字来定义。</p>
+<ol>
+<li>函数声明。</li>
+<li>函数表达式。</li>
+</ol>
+<h3 id="u51FD_u6570_u58F0_u660E"><a href="#u51FD_u6570_u58F0_u660E" class="headerlink" title="函数声明"></a>函数声明</h3><p>定义方式：函数声明</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定义方式：函数声明'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数声明方式定义函数值得注意的是：</p>
+<ol>
+<li>函数名称是必须的部分。</li>
+<li>由于javascript变量和函数声明提前的机制，函数声明方式定义的函数在所在作用域里都是可用的。</li>
+</ol>
+<h3 id="u51FD_u6570_u5B9A_u4E49_u8868_u8FBE_u5F0F"><a href="#u51FD_u6570_u5B9A_u4E49_u8868_u8FBE_u5F0F" class="headerlink" title="函数定义表达式"></a>函数定义表达式</h3><p>定义方式：函数表达式，无名字，又叫匿名函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定义方式：函数表达式，无名字，又叫匿名函数'</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>定义方式：函数表达式，有名字，又叫命名函数表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);            <span class="comment">// 函数本身</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> bar);     <span class="comment">// function</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定义方式：函数表达式，有名字，又叫命名函数表达式'</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>函数表达式也可以作为参数传递给其他函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> a - b; &#125;);</span><br></pre></td></tr></table></figure>
+<p>函数表达式有时候定以后立即调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> square = (<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x*x; &#125;)(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>对于函数表达式来说，值得注意的是：</p>
+<ol>
+<li>函数名字是可选的。</li>
+<li>如果存在函数名字，该名字只存在于函数体中，相当于该函数体中的一个局部变量，指代该函数对象本身，这在递归时很有用。</li>
+<li>通常而言，以表达式方式定义函数时都不需要函数名字，这会让代码更紧凑。</li>
+<li>函数表达式特别适合用来定义只会用到一次的函数。</li>
+</ol>
+<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><p>《JavaScript权威指南》<br><a href="https://segmentfault.com/a/1190000000482011" target="_blank" rel="external">细说 Javascript 函数篇（一） : 函数声明和函数表达式</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-move" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -627,71 +719,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/07/24/css-border/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-git-fork-update" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/04/git-fork-update/" class="article-date">
-  	<time datetime="2015-05-04T00:00:00.000Z" itemprop="datePublished">2015-05-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/04/git-fork-update/">Fork过来的代码如何与源代码保持同步更新</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近参与到公司的开源项目，学会了Pull Requests，但不知道如何把Fork过来的代码与源代码保持同步更新，即源代码变化后，我这边还是保持不变的。</p>
-<p>然后用了一个很笨的方法，把fork的项目删了之后，再fork一份过来，但这种方法实在太麻烦了，今天找了各种资料后终于解决了这个问题，步骤如下：</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/技术/">技术</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/05/04/git-fork-update/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
