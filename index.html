@@ -159,30 +159,6 @@
 <li>函数声明。</li>
 <li>函数表达式。</li>
 </ol>
-<h3 id="u51FD_u6570_u58F0_u660E"><a href="#u51FD_u6570_u58F0_u660E" class="headerlink" title="函数声明"></a>函数声明</h3><p>定义方式：函数声明</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定义方式：函数声明'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>函数声明方式定义函数值得注意的是：</p>
-<ol>
-<li>函数名称是必须的部分。</li>
-<li>由于javascript变量和函数声明提前的机制，函数声明方式定义的函数在所在作用域里都是可用的。</li>
-</ol>
-<h3 id="u51FD_u6570_u5B9A_u4E49_u8868_u8FBE_u5F0F"><a href="#u51FD_u6570_u5B9A_u4E49_u8868_u8FBE_u5F0F" class="headerlink" title="函数定义表达式"></a>函数定义表达式</h3><p>定义方式：函数表达式，无名字，又叫匿名函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定义方式：函数表达式，无名字，又叫匿名函数'</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>定义方式：函数表达式，有名字，又叫命名函数表达式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);            <span class="comment">// 函数本身</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> bar);     <span class="comment">// function</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'定义方式：函数表达式，有名字，又叫命名函数表达式'</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>函数表达式也可以作为参数传递给其他函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> a - b; &#125;);</span><br></pre></td></tr></table></figure>
-<p>函数表达式有时候定以后立即调用：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> square = (<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x*x; &#125;)(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-<p>对于函数表达式来说，值得注意的是：</p>
-<ol>
-<li>函数名字是可选的。</li>
-<li>如果存在函数名字，该名字只存在于函数体中，相当于该函数体中的一个局部变量，指代该函数对象本身，这在递归时很有用。</li>
-<li>通常而言，以表达式方式定义函数时都不需要函数名字，这会让代码更紧凑。</li>
-<li>函数表达式特别适合用来定义只会用到一次的函数。</li>
-</ol>
-<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><p>《JavaScript权威指南》<br><a href="https://segmentfault.com/a/1190000000482011" target="_blank" rel="external">细说 Javascript 函数篇（一） : 函数声明和函数表达式</a></p>
-
       
     </div>
     
@@ -199,6 +175,10 @@
 	</div>
 
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/27/js-function/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
