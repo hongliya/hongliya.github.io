@@ -1,27 +1,77 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<meta charset="utf-8" />
-	<meta name="renderer" content="webkit" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-	<title>test1</title>
+    <title>test1</title>
 
-	<!-- 核心 CSS 文件 -->
-	<link rel="stylesheet" href="css/index.css" />
+    <!-- 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../common/normalize.css" />
+    <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="css/index.css" />
 </head>
 
 <body>
-	<!-- 返回 -->
-	<a href="/works">返回</a>
-	<div class="">
-		<h1>test</h1>
-	</div>
-	<!-- 核心 JavaScript 文件 -->
-	<script src="js/index.js"></script>
-	<script>
+    <!-- <header>
+        <a href="/works">返回</a>
+    </header> -->
+    <div class="container">
+        <div class="table-response">
+            <table id="dragSortTable" class="table table-bordered">
+                <colgroup span="6" >
+                    <col width="100px">
+                    <col width="100px">
+                    <col width="100px">
+                    <col width="40px">
+                    <col width="40px">
+                    <col width="100px">
+                </colgroup>
+                <colgroup span="24" class="time_w_s"></colgroup>
+                <thead>
+                    <tr>
+                        <th>车牌</th>
+                        <th>司机</th>
+                        <th>手机</th>
+                        <th>座位</th>
+                        <th>订单</th>
+                        <th>合作车队</th>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>13</th>
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                        <th>20</th>
+                        <th>21</th>
+                        <th>22</th>
+                        <th>23</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
 
-	</script>
+    <!-- 核心 JavaScript 文件 -->
+    <script src="../common/jquery.min.js"></script>
+    <script src="../common/common.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

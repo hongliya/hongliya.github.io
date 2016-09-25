@@ -142,6 +142,72 @@
 
       <div class="body-wrap">
   
+    <article id="post-js-time" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/25/js-time/" class="article-date">
+  	<time datetime="2016-09-25T00:00:00.000Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/25/js-time/">时间格式的浏览器兼容</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近做排车显示时间色块，发现不同浏览器中显示不一致，分析原因是不同浏览器对时间格式支持不一致导致的。</p>
+<p><strong>Chorme 浏览器</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeStr = <span class="string">'2016-09-25 00:00:00'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(timeStr).getTime());                               <span class="comment">// 1474732800000</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(timeStr.replace(<span class="regexp">/-/g</span>,<span class="string">"/"</span>))).getTime()); <span class="comment">// 1474732800000</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/09/25/js-time/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-dark_time_01" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -556,11 +622,6 @@
 <blockquote>
 <p>函数是这样一段JavaScript代码，它只定义一次，但可能被执行或调用任意次。</p>
 </blockquote>
-<h2 id="u51FD_u6570_u5B9A_u4E49"><a href="#u51FD_u6570_u5B9A_u4E49" class="headerlink" title="函数定义"></a>函数定义</h2><p>下面这两种函数都是使用function关键字来定义。</p>
-<ol>
-<li>函数声明。</li>
-<li>函数表达式。</li>
-</ol>
       
     </div>
     
@@ -703,70 +764,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/02/27/move/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-essay-abbreviation" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/26/essay-abbreviation/" class="article-date">
-  	<time datetime="2016-02-26T00:00:00.000Z" itemprop="datePublished">2016-02-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/26/essay-abbreviation/">几个英文缩写</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在尝试看英文文档，以前怕看英文文档，搜资料都是尽量看中文的，遇到英文就尽量避开，实在没办法才会去看英文，现在发现看英文文档并没有想象的那么难，不会的英文单词就去查，看别人怎么翻译，自己慢慢琢磨，发现有时候英文资料反而比中文讲的要清楚，记录几个常看到的缩写。</p>
-<h2 id="i-e"><a href="#i-e" class="headerlink" title="i.e."></a>i.e.</h2><blockquote>
-<p>i.e.<br>adv. 也就是<br>abbr. （拉丁语）i.e. = id est = that is(即)</p>
-</blockquote>
-<p>“i.e.”是拉丁语“id est”的缩写，记拉丁语可能比较困难，和好记的短语练习起来就容易了，类似：</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/02/26/essay-abbreviation/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

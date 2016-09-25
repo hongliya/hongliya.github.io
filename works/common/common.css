@@ -1,0 +1,54 @@
+*,
+*:after,
+*:before
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+
+body
+{
+    font-family: "Helvetica Neue", Helvetica, "Microsoft YaHei", Arial, sans-serif;
+    font-size: 14px;
+    color: #535353;
+    background-color: #f3f3f4;
+}
+
+table
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+header
+{
+    background-color: #000;
+    height: 50px;
+}
+
+header a
+{
+    display: inline-block;
+    color: #fff;
+    opacity: .8;
+    line-height: 50px;
+    padding: 0 20px;
+    text-decoration: none;
+}
+
+.container
+{
+    padding: 20px;
+}
+
+.container a
+{
+    display: inline-block;
+    float: left;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: #fff;
+    opacity: 0.6;
+    text-decoration: none;
+}

@@ -1,4 +1,50 @@
 body
 {
-	background-color: #e8e8e8;
+    /*background-color: #e8e8e8;*/
+    background-color: #fff;
+}
+
+.table-response
+{
+    overflow: auto;
+    min-height: .01%;
+}
+
+.table
+{
+    width: 100%;
+    white-space: nowrap;
+    table-layout: fixed;
+}
+
+.table-bordered
+{
+    border: 1px solid #ddd;
+}
+.table-bordered > thead > tr > th
+{
+    text-align: left;
+    background-color: #eee;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > td
+{
+    padding: 8px;
+    border: 1px solid #ddd;
+    height: 38px;
+}
+
+.time_w_s col
+{
+    width: 50px;
+}
+
+.time_w_m
+{
+    width: 50px;
+}
+
+.time_w_l
+{
+    width: 100px;
 }
