@@ -1,0 +1,78 @@
+*,
+*:after,
+*:before
+{
+    box-sizing: border-box;
+}
+
+html
+{
+    -webkit-user-select: none;
+}
+
+body
+{
+    line-height: 1.4;
+    font-size: 14px;
+    color: #333;
+    font-family: system,-apple-system,"Helvetica Neue",Helvetica,sans-serif;
+    background: #ececec;
+    word-wrap: break-word;
+    background-color: #fff;
+}
+
+/*链接*/
+a
+{
+    text-decoration: none;
+    -webkit-touch-collout: none;
+    -webkit-tap-highlight-color: rgba(166,37,15,0.6);
+}
+
+input,
+textarea
+{
+    font-family: system,-apple-system,"Helvetica Neue",Helvetica,sans-serif;
+    color: #333;
+}
+
+/*隐藏*/
+.sr_hidden { display: none !important; }
+
+/* 下边距 */
+.sr_mb_0 { margin-bottom: 0; }
+.sr_mb_5 { margin-bottom: 5px; }
+.sr_mb_10 { margin-bottom: 10px; }
+.sr_mb_15 { margin-bottom: 15px; }
+.sr_mb_20 { margin-bottom: 20px; }
+
+/* 右边距 */
+.sr_mr_0 { margin-right: 0; }
+.sr_mr_10 { margin-right: 10px; }
+.sr_mr_15 { margin-right: 15px; }
+.sr_mr_20 { margin-right: 20px; }
+
+/* 字体颜色 */
+.sr_color_9 { color: #999; }
+
+/* 字体大小 */
+.sr_font_12 { font-size: 12px; }
+.sr_font_14 { font-size: 14px; }
+.sr_font_18 { font-size: 18px; }
+
+/*按钮*/
+.sr_btn
+{
+    padding: 15px 20px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+}
+.sr_btn_radius
+{
+    border-radius: 3px;
+}
+.sr_btn_block
+{
+    display: block;
+}
