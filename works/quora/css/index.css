@@ -157,7 +157,7 @@
 .login_wrapper .form_row label
 {
     display: table-cell;
-    width: 85px;
+    width: 90px;
     text-align: right;
     color: #999;
     font-weight: bold;
@@ -171,4 +171,12 @@
     height: 43px;
     width: 100%;
     outline: none;
+    border-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.login_wrapper .form_help
+{
+    padding: 0 15px;
 }

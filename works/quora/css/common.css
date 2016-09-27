@@ -39,6 +39,19 @@ textarea
 /*隐藏*/
 .sr_hidden { display: none !important; }
 
+/*居中*/
+.sr_center
+{
+    text-align: center;
+}
+
+/* 上边距 */
+.sr_mt_0 { margin-bottom: 0; }
+.sr_mt_5 { margin-bottom: 5px; }
+.sr_mt_10 { margin-bottom: 10px; }
+.sr_mt_15 { margin-bottom: 15px; }
+.sr_mt_20 { margin-bottom: 20px; }
+
 /* 下边距 */
 .sr_mb_0 { margin-bottom: 0; }
 .sr_mb_5 { margin-bottom: 5px; }
