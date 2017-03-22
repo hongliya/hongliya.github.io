@@ -20,7 +20,7 @@ hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索�
 hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索，起重机等）使升起
 
 在《JavaScript权威指南》中解释为“提前”。">
-<meta property="og:updated_time" content="2016-02-25T16:16:40.000Z">
+<meta property="og:updated_time" content="2017-03-21T15:08:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中变量和函数声明提前">
 <meta name="twitter:description" content="有道词典上这样解释hosit：
@@ -34,7 +34,7 @@ hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索�
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -200,35 +200,35 @@ hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索�
 </blockquote>
 <p>在《JavaScript权威指南》中解释为“提前”。</p>
 <a id="more"></a>
-<h2 id="u53D8_u91CF_u58F0_u660E_u63D0_u524D"><a href="#u53D8_u91CF_u58F0_u660E_u63D0_u524D" class="headerlink" title="变量声明提前"></a>变量声明提前</h2><p><strong>代码一：打印没有定义的变量会报变量未定义错误</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// Uncaught ReferenceError: scope is not defined</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="变量声明提前"><a href="#变量声明提前" class="headerlink" title="变量声明提前"></a>变量声明提前</h2><p><strong>代码一：打印没有定义的变量会报变量未定义错误</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// Uncaught ReferenceError: scope is not defined</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p><strong>代码二：变量声明之前打印，值是undefined</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// global</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// undefined</span></div><div class="line">    <span class="keyword">var</span> scope = <span class="string">'global'</span>;</div><div class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// global</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>上面代码第一行打印的结果是<code>undefined</code>，第三行的结果是<code>global</code>。<br>为什么会出现这样的结果？这是因为<strong>javascript解析器将作用域内的变量声明提前了</strong>，但赋值还保留在原地，所以上面的代码对解析器来说是这样的：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope;          <span class="comment">// 声明被提到作用域的最开始处了</span></span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// undefined</span></span><br><span class="line">    scope = <span class="string">'global'</span>;   <span class="comment">// 赋值操作还在原地</span></span><br><span class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// global</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> scope;          <span class="comment">// 声明被提到作用域的最开始处了</span></div><div class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// undefined</span></div><div class="line">    scope = <span class="string">'global'</span>;   <span class="comment">// 赋值操作还在原地</span></div><div class="line">    <span class="built_in">console</span>.log(scope); <span class="comment">// global</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>根据javascript语法的定义，<strong>已声明而未被赋值的变量会被自动赋值为undefined</strong>，所以第一句打印出<code>undefined</code>，赋值后第二句打印出<code>global</code>。</p>
-<h2 id="u51FD_u6570_u58F0_u660E_u63D0_u524D"><a href="#u51FD_u6570_u58F0_u660E_u63D0_u524D" class="headerlink" title="函数声明提前"></a>函数声明提前</h2><p>前面说的是变量声明提前，下面说函数声明提前。</p>
+<h2 id="函数声明提前"><a href="#函数声明提前" class="headerlink" title="函数声明提前"></a>函数声明提前</h2><p>前面说的是变量声明提前，下面说函数声明提前。</p>
 <p>函数声明提前分为两种：</p>
 <ol>
 <li>函数声明</li>
 <li>函数作为值赋给变量</li>
 </ol>
 <p><strong>代码一：函数声明提前</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">isHosited(); <span class="comment">// 我被提前了</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isHosited</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">isHosited(); <span class="comment">// 我被提前了</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isHosited</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>函数声明提前并不是只有函数声明被提前了，整个函数都被提前了，所以上述代码能够正确执行。对解释器来说上面的代码是这样的：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isHosited</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">isHosited(); <span class="comment">// 我被提前了</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isHosited</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">isHosited(); <span class="comment">// 我被提前了</span></div></pre></td></tr></table></figure>
 <p><strong>代码二：函数作为值赋给变量</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">isHosited(); <span class="comment">// Uncaught TypeError: isHosited is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isHosited = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了?'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">isHosited(); <span class="comment">// Uncaught TypeError: isHosited is not a function</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> isHosited = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了?'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>根据变量声明提前来看，上面代码对解析器来说是这样的：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isHosited;</span><br><span class="line"></span><br><span class="line">isHosited(); <span class="comment">// Uncaught TypeError: isHosited is not a function</span></span><br><span class="line"></span><br><span class="line">isHosited = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了?'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isHosited;</div><div class="line"></div><div class="line">isHosited(); <span class="comment">// Uncaught TypeError: isHosited is not a function</span></div><div class="line"></div><div class="line">isHosited = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'我被提前了?'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>由于“变量提前”的默认值是<code>undefined</code>，所以报的错误是“isHosited is not a function（类型不匹配）”。</p>
-<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
 <li>变量的声明被提前到作用域的顶部，默认值是‘undefined’，赋值保留在原地。</li>
 <li>函数声明整个被提前。</li>
 <li>函数作为值赋给变量时，只有变量声明被提前，函数没有被提前。</li>
 <li>声明变量时尽量把声明写在作用域的顶部，这是一个好习惯。</li>
 </ol>
-<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.bootcss.com/article/variable-and-function-hoisting-in-javascript/" target="_blank" rel="external">JavaScript 中对变量和函数声明的“提前（hoist）”</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.bootcss.com/article/variable-and-function-hoisting-in-javascript/" target="_blank" rel="external">JavaScript 中对变量和函数声明的“提前（hoist）”</a></p>
 
       
     </div>
@@ -270,7 +270,7 @@ hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索�
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 sugar
+    		&copy; 2017 sugar
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -280,7 +280,7 @@ hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索�
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -296,8 +296,8 @@ hosit [hɔɪst]n. 起重机；升起，吊起vi. 升起；吊起vt.（用绳索�
 		open_in_new: false
 	}
 </script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 

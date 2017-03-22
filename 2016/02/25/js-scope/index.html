@@ -30,7 +30,7 @@
 
 赋值阶段
 赋值">
-<meta property="og:updated_time" content="2016-02-26T09:24:43.000Z">
+<meta property="og:updated_time" content="2017-03-21T15:08:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript执行环境">
 <meta name="twitter:description" content="模拟执行环境javascript每调用一个函数就会创建一个新的执行环境，创建执行环境分为两个阶段：
@@ -49,7 +49,7 @@
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -209,7 +209,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="u6A21_u62DF_u6267_u884C_u73AF_u5883"><a href="#u6A21_u62DF_u6267_u884C_u73AF_u5883" class="headerlink" title="模拟执行环境"></a>模拟执行环境</h2><p>javascript每调用一个函数就会创建一个新的执行环境，创建执行环境分为两个阶段：</p>
+        <h2 id="模拟执行环境"><a href="#模拟执行环境" class="headerlink" title="模拟执行环境"></a>模拟执行环境</h2><p>javascript每调用一个函数就会创建一个新的执行环境，创建执行环境分为两个阶段：</p>
 <ol>
 <li>建立阶段<ul>
 <li>建立作用于链</li>
@@ -224,13 +224,13 @@
 </ol>
 <a id="more"></a>
 <p>接下来模拟这段代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">'hello'</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="string">'hello'</span>;</div><div class="line">    <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123; &#125;;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123; &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">foo(<span class="number">22</span>);</div></pre></td></tr></table></figure>
 <p><strong>第一阶段（建立）</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">fooExecutionContext =              <span class="comment">// 执行环境</span></span><br><span class="line">&#123;</span><br><span class="line">    scopeChain: &#123; ... &#125;,           <span class="comment">// 建立作用域链</span></span><br><span class="line">    variableObject:                <span class="comment">// 建立变量</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">arguments</span>:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="number">0</span>: <span class="number">22</span>,</span><br><span class="line">            length: <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        i: <span class="number">22</span>,</span><br><span class="line">        c: pointer to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>),</span><br><span class="line">        <span class="title">a</span>: <span class="title">undefined</span>,</span><br><span class="line">        <span class="title">b</span>: <span class="title">undefined</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title">this</span>: </span>&#123; ... &#125;                  <span class="comment">// 确定this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">fooExecutionContext =              <span class="comment">// 执行环境</span></div><div class="line">&#123;</div><div class="line">    <span class="attr">scopeChain</span>: &#123; ... &#125;,           <span class="comment">// 建立作用域链</span></div><div class="line">    variableObject:                <span class="comment">// 建立变量</span></div><div class="line">    &#123;</div><div class="line">        <span class="attr">arguments</span>:</div><div class="line">        &#123;</div><div class="line">            <span class="number">0</span>: <span class="number">22</span>,</div><div class="line">            <span class="attr">length</span>: <span class="number">1</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">i</span>: <span class="number">22</span>,</div><div class="line">        <span class="attr">c</span>: pointer to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>),</span></div><div class="line">        <span class="title">a</span>: <span class="title">undefined</span>,</div><div class="line">        <span class="title">b</span>: <span class="title">undefined</span></div><div class="line">    &#125;,</div><div class="line">    <span class="title">this</span>: &#123; ... &#125;                  <span class="comment">// 确定this</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>第二阶段（赋值）</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">fooExecutionContext =              <span class="comment">// 执行环境</span></span><br><span class="line">&#123;</span><br><span class="line">    scopeChain: &#123; ... &#125;,           <span class="comment">// 建立作用域链</span></span><br><span class="line">    variableObject:                <span class="comment">// 建立变量</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">arguments</span>:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="number">0</span>: <span class="number">22</span>,</span><br><span class="line">            length: <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        i: <span class="number">22</span>,</span><br><span class="line">        c: pointer to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>),</span><br><span class="line">        <span class="title">a</span>: '<span class="title">hello</span>',</span><br><span class="line">        <span class="title">b</span>: <span class="title">pointer</span> <span class="title">to</span> <span class="title">function</span> <span class="title">B</span>(<span class="params"></span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title">this</span>: </span>&#123; ... &#125;                  <span class="comment">// 确定this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">fooExecutionContext =              <span class="comment">// 执行环境</span></div><div class="line">&#123;</div><div class="line">    <span class="attr">scopeChain</span>: &#123; ... &#125;,           <span class="comment">// 建立作用域链</span></div><div class="line">    variableObject:                <span class="comment">// 建立变量</span></div><div class="line">    &#123;</div><div class="line">        <span class="attr">arguments</span>:</div><div class="line">        &#123;</div><div class="line">            <span class="number">0</span>: <span class="number">22</span>,</div><div class="line">            <span class="attr">length</span>: <span class="number">1</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">i</span>: <span class="number">22</span>,</div><div class="line">        <span class="attr">c</span>: pointer to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>),</span></div><div class="line">        <span class="title">a</span>: '<span class="title">hello</span>',</div><div class="line">        <span class="title">b</span>: <span class="title">pointer</span> <span class="title">to</span> <span class="title">function</span> <span class="title">B</span>(<span class="params"></span>)</div><div class="line">    &#125;,</div><div class="line">    <span class="title">this</span>: &#123; ... &#125;                  <span class="comment">// 确定this</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这也解释了javascript中变量和函数声明提升的问题。</p>
-<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000004491834" target="_blank" rel="external">Javascript 中的執行環境與堆疊</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000004491834" target="_blank" rel="external">Javascript 中的執行環境與堆疊</a></p>
 
       
     </div>
@@ -272,7 +272,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 sugar
+    		&copy; 2017 sugar
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -282,7 +282,7 @@
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -298,8 +298,8 @@
 		open_in_new: false
 	}
 </script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 
