@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on sugar的读书笔记</title>
-    <link>/categories/javascript/</link>
+    <link>http://hongliya.github.io/categories/javascript/</link>
     <description>Recent content in Javascript on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.github.io/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：欺骗词法作用域之with</title>
-      <link>/post/javascript_with/</link>
+      <link>http://hongliya.github.io/post/javascript_with/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_with/</guid>
+      <guid>http://hongliya.github.io/post/javascript_with/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。
@@ -28,10 +28,10 @@ function foo(obj) { width (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console
     
     <item>
       <title>JavaScript：欺骗词法作用域之eval</title>
-      <link>/post/javascript_eval/</link>
+      <link>http://hongliya.github.io/post/javascript_eval/</link>
       <pubDate>Mon, 06 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_eval/</guid>
+      <guid>http://hongliya.github.io/post/javascript_eval/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。
@@ -43,10 +43,10 @@ function foo(obj) { width (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console
     
     <item>
       <title>JavaScript：词法作用域</title>
-      <link>/post/javascript_tokenizing/</link>
+      <link>http://hongliya.github.io/post/javascript_tokenizing/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_tokenizing/</guid>
+      <guid>http://hongliya.github.io/post/javascript_tokenizing/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 作用域共有两种主要的工作模型
  词法作用域 动态作用域  JavaScript并不具备动态作用域，它只有词法作用域，但后面的this机制某种程度上很像动态作用域，该笔记暂不讨论动态作用域。
@@ -59,10 +59,10 @@ function foo(a) { var b = a * 2; function bar(c) { console.log(c); } bar(b*3); }
     
     <item>
       <title>JavaScript：LHS和RHS</title>
-      <link>/post/javascript_lhs_rhs/</link>
+      <link>http://hongliya.github.io/post/javascript_lhs_rhs/</link>
       <pubDate>Sat, 04 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_lhs_rhs/</guid>
+      <guid>http://hongliya.github.io/post/javascript_lhs_rhs/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》作用域。
 LHS和RHS是JavaScript引擎执行代码时查找变量的两种方式，L表示左侧，R表示右侧，指的是赋值操作的左侧和右侧。
 看了书上的解释，感觉不是那么容易记忆，为了方便自己记忆，我总结如下：
@@ -82,10 +82,10 @@ function foo(a) { var b = a; return a + b; } var c = foo(2);  例4分析：这�
     
     <item>
       <title>JavaScript：嵌套作用域</title>
-      <link>/post/javascript_nested_scope/</link>
+      <link>http://hongliya.github.io/post/javascript_nested_scope/</link>
       <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_nested_scope/</guid>
+      <guid>http://hongliya.github.io/post/javascript_nested_scope/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。
 自问自答
  问：作用域是什么？ 答：作用域是一套规则。 问：一套什么样的规则？ 答：作用域是一套存储变量、修改和访问变量的规则。 问：作用域嵌套是什么鬼？ 答：当一个块或函数嵌套在另外一个块和函数中时，就发生了作用域的嵌套。 问：在嵌套作用域中我该怎么查找我需要的变量？ 答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。  实例分析
@@ -96,10 +96,10 @@ function foo(a) { console.log(a+b); } var b = 2; foo(2);  画了一个简单栈�
     
     <item>
       <title>JavaScript：编译原理初探</title>
-      <link>/post/javascript_compile/</link>
+      <link>http://hongliya.github.io/post/javascript_compile/</link>
       <pubDate>Thu, 02 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_compile/</guid>
+      <guid>http://hongliya.github.io/post/javascript_compile/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》编译原理。
 JavaScript引擎进行编译的步骤和传统的编译语言非常相似，在某些环节可能比预想的要复杂。
 一、传统编译流程
@@ -130,10 +130,10 @@ JavaScript编译流程需要编译器和作用域共同完成。
     
     <item>
       <title>JavaScript：引擎初探</title>
-      <link>/post/javascript_engine/</link>
+      <link>http://hongliya.github.io/post/javascript_engine/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_engine/</guid>
+      <guid>http://hongliya.github.io/post/javascript_engine/</guid>
       <description>思考出自《你不知道的JavaScript（上卷）》，第一章讲编译原理提到JavaScript引擎。
 经常提到JavaScript引擎，JavaScript到底是啥？
 维基百科的解释：

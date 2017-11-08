@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>With on sugar的读书笔记</title>
-    <link>/tags/with/</link>
+    <link>http://hongliya.github.io/tags/with/</link>
     <description>Recent content in With on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/with/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.github.io/tags/with/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：欺骗词法作用域之with</title>
-      <link>/post/javascript_with/</link>
+      <link>http://hongliya.github.io/post/javascript_with/</link>
       <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_with/</guid>
+      <guid>http://hongliya.github.io/post/javascript_with/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。

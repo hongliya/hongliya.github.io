@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript词法作用域 on sugar的读书笔记</title>
-    <link>/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <link>http://hongliya.github.io/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
     <description>Recent content in Javascript词法作用域 on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.github.io/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：词法作用域</title>
-      <link>/post/javascript_tokenizing/</link>
+      <link>http://hongliya.github.io/post/javascript_tokenizing/</link>
       <pubDate>Sun, 05 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_tokenizing/</guid>
+      <guid>http://hongliya.github.io/post/javascript_tokenizing/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 作用域共有两种主要的工作模型
  词法作用域 动态作用域  JavaScript并不具备动态作用域，它只有词法作用域，但后面的this机制某种程度上很像动态作用域，该笔记暂不讨论动态作用域。

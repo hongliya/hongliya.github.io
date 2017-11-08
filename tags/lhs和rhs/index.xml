@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lhs和rhs on sugar的读书笔记</title>
-    <link>/tags/lhs%E5%92%8Crhs/</link>
+    <link>http://hongliya.github.io/tags/lhs%E5%92%8Crhs/</link>
     <description>Recent content in Lhs和rhs on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/lhs%E5%92%8Crhs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.github.io/tags/lhs%E5%92%8Crhs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：LHS和RHS</title>
-      <link>/post/javascript_lhs_rhs/</link>
+      <link>http://hongliya.github.io/post/javascript_lhs_rhs/</link>
       <pubDate>Sat, 04 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/javascript_lhs_rhs/</guid>
+      <guid>http://hongliya.github.io/post/javascript_lhs_rhs/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》作用域。
 LHS和RHS是JavaScript引擎执行代码时查找变量的两种方式，L表示左侧，R表示右侧，指的是赋值操作的左侧和右侧。
 看了书上的解释，感觉不是那么容易记忆，为了方便自己记忆，我总结如下：
