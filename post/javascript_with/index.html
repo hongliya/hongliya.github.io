@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：欺骗词法作用域之with | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="/post/javascript_with/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：欺骗词法作用域之with</h1>
+        <div class="meta">
+        2017-11-07 &nbsp;
+            
+            #<a href="/tags/with">with</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        <p>读书笔记《你不知道的JavaScript（上卷）》词法作用域。</p>
+
+<p>欺骗词法作用域会导致性能下降，不推荐使用。</p>
+
+<p>但仍然要了解下原理。</p>
+
+<p><strong>自问自答</strong></p>
+
+<ul>
+<li>问：width是怎么欺骗（修改）词法作用域的呢？</li>
+<li>答：width可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。</li>
+</ul>
+
+<p><strong>实例分析</strong></p>
+
+<pre><code>function foo(obj) {
+    width (obj) {
+        a = 2;
+    }
+}
+var o1 = {
+    a: 3
+};
+foo(o1);
+console.log(o1.a); // 2
+</code></pre>
+
+<p>栈分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg4">
+            <td>
+                <span>console作用域销毁</span>
+                <span>数据结果 2</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>调用console.log(o1.a)</td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>with作用域 销毁</span>
+                <span>改变o1.a = 2</span>
+                <span>with作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用with(obj)</span>
+                <span>obj = o1</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用foo(o1)</span>
+                <span>o1 = { a: 3 }</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>做一点改变</p>
+
+<pre><code>function foo(obj) {
+    width (obj) {
+        var a = 2;
+    }
+}
+var o1 = {
+    a: 3
+};
+foo(o1);
+console.log(o1.a); // 2
+
+// 上面代码和下面代码功能相同，下面代码更便于分析，执行完with之后
+
+function foo(obj) {
+    var a;
+    width (obj) {
+        a = 2;
+    }
+}
+var o1 = {
+    a: 3
+};
+foo(o1);
+console.log(o1.a); // 2
+</code></pre>
+
+<p>栈分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg4">
+            <td>
+                <span>console作用域销毁</span>
+                <span>数据结果 2</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>调用console.log(o1.a)</td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>with作用域 销毁</span>
+                <span>改变o1.a = 2</span>
+                <span>var声明的变量被添加到函数foo中</span>
+                <span>with作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span><em>var a（注意这里是后面添加的）</em></span>
+                <span>调用with(obj)</span>
+                <span>obj = o1</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用foo(o1)</span>
+                <span>o1 = { a: 3 }</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>再做一点改变</p>
+
+<pre><code>function foo(obj) {
+    width (obj) {
+        b = 8;
+    }
+}
+var o1 = {
+    a: 3
+};
+foo(o1);
+console.log(o1.b); // undefined
+console.log(b); // 8 不好！b被泄漏到全局作用域中了!
+
+// 上面代码和下面代码功能相同，下面代码更便于分析，执行完with之后
+
+function foo(obj) {
+    width (obj) {
+        b = 8;
+    }
+}
+var b = 2; // b被泄漏到了全局作用域中
+var o1 = {
+    a: 3
+};
+foo(o1);
+console.log(o1.b); // undefined
+console.log(b); // 8 不好！b被泄漏到全局作用域中了!
+</code></pre>
+
+<p>栈分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg5">
+            <td>
+                <span>console作用域销毁</span>
+                <span>数据结果 8</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用console.log(b)</span>
+            </td>
+        </tr>
+        <tr class="bg4">
+            <td>
+                <span>console作用域销毁</span>
+                <span>数据结果 undefined</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用console.log(o1.b)</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>with作用域 销毁</span>
+                <span>o1中没有找到b，而且b没有用var定义，根据非严格模式下LHS查询，自动创建一个全局变量b</span>
+                <span>with作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用with(obj)</span>
+                <span>obj = o1</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span><em>b = 8（注意这里是后面添加的）</em></span>
+                <span>调用foo(o1)</span>
+                <span>o1 = { a: 3 }</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p><strong>总结</strong></p>
+
+<ul>
+<li>width块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到width所处的函数作用域中。</li>
+<li>width块内部没有用var声明的变量如果在参数对象中找不到会被泄漏到全局作用域中，如果能找到，只有声明被添加到with所处的函数作用域中。</li>
+<li>严格模式下with被完全禁止。</li>
+<li>严格模式下，间接或非安全地使用eval也被禁止。</li>
+
+<li><p>不推荐使用eval或with欺骗词法作用域，它们带来的好处远远抵不上带来的损耗。引用书中解释。</p>
+
+<blockquote>
+<p>如果引擎在代码中发现了 eval(..) 或 with，它只能简单地假设关于标识符位置的判断都是无效的，因为无法在词法分析阶段明确知道 eval(..)会接收到什么代码，这些代码会如何对作用域进行修改，也无法知道传递给with用来创建新词法作用域的对象的内容到底是什么。</p>
+
+<p>最悲观的情况是如果出现了 eval(..) 或with，所有的优化可能都是无意义的，因此最简单的做法就是完全不做任何优化。</p>
+</blockquote></li>
+</ul>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="/post/javascript_eval/" rel="prev">JavaScript：欺骗词法作用域之eval</a></span>
+    
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

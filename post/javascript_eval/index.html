@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：欺骗词法作用域之eval | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="/post/javascript_eval/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：欺骗词法作用域之eval</h1>
+        <div class="meta">
+        2017-11-06 &nbsp;
+            
+            #<a href="/tags/eval">eval</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        <p>读书笔记《你不知道的JavaScript（上卷）》词法作用域。</p>
+
+<p>欺骗词法作用域会导致性能下降，不推荐使用。</p>
+
+<p>但仍然要了解下原理。</p>
+
+<p><strong>自问自答</strong></p>
+
+<ul>
+<li>问：eval是怎么欺骗（修改）词法作用域的呢？</li>
+<li>答：eval可以接受一个字符串作为参数，并将这个参数偷偷的放进词法作用域中，就好像写代码的时候它就在那里一样。举个例子：把eval比做一个超能力者，它可以修改一个人（名字叫A）的记忆，把一段别人的记忆插入到A的大脑中，让A以为这是自己的记忆。</li>
+</ul>
+
+<p><strong>实例分析</strong></p>
+
+<pre><code>// 正常代码
+function foo(str, a) {
+    console.log(a, b); // 1, 2
+}
+var b = 2;
+foo('var b = 3;', 1);
+</code></pre>
+
+<p>正常代码分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>全局作用域 销毁</td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>一系列操作 输出结果 1,2</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用console.log(a, b)</span>
+                <span>a = 1</span>
+                <span>str = 'var b = 3'</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用foo('var b = 3;', 1)</span>
+                <span>b = 2</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>参数&rsquo;var b = 3;&lsquo;并未改变任何作用域，只是作为一个普通的字符串参数传进去而已，打印下str仍然是字符串&rsquo;var b = 3;&lsquo;。</p>
+
+<pre><code>// 使用eval欺骗词法作用域
+function foo(str, a) {
+    eval(str); // 欺骗
+    console.log(a, b); // 1, 3
+}
+var b = 2;
+foo('var b = 3;', 1);
+</code></pre>
+
+<p>使用eval欺骗词法作用域代码分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>全局作用域 销毁</td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>一系列操作 输出结果 1,3</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用console.log(a, b)</span>
+                <span>a = 1</span>
+                <span>b = 3（注意这里b变成了3）</span>
+                <span>调用eval(str)</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用foo('var b = 3;', 1)</span>
+                <span>b = 2</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>这里调用eval后也是要进入到eval的作用域中，这里就不画了，参数&rsquo;var b = 3;&lsquo;这段代码在foo的作用域中声明了一个新的变量b，并遮蔽了全局作用域中的同名变量，对已经存在的foo词法作用域进行了修改。</p>
+
+<p>在严格模式的程序中，eval()在运行时有自己的词法作用域，其中的声明无法修改所在作用域。</p>
+
+<pre><code>// 严格模式中
+function foo(str) {
+    'use strict';
+    eval(str);
+    console.log(a); // ReferenceError: a is not defined
+}
+foo('var a = 2');
+</code></pre>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>全局作用域 销毁</td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg4">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出a，没找到，报错Reference: a is not defined</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用console.log(a)</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>eval作用域 销毁</span>
+                <span>a = 2</span>
+                <span>eval作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用eval(str)</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用foo('var a = 2')</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>在程序中动态生成代码的使用场景非常罕见，因为它所带来的好处无法抵消性能上的损失。</p>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="/post/javascript_tokenizing/" rel="prev">JavaScript：词法作用域</a></span>
+    
+    
+        <span class="next"><a href="/post/javascript_with/" rel="next">JavaScript：欺骗词法作用域之with</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

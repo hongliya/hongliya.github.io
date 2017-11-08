@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：嵌套作用域 | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="/post/javascript_nested_scope/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：嵌套作用域</h1>
+        <div class="meta">
+        2017-11-03 &nbsp;
+            
+            #<a href="/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F">嵌套作用域</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        <p>读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。</p>
+
+<p><strong>自问自答</strong></p>
+
+<ul>
+<li>问：作用域是什么？</li>
+<li>答：作用域是一套规则。</li>
+<li>问：一套什么样的规则？</li>
+<li>答：作用域是一套存储变量、修改和访问变量的规则。</li>
+<li>问：作用域嵌套是什么鬼？</li>
+<li>答：当一个块或函数嵌套在另外一个块和函数中时，就发生了作用域的嵌套。</li>
+<li>问：在嵌套作用域中我该怎么查找我需要的变量？</li>
+<li>答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。</li>
+</ul>
+
+<p><strong>实例分析</strong></p>
+
+<pre><code>function foo(a) {
+    console.log(a+b);
+}
+
+var b = 2;
+foo(2);
+</code></pre>
+
+<p>画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会返回结果然后弹出变量。</p>
+
+<ol>
+<li>开始创建全局作用域，把变量b压入栈；</li>
+<li>执行到foo(2)，创建foo作用域（绿色背景），把a压入栈，再把b压入栈；</li>
+<li>执行到console.log(a+b)，创建console作用域（红色背景），这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域；</li>
+<li>foo作用域执行完后销毁，返回结果4。</li>
+</ol>
+
+<p>前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域（绿色背景）中无法查找的变量b，就会向下到全局作用域（白色背景）中查找。</p>
+
+<ul>
+<li>白色背景表示全局作用域</li>
+<li>绿色背景表示foo的作用域</li>
+<li>红色背景表示console的作用域</li>
+</ul>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>一些列操作 输出结果4</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用console.log(a+b)</span>
+                <span>a + b = 4</span>
+                <span>b = 2</span>
+                <span>a = 2</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用foo(2)</span>
+                <span>b = 2</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="/post/javascript_compile/" rel="prev">JavaScript：编译原理初探</a></span>
+    
+    
+        <span class="next"><a href="/post/javascript_lhs_rhs/" rel="next">JavaScript：LHS和RHS</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

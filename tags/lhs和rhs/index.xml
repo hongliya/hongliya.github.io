@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lhs和rhs on sugar的读书笔记</title>
+    <link>/tags/lhs%E5%92%8Crhs/</link>
+    <description>Recent content in Lhs和rhs on sugar的读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/lhs%E5%92%8Crhs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：LHS和RHS</title>
+      <link>/post/javascript_lhs_rhs/</link>
+      <pubDate>Sat, 04 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_lhs_rhs/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》作用域。
+LHS和RHS是JavaScript引擎执行代码时查找变量的两种方式，L表示左侧，R表示右侧，指的是赋值操作的左侧和右侧。
+看了书上的解释，感觉不是那么容易记忆，为了方便自己记忆，我总结如下：
+ LHS：给谁赋值 RHS：获取谁的值  例1：获取变量a的值，对a进行RHS查询
+console.log(a);  例2：给变量a赋值，对a进行LHS查询
+a = 2;  例3：既有LHS查询也有RHS查询
+function foo(a) { console.log(a); } foo(2);  例3分析：
+ 获取foo的值，对foo进行RHS查询 进入foo的作用域，给变量a赋值，对a进行LHS查询 获取变量a的值，对a进行RHS查询 获取console的属性log，对console.log进行RHS查询  这里对于为什么不对foo进行LHS查询，先记录书中解释：
+ 你可能会倾向于将函数声明function foo(a) {&amp;hellip; 概念化为普通的变量声明 和赋值，比如 var foo、foo = function(a) {&amp;hellip;。如果这样理解的话，这个函数声明将需要进行LHS查询。
+而还有一个重要的细微差别，编译器可以在代码生成的同时处理声明和值的定义，比如在引擎执行代码时，并不会有线程专门用来将一个函数值“分配给”foo。因此，将函数声明理解成前面讨论的LHS查询和赋值的形式并不合适。
+ 例4：找到其中所有的LHS查询（有3处）和RHS查询（有4处）。
+function foo(a) { var b = a; return a + b; } var c = foo(2);  例4分析：这是书中的一个小测验，下面是我的分析结果
+3处LHS查询：c、a、b
+4处RHS查询：foo、a、a、b
+ 给c赋值，对c进行LHS查询 获取foo的值，对foo进行RHS查询 进入foo的作用域，给a赋值，对a进行LHS查询 获取a的值，对a进行RHS查询 给b赋值，对b进行LHS查询 获取a的值，对a进行RHS查询 获取b的值，对b进行RHS查询  为什么要区分LHS查询和RHS查询？</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：词法作用域 | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="/post/javascript_tokenizing/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：词法作用域</h1>
+        <div class="meta">
+        2017-11-05 &nbsp;
+            
+            #<a href="/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F">JavaScript词法作用域</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        <p>读书笔记《你不知道的JavaScript（上卷）》词法作用域。</p>
+
+<p><strong>作用域共有两种主要的工作模型</strong></p>
+
+<ol>
+<li>词法作用域</li>
+<li>动态作用域</li>
+</ol>
+
+<p>JavaScript并不具备动态作用域，它只有词法作用域，但后面的this机制某种程度上很像动态作用域，该笔记暂不讨论动态作用域。</p>
+
+<p><strong>自问自答</strong></p>
+
+<ul>
+<li>问：该怎么理解词法作用域呢？</li>
+<li>答：这个要回忆下编译原理了。</li>
+<li>问：编译器编译的第一步是什么还记得么？</li>
+<li>答：分词/词法分析（Tokenizing/lexing），就是把字符串分解成一个个的词法单元，也叫单词化。</li>
+<li>问：这和词法作用域有什么关系呢？</li>
+<li>答：简单地说，词法作用域就是定义在词法分析阶段的作用域，换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。</li>
+<li>问：这么说顺序是不变的么？</li>
+<li>答：大部分情况是这样的，不过还有一些欺骗作用域的方法，这些方法在词法分析器处理过后依然可以修改作用域，不过这些方法不推荐使用。</li>
+<li>问：为什么不推荐使用呢？</li>
+<li>答：这个后面再谈&hellip;</li>
+</ul>
+
+<p><strong>实例分析</strong></p>
+
+<pre><code>function foo(a) {
+    var b = a * 2;
+    function bar(c) {
+        console.log(c);
+    }
+    bar(b*3);
+}
+foo(2);
+</code></pre>
+
+<p>这个例子中共有三个主机嵌套的作用域，为了帮助理解，可以将它们想象成几个逐级包含的气泡，这里借助书中的图片。</p>
+
+<p><img src="/images/tokenizing_scope.jpg" alt="作用域气泡" title="作用域气泡" /></p>
+
+<ol>
+<li>包含着整个全局作用域，其中只有一个标识符：foo。</li>
+<li>包含着foo所创建的作用域，其中有三个标识符：a、bar、b。</li>
+<li>包含着bar所创建的作用域，其中只有一个标识符：c。</li>
+</ol>
+
+<p>依然用栈分析下：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>foo作用域 销毁</td>
+        </tr>
+        <tr class="bg3">
+            <td>bar作用域 销毁</td>
+        </tr>
+        <tr class="bg4">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>一些列操作 输出结果 2,4,12</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>调用console.log(a,b,c)</span>
+                <span>c = b*3 = 4*3 = 12</span>
+                <span>bar作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用bar(b*3)</span>
+                <span>b = a*2 = 2*2 = 4</span>
+                <span>a = 2</span>
+                <span>foo作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用foo(2)</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>词法作用域查找只会查找一级标识符，比如a、b、c。如果代码中引用了foo.bar.baz，词法作用域查找只会试图查找foo标识符，找到这个变量后，对象属性访问规则会分别接管对bar和baz属性的访问。</p>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="/post/javascript_lhs_rhs/" rel="prev">JavaScript：LHS和RHS</a></span>
+    
+    
+        <span class="next"><a href="/post/javascript_eval/" rel="next">JavaScript：欺骗词法作用域之eval</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

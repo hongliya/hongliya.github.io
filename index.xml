@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sugar的读书笔记</title>
+    <link>/</link>
+    <description>Recent content on sugar的读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：欺骗词法作用域之with</title>
+      <link>/post/javascript_with/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_with/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
+欺骗词法作用域会导致性能下降，不推荐使用。
+但仍然要了解下原理。
+自问自答
+ 问：width是怎么欺骗（修改）词法作用域的呢？ 答：width可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。  实例分析
+function foo(obj) { width (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console.log(o1.a); // 2  栈分析：
+  全局作用域 销毁    console作用域销毁 数据结果 2 console作用域 创建   调用console.log(o1.a)  foo作用域 销毁   with作用域 销毁 改变o1.a = 2 with作用域 创建    调用with(obj) obj = o1 foo作用域 创建    调用foo(o1) o1 = { a: 3 } 全局作用域 创建     做一点改变</description>
+    </item>
+    
+    <item>
+      <title>JavaScript：欺骗词法作用域之eval</title>
+      <link>/post/javascript_eval/</link>
+      <pubDate>Mon, 06 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_eval/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
+欺骗词法作用域会导致性能下降，不推荐使用。
+但仍然要了解下原理。
+自问自答
+ 问：eval是怎么欺骗（修改）词法作用域的呢？ 答：eval可以接受一个字符串作为参数，并将这个参数偷偷的放进词法作用域中，就好像写代码的时候它就在那里一样。举个例子：把eval比做一个超能力者，它可以修改一个人（名字叫A）的记忆，把一段别人的记忆插入到A的大脑中，让A以为这是自己的记忆。  实例分析
+// 正常代码 function foo(str, a) { console.log(a, b); // 1, 2 } var b = 2; foo(&#39;var b = 3;&#39;, 1);  正常代码分析：
+ 全局作用域 销毁  foo作用域 销毁   console作用域 销毁 一系列操作 输出结果 1,2 console作用域 创建    调用console.log(a, b) a = 1 str = &#39;var b = 3&#39; foo作用域 创建    调用foo(&#39;var b = 3;&#39;, 1) b = 2 全局作用域 创建     参数&amp;rsquo;var b = 3;&amp;lsquo;并未改变任何作用域，只是作为一个普通的字符串参数传进去而已，打印下str仍然是字符串&amp;rsquo;var b = 3;&amp;lsquo;。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript：词法作用域</title>
+      <link>/post/javascript_tokenizing/</link>
+      <pubDate>Sun, 05 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_tokenizing/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
+作用域共有两种主要的工作模型
+ 词法作用域 动态作用域  JavaScript并不具备动态作用域，它只有词法作用域，但后面的this机制某种程度上很像动态作用域，该笔记暂不讨论动态作用域。
+自问自答
+ 问：该怎么理解词法作用域呢？ 答：这个要回忆下编译原理了。 问：编译器编译的第一步是什么还记得么？ 答：分词/词法分析（Tokenizing/lexing），就是把字符串分解成一个个的词法单元，也叫单词化。 问：这和词法作用域有什么关系呢？ 答：简单地说，词法作用域就是定义在词法分析阶段的作用域，换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。 问：这么说顺序是不变的么？ 答：大部分情况是这样的，不过还有一些欺骗作用域的方法，这些方法在词法分析器处理过后依然可以修改作用域，不过这些方法不推荐使用。 问：为什么不推荐使用呢？ 答：这个后面再谈&amp;hellip;  实例分析
+function foo(a) { var b = a * 2; function bar(c) { console.log(c); } bar(b*3); } foo(2);  这个例子中共有三个主机嵌套的作用域，为了帮助理解，可以将它们想象成几个逐级包含的气泡，这里借助书中的图片。
+ 包含着整个全局作用域，其中只有一个标识符：foo。 包含着foo所创建的作用域，其中有三个标识符：a、bar、b。 包含着bar所创建的作用域，其中只有一个标识符：c。  依然用栈分析下：
+  全局作用域 销毁   foo作用域 销毁  bar作用域 销毁   console作用域 销毁 一些列操作 输出结果 2,4,12 console作用域 创建    调用console.log(a,b,c) c = b*3 = 4*3 = 12 bar作用域 创建    调用bar(b*3) b = a*2 = 2*2 = 4 a = 2 foo作用域 创建    调用foo(2) 全局作用域 创建     词法作用域查找只会查找一级标识符，比如a、b、c。如果代码中引用了foo.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript：LHS和RHS</title>
+      <link>/post/javascript_lhs_rhs/</link>
+      <pubDate>Sat, 04 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_lhs_rhs/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》作用域。
+LHS和RHS是JavaScript引擎执行代码时查找变量的两种方式，L表示左侧，R表示右侧，指的是赋值操作的左侧和右侧。
+看了书上的解释，感觉不是那么容易记忆，为了方便自己记忆，我总结如下：
+ LHS：给谁赋值 RHS：获取谁的值  例1：获取变量a的值，对a进行RHS查询
+console.log(a);  例2：给变量a赋值，对a进行LHS查询
+a = 2;  例3：既有LHS查询也有RHS查询
+function foo(a) { console.log(a); } foo(2);  例3分析：
+ 获取foo的值，对foo进行RHS查询 进入foo的作用域，给变量a赋值，对a进行LHS查询 获取变量a的值，对a进行RHS查询 获取console的属性log，对console.log进行RHS查询  这里对于为什么不对foo进行LHS查询，先记录书中解释：
+ 你可能会倾向于将函数声明function foo(a) {&amp;hellip; 概念化为普通的变量声明 和赋值，比如 var foo、foo = function(a) {&amp;hellip;。如果这样理解的话，这个函数声明将需要进行LHS查询。
+而还有一个重要的细微差别，编译器可以在代码生成的同时处理声明和值的定义，比如在引擎执行代码时，并不会有线程专门用来将一个函数值“分配给”foo。因此，将函数声明理解成前面讨论的LHS查询和赋值的形式并不合适。
+ 例4：找到其中所有的LHS查询（有3处）和RHS查询（有4处）。
+function foo(a) { var b = a; return a + b; } var c = foo(2);  例4分析：这是书中的一个小测验，下面是我的分析结果
+3处LHS查询：c、a、b
+4处RHS查询：foo、a、a、b
+ 给c赋值，对c进行LHS查询 获取foo的值，对foo进行RHS查询 进入foo的作用域，给a赋值，对a进行LHS查询 获取a的值，对a进行RHS查询 给b赋值，对b进行LHS查询 获取a的值，对a进行RHS查询 获取b的值，对b进行RHS查询  为什么要区分LHS查询和RHS查询？</description>
+    </item>
+    
+    <item>
+      <title>JavaScript：嵌套作用域</title>
+      <link>/post/javascript_nested_scope/</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_nested_scope/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。
+自问自答
+ 问：作用域是什么？ 答：作用域是一套规则。 问：一套什么样的规则？ 答：作用域是一套存储变量、修改和访问变量的规则。 问：作用域嵌套是什么鬼？ 答：当一个块或函数嵌套在另外一个块和函数中时，就发生了作用域的嵌套。 问：在嵌套作用域中我该怎么查找我需要的变量？ 答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。  实例分析
+function foo(a) { console.log(a+b); } var b = 2; foo(2);  画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会返回结果然后弹出变量。
+ 开始创建全局作用域，把变量b压入栈； 执行到foo(2)，创建foo作用域（绿色背景），把a压入栈，再把b压入栈； 执行到console.log(a+b)，创建console作用域（红色背景），这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域； foo作用域执行完后销毁，返回结果4。  前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域（绿色背景）中无法查找的变量b，就会向下到全局作用域（白色背景）中查找。
+ 白色背景表示全局作用域 绿色背景表示foo的作用域 红色背景表示console的作用域    全局作用域 销毁   foo作用域 销毁   console作用域 销毁 一些列操作 输出结果4 console作用域 创建    调用console.log(a+b) a + b = 4 b = 2 a = 2 foo作用域 创建    调用foo(2) b = 2 全局作用域 创建     </description>
+    </item>
+    
+    <item>
+      <title>JavaScript：编译原理初探</title>
+      <link>/post/javascript_compile/</link>
+      <pubDate>Thu, 02 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_compile/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》编译原理。
+JavaScript引擎进行编译的步骤和传统的编译语言非常相似，在某些环节可能比预想的要复杂。
+一、传统编译流程
+ 第一步：分词／词法分析（Tokenizing/Lexing），将字符串分解成对编程语言有意义的代码块（又叫词法单元）。
+第二步：解析／语法分析（Parsing），将第一步得到的代码块（词法单元流）转换成一个抽象语法树（Abstract Syntax Tree, AST）。
+第三步：代码生成，将第二步得到的AST转换为可执行代码。
+ 实例： var a = 2;  编译过程：
+第一步：分词／词法分析（Tokenizing/Lexing），将字符串var a = 2;分解成词法单元：var、a、=、2、；。
+第二步：解析／语法分析（Parsing），将词法单元流：var、a、=、2、；解析为树（AST）。这里我画了一棵语法树，方便理解，用的是在线制作流程图工具http://www.lizibuluo.com/tree/。
+第三步：代码生成，将第二步得到的AST转换为可执行代码。通过某种方法将var a = 2;的AST转化为一组机器指令，创建一个叫做a的变量（包括分配内存等），并将一个值存储到a中。
+二、JavaScript编译流程
+JavaScript编译流程和传统编译流程相似，只是在某些环节更复杂，JavaScript编译并不会生成类似.exe的可执行文件，大部分情况下编译发生在代码执行前的几微秒（甚至更短！）的时间内。
+JavaScript编译流程需要编译器和作用域共同完成。
+实例： var a = 2;  第一步：分词／词法分析（Tokenizing/Lexing），将字符串var a = 2;分解成词法单元：var、a、=、2、；。
+第二步：解析／语法分析（Parsing），将词法单元流：var、a、=、2、；解析为树（AST）。这里我画了一棵语法树，方便理解，用的是在线制作流程图工具http://www.lizibuluo.com/tree/。
+第三步：代码生成，将第二步得到的AST转换为可执行代码。从这里处理方式开始和传统编译有所不同，编译器会进行如下处理。
+编译器和作用域的对话：
+ 遇到var a，根据不同情况编译器会执行不同的操作；   第一种情况：
+ 编译器：作用域兄弟，请问是否有一个叫做a的变量存在你的集合中？
+作用域：有的。
+编译器：好的，谢谢（编译器会忽略var a的声明，继续进行编译）。
+ 第二种情况：
+ 编译器：作用域兄弟，请问是否有一个叫做a的变量存在你的集合中？
+作用域：没有。
+编译器：那帮忙声明一个新的变量吧，就叫a。
+  </description>
+    </item>
+    
+    <item>
+      <title>JavaScript：引擎初探</title>
+      <link>/post/javascript_engine/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_engine/</guid>
+      <description>思考出自《你不知道的JavaScript（上卷）》，第一章讲编译原理提到JavaScript引擎。
+经常提到JavaScript引擎，JavaScript到底是啥？
+维基百科的解释：
+ JavaScript引擎是一个专门处理JavaScript脚本的虚拟机，一般会附带在网页浏览器之中。
+ 哦，似懂非懂。
+思考：
+计算机只能看懂 0 1 0 1，不能看懂更高层的代码，比如C语言，所以用C语言写好代码之后需要编译一遍，编译器把我们能看懂的代码翻译成计算机能看懂的 0 1 0 1，这样我们的程序才能实现和计算机的交互，我把这里的编译器理解为虚拟机。
+相同原理，JavaScript引擎就是把我们写的JavaScript脚本翻译成浏览器能够理解的代码，并给出运行结果。
+至于浏览器，其本身就已经被计算机理解。
+JavaScript引擎本身也是一段程序，由代码编写而成，如Chrome的JavaScript引擎V8就是用C/C++写的。
+总结：
+JavaScript引擎是专门用来解释和执行JavaScript脚本的虚拟机。</description>
+    </item>
+    
+  </channel>
+</rss>

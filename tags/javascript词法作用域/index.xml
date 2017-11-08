@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript词法作用域 on sugar的读书笔记</title>
+    <link>/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <description>Recent content in Javascript词法作用域 on sugar的读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：词法作用域</title>
+      <link>/post/javascript_tokenizing/</link>
+      <pubDate>Sun, 05 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_tokenizing/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
+作用域共有两种主要的工作模型
+ 词法作用域 动态作用域  JavaScript并不具备动态作用域，它只有词法作用域，但后面的this机制某种程度上很像动态作用域，该笔记暂不讨论动态作用域。
+自问自答
+ 问：该怎么理解词法作用域呢？ 答：这个要回忆下编译原理了。 问：编译器编译的第一步是什么还记得么？ 答：分词/词法分析（Tokenizing/lexing），就是把字符串分解成一个个的词法单元，也叫单词化。 问：这和词法作用域有什么关系呢？ 答：简单地说，词法作用域就是定义在词法分析阶段的作用域，换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。 问：这么说顺序是不变的么？ 答：大部分情况是这样的，不过还有一些欺骗作用域的方法，这些方法在词法分析器处理过后依然可以修改作用域，不过这些方法不推荐使用。 问：为什么不推荐使用呢？ 答：这个后面再谈&amp;hellip;  实例分析
+function foo(a) { var b = a * 2; function bar(c) { console.log(c); } bar(b*3); } foo(2);  这个例子中共有三个主机嵌套的作用域，为了帮助理解，可以将它们想象成几个逐级包含的气泡，这里借助书中的图片。
+ 包含着整个全局作用域，其中只有一个标识符：foo。 包含着foo所创建的作用域，其中有三个标识符：a、bar、b。 包含着bar所创建的作用域，其中只有一个标识符：c。  依然用栈分析下：
+  全局作用域 销毁   foo作用域 销毁  bar作用域 销毁   console作用域 销毁 一些列操作 输出结果 2,4,12 console作用域 创建    调用console.log(a,b,c) c = b*3 = 4*3 = 12 bar作用域 创建    调用bar(b*3) b = a*2 = 2*2 = 4 a = 2 foo作用域 创建    调用foo(2) 全局作用域 创建     词法作用域查找只会查找一级标识符，比如a、b、c。如果代码中引用了foo.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript编译原理 on sugar的读书笔记</title>
+    <link>/tags/javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
+    <description>Recent content in Javascript编译原理 on sugar的读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：编译原理初探</title>
+      <link>/post/javascript_compile/</link>
+      <pubDate>Thu, 02 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_compile/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》编译原理。
+JavaScript引擎进行编译的步骤和传统的编译语言非常相似，在某些环节可能比预想的要复杂。
+一、传统编译流程
+ 第一步：分词／词法分析（Tokenizing/Lexing），将字符串分解成对编程语言有意义的代码块（又叫词法单元）。
+第二步：解析／语法分析（Parsing），将第一步得到的代码块（词法单元流）转换成一个抽象语法树（Abstract Syntax Tree, AST）。
+第三步：代码生成，将第二步得到的AST转换为可执行代码。
+ 实例： var a = 2;  编译过程：
+第一步：分词／词法分析（Tokenizing/Lexing），将字符串var a = 2;分解成词法单元：var、a、=、2、；。
+第二步：解析／语法分析（Parsing），将词法单元流：var、a、=、2、；解析为树（AST）。这里我画了一棵语法树，方便理解，用的是在线制作流程图工具http://www.lizibuluo.com/tree/。
+第三步：代码生成，将第二步得到的AST转换为可执行代码。通过某种方法将var a = 2;的AST转化为一组机器指令，创建一个叫做a的变量（包括分配内存等），并将一个值存储到a中。
+二、JavaScript编译流程
+JavaScript编译流程和传统编译流程相似，只是在某些环节更复杂，JavaScript编译并不会生成类似.exe的可执行文件，大部分情况下编译发生在代码执行前的几微秒（甚至更短！）的时间内。
+JavaScript编译流程需要编译器和作用域共同完成。
+实例： var a = 2;  第一步：分词／词法分析（Tokenizing/Lexing），将字符串var a = 2;分解成词法单元：var、a、=、2、；。
+第二步：解析／语法分析（Parsing），将词法单元流：var、a、=、2、；解析为树（AST）。这里我画了一棵语法树，方便理解，用的是在线制作流程图工具http://www.lizibuluo.com/tree/。
+第三步：代码生成，将第二步得到的AST转换为可执行代码。从这里处理方式开始和传统编译有所不同，编译器会进行如下处理。
+编译器和作用域的对话：
+ 遇到var a，根据不同情况编译器会执行不同的操作；   第一种情况：
+ 编译器：作用域兄弟，请问是否有一个叫做a的变量存在你的集合中？
+作用域：有的。
+编译器：好的，谢谢（编译器会忽略var a的声明，继续进行编译）。
+ 第二种情况：
+ 编译器：作用域兄弟，请问是否有一个叫做a的变量存在你的集合中？
+作用域：没有。
+编译器：那帮忙声明一个新的变量吧，就叫a。
+  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eval on sugar的读书笔记</title>
+    <link>/tags/eval/</link>
+    <description>Recent content in Eval on sugar的读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/eval/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：欺骗词法作用域之eval</title>
+      <link>/post/javascript_eval/</link>
+      <pubDate>Mon, 06 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript_eval/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
+欺骗词法作用域会导致性能下降，不推荐使用。
+但仍然要了解下原理。
+自问自答
+ 问：eval是怎么欺骗（修改）词法作用域的呢？ 答：eval可以接受一个字符串作为参数，并将这个参数偷偷的放进词法作用域中，就好像写代码的时候它就在那里一样。举个例子：把eval比做一个超能力者，它可以修改一个人（名字叫A）的记忆，把一段别人的记忆插入到A的大脑中，让A以为这是自己的记忆。  实例分析
+// 正常代码 function foo(str, a) { console.log(a, b); // 1, 2 } var b = 2; foo(&#39;var b = 3;&#39;, 1);  正常代码分析：
+ 全局作用域 销毁  foo作用域 销毁   console作用域 销毁 一系列操作 输出结果 1,2 console作用域 创建    调用console.log(a, b) a = 1 str = &#39;var b = 3&#39; foo作用域 创建    调用foo(&#39;var b = 3;&#39;, 1) b = 2 全局作用域 创建     参数&amp;rsquo;var b = 3;&amp;lsquo;并未改变任何作用域，只是作为一个普通的字符串参数传进去而已，打印下str仍然是字符串&amp;rsquo;var b = 3;&amp;lsquo;。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,44 @@
+.stack {
+  position: relative;
+  width: 240px;
+  min-height: 120px;
+  border: 1px solid #ddd;
+  border-top: none;
+  margin: 10px auto;
+  padding-top: 50px;
+}
+.stack table {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  border: none;
+}
+.stack table td {
+  border: none;
+  border-top: 1px solid #ddd;
+}
+.stack table td span {
+  display: block;
+}
+.stack .bg1 {
+  background: white;
+  color: #333;
+}
+.stack .bg2 {
+  background: green;
+  color: #fff;
+}
+.stack .bg3 {
+  background: red;
+  color: yellow;
+}
+.stack .bg4 {
+  background: orange;
+  color: #fff;
+}
+.stack .bg5 {
+  background: purple;
+  color: #fff;
+}
