@@ -77,14 +77,14 @@
 <p><strong>自问自答</strong></p>
 
 <ul>
-<li>问：width是怎么欺骗（修改）词法作用域的呢？</li>
-<li>答：width可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。</li>
+<li>问：with是怎么欺骗（修改）词法作用域的呢？</li>
+<li>答：with可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。</li>
 </ul>
 
 <p><strong>实例分析</strong></p>
 
 <pre><code>function foo(obj) {
-    width (obj) {
+    with (obj) {
         a = 2;
     }
 }
@@ -144,7 +144,7 @@ console.log(o1.a); // 2
 <p>做一点改变</p>
 
 <pre><code>function foo(obj) {
-    width (obj) {
+    with (obj) {
         var a = 2;
     }
 }
@@ -158,7 +158,7 @@ console.log(o1.a); // 2
 
 function foo(obj) {
     var a;
-    width (obj) {
+    with (obj) {
         a = 2;
     }
 }
@@ -220,7 +220,7 @@ console.log(o1.a); // 2
 <p>再做一点改变</p>
 
 <pre><code>function foo(obj) {
-    width (obj) {
+    with (obj) {
         b = 8;
     }
 }
@@ -234,7 +234,7 @@ console.log(b); // 8 不好！b被泄漏到全局作用域中了!
 // 上面代码和下面代码功能相同，下面代码更便于分析，执行完with之后
 
 function foo(obj) {
-    width (obj) {
+    with (obj) {
         b = 8;
     }
 }
@@ -311,8 +311,8 @@ console.log(b); // 8 不好！b被泄漏到全局作用域中了!
 <p><strong>总结</strong></p>
 
 <ul>
-<li>width块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到width所处的函数作用域中。</li>
-<li>width块内部没有用var声明的变量如果在参数对象中找不到会被泄漏到全局作用域中，如果能找到，只有声明被添加到with所处的函数作用域中。</li>
+<li>with块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。</li>
+<li>with块内部没有用var声明的变量如果在参数对象中找不到会被泄漏到全局作用域中，如果能找到，只有声明被添加到with所处的函数作用域中。</li>
 <li>严格模式下with被完全禁止。</li>
 <li>严格模式下，间接或非安全地使用eval也被禁止。</li>
 
