@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：块作用域 | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.github.io/post/javascript_block_scope/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://hongliya.github.io/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="http://hongliya.github.io/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.github.io/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：块作用域</h1>
+        <div class="meta">
+        2017-10-11 &nbsp;
+            
+            #<a href="/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F">块作用域</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        
+
+<p>读书笔记《你不知道的JavaScript（上卷）》块作用域。</p>
+
+<p>表面上看 JavaScript 并没有块作用域的相关功能，其实有。</p>
+
+<ol>
+<li>with</li>
+<li>try/catch</li>
+<li>let</li>
+</ol>
+
+<h2 id="with">with</h2>
+
+<p>with会创建一个新的作用域（块作用域），但不推荐使用，不说了。</p>
+
+<h2 id="try-catch">try/catch</h2>
+
+<p>ES3规范中规定的try/catch的catch分句会创建一个新的作用域（块作用域），其中声明的变量仅在catch内部有效。</p>
+
+<h3 id="实例分析">实例分析</h3>
+
+<pre><code>try {
+    undefined();
+} catch(err) {
+    console.log(err); // TypeError: undefined is not a function
+}
+console.log(err); // ReferenceError: err is not defined
+</code></pre>
+
+<p>栈分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出 ReferenceError: err is not defined</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用console.log(err)</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>catch作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出 TypeError: undefined is not a function</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>catch作用域 销毁</span>
+                <span>调用console.log(err)</span>
+                <span>变量 err</span>
+                <span>catch作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用catch(err)</span>
+                <span>undefined()函数不存在</span>
+                <span>调用undefined()</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<h2 id="let">let</h2>
+
+<p>但随着 ES6 中引入了 let，我们的代码终于有了创建完整、不受约束的块作用域的能力。 块作用域在功能上和代码风格上都拥有很多激动人心的新特性。</p>
+
+<pre><code>{
+    let a = 2;
+    console.log(a); // 2
+}
+console.log(a); // ReferenceError: a is not defined
+</code></pre>
+
+<p>栈分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出 ReferenceError: a is not defined</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用console.log(a)</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>let作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出 2</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用console.log(a)</span>
+                <span>a = 2</span>
+                <span>let作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<h3 id="隐式创建和显示创建块">隐式创建和显示创建块</h3>
+
+<p><strong>隐式创建</strong></p>
+
+<pre><code>var foo = true;
+if (foo) {
+    let bar = foo * 2;
+}
+</code></pre>
+
+<p><strong>显示创建</strong></p>
+
+<pre><code>var foo = true;
+if (foo) {
+    { // 显示创建块
+        let bar = foo * 2;
+    }
+}
+</code></pre>
+
+<p>显示的创建块代码看起来有点奇怪，但会使变量的附属关系变得更加清晰，也方便重构的时候移动而不会对外部的if声明和语义产生任何影响。</p>
+
+<h3 id="自问自答">自问自答</h3>
+
+<ul>
+<li>问：ES6引入的let确实好用，但在ES6之前的环境中怎么实现这个效果呢？</li>
+<li>答：使用catch。</li>
+</ul>
+
+<pre><code>try {
+    throw 2;
+} catch(a) {
+    console.log(a); // 2
+}
+console.log(a); // ReferenceError: a is not defined
+</code></pre>
+
+<p>我们有办法不用写这样的鬼代码，有工具可以将 ES6 的代码转换成能在 ES6 之前环境中运行的形式</p>
+
+<ul>
+<li><p>Traceur</p>
+
+<blockquote>
+<p>Google 维护着一个名为 Traceur 的项目，该项目正是用来将 ES6 代码转换成兼容 ES6 之前 的环境(大部分是 ES5，但不是全部)。TC39 委员会依赖这个工具(也有其他工具)来测 试他们指定的语义化相关的功能。</p>
+
+<p>通过使用这样的工具，我们就可以在使用块作用域时无需考虑目标平台是否是 ES6 环境， 因为 try/catch 从 ES3 开始就存在了(并且一直是这样工作的)。</p>
+</blockquote></li>
+</ul>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.github.io/post/javascript_anonymous_function/" rel="prev">JavaScript：匿名函数和具名函数</a></span>
+    
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

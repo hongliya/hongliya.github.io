@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    tools: sublime配置文件 | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.github.io/post/tools_sublime/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://hongliya.github.io/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="http://hongliya.github.io/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.github.io/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>tools: sublime配置文件</h1>
+        <div class="meta">
+        2015-04-16 &nbsp;
+            
+            #<a href="/tags/sublime%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">sublime配置文件</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        
+
+<h2 id="我的sublime配置文件">我的Sublime配置文件</h2>
+
+<p>编辑器版本：Sublime Text 2</p>
+
+<pre><code>{
+    // 主题文件路径
+    &quot;color_scheme&quot;: &quot;Packages/Color Scheme - Default/Monokai.tmTheme&quot;,
+
+    // 字体
+    &quot;font-face&quot;: &quot;Consolas&quot;,
+
+    // 字体大小
+    &quot;font_size&quot;: 20,
+
+    // 行号边栏和文字的间距
+    &quot;margin&quot;: 0,
+
+    // 突出显示当前光标所在的行
+    &quot;highlight_line&quot;: true,
+
+    // 设置每一行到顶部，以像素为单位的间距，效果相当于行距
+    &quot;line_padding_top&quot;: 0.5,
+
+    // 按space或tab时，实际会产生白色的点（一个空格一个点）或白色的横线
+    // 设置为none时，什么情况下都不显示这些点和线
+    // 设置为selection时，只显示选中状态下的点和线
+    // 设置为all时，则一直显示
+    &quot;draw_white_space&quot;: &quot;all&quot;,
+
+    // 为true时，保存文件时会删除每行结束后多余的空格
+    &quot;trim_trailing_white_space_on_save&quot;: true,
+
+    // 为true时，保存文件时光标会在文件的最后向下换一行
+    &quot;ensure_newline_at_eof_on_save&quot;: true,
+
+    // 设置为false时，滚动到文本的最下方时，没有缓冲区
+    // 默认配置文件就是true，但缓冲区没有生效，这里重新定义下就生效了...
+    &quot;scroll_past_end&quot;: true
+}
+
+</code></pre>
+
+<h2 id="默认sublime-text-2-配置文件">默认Sublime Text 2 配置文件</h2>
+
+<pre><code>    // 主题文件的路径
+    &quot;color_scheme&quot;: &quot;Packages/Color Scheme - Default/Monokai.tmTheme&quot;,
+
+    // 设置字体
+    &quot;font_face&quot;: &quot;Consolas&quot;,
+
+    // 设置字体大小
+    &quot;font_size&quot;: 12,
+
+    // 字体选项：no_bold不显示粗体字，no_italic不显示斜体字，no_antialias和no_antialias关闭反锯齿
+    // subpixel_antialias和no_round是OS X系统独有的
+    &quot;font_options&quot;: [],
+
+    // 在文字上双击会全选当前的内容，如果里面出现以下字符，就会被截断
+    &quot;word_separators”: “./()\”‘-:,.;~!@#$%^&amp;*|+=[]{}`~?&quot;,
+
+    // 是否显示行号
+    &quot;line_numbers&quot;: true,
+
+    // 是否显示行号边栏
+    &quot;gutter&quot;: true,
+
+    // 行号边栏和文字的间距
+    &quot;margin&quot;: 4,
+
+    // 是否显示代码折叠按钮
+    &quot;fold_buttons&quot;: true,
+
+    // 不管鼠标在不在行号边栏，代码折叠按钮一直显示
+    &quot;fade_fold_buttons&quot;: true,
+
+    //列显示垂直标尺，在中括号里填入数字，宽度按字符计算
+    &quot;rulers&quot;: [],
+
+    // 是否打开拼写检查
+    &quot;spell_check&quot;: false,
+
+    // Tab键制表符宽度
+    &quot;tab_size&quot;: 4,
+
+    // 设为true时，缩进和遇到Tab键时使用空格替代
+    &quot;translate_tabs_to_spaces&quot;: false,
+
+    // translate_tabs_to_spaces设置为true，Tab和Backspace的删除/插入作用于制表符宽度
+    // 否则作用于单个空格
+    &quot;use_tab_stops&quot;: true,
+
+    // false时禁止在载入的时候检测制表符和空格
+    &quot;detect_indentation&quot;: true,
+
+    // 按回车时，自动与制表位对齐
+    &quot;auto_indent&quot;: true,
+
+    //针对C语言的
+    &quot;smart_indent&quot;: false,
+
+    // 需要启用auto_indent，第一次打开括号缩进时插入空格？（没测试出来效果...）
+    &quot;indent_to_bracket&quot;: true,
+
+    // 显示对齐的白线是否根据回车、tab等操作自动填补
+    &quot;trim_automatic_white_space&quot;: true,
+
+    // 是否自动换行，如果选auto，需要加双引号
+    &quot;word_wrap&quot;: false,
+
+    // 设置窗口内文字区域的宽度
+    &quot;wrap_width&quot;: 0,
+
+    // 防止被缩进到同一级的字换行
+    &quot;indent_subsequent_lines&quot;: true,
+
+    // 如果没有定义过，则文件居中显示（比如新建的文件）
+    &quot;draw_centered&quot;: false,
+
+    // 自动匹配引号，括号等
+    &quot;auto_match_enabled&quot;: true,
+
+    // 拼写检查的单词列表路径
+    &quot;dictionary&quot;: &quot;Packages/Language - English/en_US.dic&quot;,
+
+    // 代码地图的可视区域部分是否加上边框，边框的颜色可在配色方案上加入minimapBorder键
+    &quot;draw_minimap_border&quot;: false,
+
+    // 突出显示当前光标所在的行
+    &quot;highlight_line&quot;: false,
+
+    // 设置光标闪动方式
+    &quot;caret_style&quot;: &quot;smooth&quot;,
+
+    // 是否特殊显示当前光标所在的括号、代码头尾闭合标记
+    &quot;match_brackets&quot;: true,
+
+    // 设为false时，只有光标在括号或头尾闭合标记的两端时，match_brackets才生效
+    &quot;match_brackets_content&quot;: true,
+
+    // 是否突出显示圆括号，match_brackets为true生效
+    &quot;match_brackets_square&quot;: false,
+
+    // 是否突出显示大括号，match_brackets为true生效
+    &quot;match_brackets_braces&quot;: false,
+
+    // 是否突出显示尖括号，match_brackets为true生效
+    &quot;match_brackets_angle&quot;: false,
+
+    // html和xml下突出显示光标所在标签的两端，影响HTML、XML、CSS等
+    &quot;match_tags&quot;: true,
+
+    // 全文突出显示和当前选中字符相同的字符
+    &quot;match_selection&quot;: true,
+
+    // 设置每一行到顶部，以像素为单位的间距，效果相当于行距
+    &quot;line_padding_top&quot;: 1,
+
+    // 设置每一行到底部，以像素为单位的间距，效果相当于行距
+    &quot;line_padding_bottom&quot;: 1,
+
+    // 设置为false时，滚动到文本的最下方时，没有缓冲区
+    &quot;scroll_past_end&quot;: true,
+
+    // 设置成true，当光标已经在第一行时，再Up则到行首，如果光标已经在最后一行，再Down则跳到行尾
+    &quot;move_to_limit_on_up_down&quot;: false,
+
+    // 按space或tab时，实际会产生白色的点（一个空格一个点）或白色的横线（tab_size设置的制表符的宽度），选中状态下才能看到
+    // 设置为none时，什么情况下都不显示这些点和线
+    // 设置为selection时，只显示选中状态下的点和线
+    // 设置为all时，则一直显示
+    &quot;draw_white_space&quot;: &quot;selection&quot;,
+
+    // 制表位的对齐白线是否显示，颜色可在主题文件里设置（guide，activeGuide，stackGuide）
+    &quot;draw_indent_guides&quot;: true,
+
+    // 制表位的对齐白线，draw_normal为一直显示，draw_active为只显示当前光标所在的代码控制域
+    &quot;indent_guide_options&quot;: [&quot;draw_normal&quot;],
+
+    // 为true时，保存文件时会删除每行结束后多余的空格
+    &quot;trim_trailing_white_space_on_save&quot;: false,
+
+    // 为true时，保存文件时光标会在文件的最后向下换一行
+    &quot;ensure_newline_at_eof_on_save&quot;: false,
+
+    // 切换到其它文件标签或点击其它非本软件区域，文件自动保存
+    &quot;save_on_focus_lost&quot;: false,
+
+    // 编码时不能自动检测编码时，将自动检测ASCII, UTF-8 和 UTF-16
+    &quot;fallback_encoding&quot;: &quot;Western (Windows 1252)&quot;,
+
+    // 默认编码格式
+    &quot;default_encoding&quot;: &quot;UTF-8&quot;,
+
+    // 包含空字节的文件被打开默认为十六进制
+    &quot;enable_hexadecimal_encoding&quot;: true,
+
+    // 每一行结束的时候用什么字符做终止符
+    &quot;default_line_ending&quot;: &quot;system&quot;,
+
+    // 设置为enabled时，在一个字符串间按Tab将插入一个制表符
+    // 设置为true时，按Tab会根据前后环境进行代码自动匹配填补
+    &quot;tab_completion&quot;: true,
+
+    // 代码提示
+    &quot;auto_complete&quot;: true,
+
+    // 代码提示的大小限制
+    &quot;auto_complete_size_limit&quot;: 4194304,
+
+    // 代码提示延迟显示
+    &quot;auto_complete_delay&quot;: 50,
+
+    // 代码提示的控制范围
+    &quot;auto_complete_selector&quot;: &quot;source - comment&quot;,
+
+    // 触发代码提示的其他情况
+    &quot;auto_complete_triggers&quot;: [ {&quot;selector&quot;: &quot;text.html&quot;, &quot;characters&quot;: &quot;&lt;&quot;} ],
+
+    // 设为false时，选择提示的代码按回车或点击可以输出出来，但选择true时不会输出而是直接换行
+    &quot;auto_complete_commit_on_tab&quot;: false,
+
+    // auto_complete_commit_on_tab必须为true，控制代码提示的活跃度（没明白...）
+    &quot;auto_complete_with_fields&quot;: false,
+
+    // 设置为false，使用Shift + tab总是插入制表符
+    &quot;shift_tab_unindent&quot;: true,
+
+    // 选中的文本按Ctrl + f时，自动复制到查找面板的文本框里
+    &quot;find_selected_text&quot;: true,
+
+    // DataPackagesTheme - DefaultDefault.sublime-theme控制软件的主题
+    &quot;theme&quot;: &quot;Default.sublime-theme&quot;,
+
+    // 滚动的速度
+    &quot;scroll_speed&quot;: 1.0,
+
+    // 左边边栏文件夹动画
+    &quot;tree_animation_enabled&quot;: true,
+
+    // 标签页的关闭按钮
+    &quot;show_tab_close_buttons&quot;: true,
+
+    // 针对OS X
+    &quot;use_simple_full_screen&quot;: false,
+
+    // 水平垂直滚动条：system和disabled为默认显示方式，enabled为自动隐藏显示
+    &quot;overlay_scroll_bars&quot;: &quot;system&quot;,
+
+    // 热推出功能！退出时不会提示是否保存文件，而是直接退出
+    // 下次打开软件时，文件保持退出前的状态，没来得及保存的内容都在，但并没有真实的写在原文件里
+    &quot;hot_exit&quot;: true,
+
+    // 软件使用最后的设定打开文件，hot_exit为true时没有效果
+    &quot;remember_open_files&quot;: true,
+
+    // 针对OS X
+    &quot;open_files_in_new_window&quot;: true,
+
+    // 针对OS X
+    &quot;close_windows_when_empty&quot;: true,
+
+    // 哪些文件会被显示到边栏上
+    &quot;folder_exclude_patterns&quot;: [&quot;.svn&quot;, &quot;.git&quot;, &quot;.hg&quot;, &quot;CVS&quot;],
+    &quot;file_exclude_patterns&quot;: [&quot;*.pyc&quot;, &quot;*.pyo&quot;, &quot;*.exe&quot;, &quot;*.dll&quot;, &quot;*.obj&quot;,&quot;*.o&quot;, &quot;*.a&quot;, &quot;*.lib&quot;, &quot;*.so&quot;, &quot;*.dylib&quot;, &quot;*.ncb&quot;, &quot;*.sdf&quot;, &quot;*.suo&quot;, &quot;*.pdb&quot;, &quot;*.idb&quot;, &quot;.DS_Store&quot;, &quot;*.class&quot;, &quot;*.psd&quot;, &quot;*.db&quot;],
+
+    &quot;binary_file_patterns&quot;: [&quot;*.jpg&quot;, &quot;*.jpeg&quot;, &quot;*.png&quot;, &quot;*.gif&quot;, &quot;*.ttf&quot;, &quot;*.tga&quot;, &quot;*.dds&quot;, &quot;*.ico&quot;, &quot;*.eot&quot;, &quot;*.pdf&quot;, &quot;*.swf&quot;, &quot;*.jar&quot;, &quot;*.zip&quot;],
+
+    // 删除你想要忽略的插件，需要重启
+    &quot;ignored_packages&quot;: [&quot;Vintage&quot;]
+}
+</code></pre>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+    
+        <span class="next"><a href="http://hongliya.github.io/post/javascript_engine/" rel="next">JavaScript：引擎初探</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

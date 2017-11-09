@@ -61,27 +61,29 @@
     <div class="article-header">
         <h1>JavaScript：欺骗词法作用域之with</h1>
         <div class="meta">
-        2017-11-07 &nbsp;
+        2017-10-07 &nbsp;
             
             #<a href="/tags/with">with</a>&nbsp;
         
         </div>
     </div>
     <article>
-        <p>读书笔记《你不知道的JavaScript（上卷）》词法作用域。</p>
+        
+
+<p>读书笔记《你不知道的JavaScript（上卷）》词法作用域。</p>
 
 <p>欺骗词法作用域会导致性能下降，不推荐使用。</p>
 
 <p>但仍然要了解下原理。</p>
 
-<p><strong>自问自答</strong></p>
+<h2 id="自问自答">自问自答</h2>
 
 <ul>
 <li>问：with是怎么欺骗（修改）词法作用域的呢？</li>
 <li>答：with可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。</li>
 </ul>
 
-<p><strong>实例分析</strong></p>
+<h2 id="实例分析">实例分析</h2>
 
 <pre><code>function foo(obj) {
     with (obj) {
@@ -141,7 +143,7 @@ console.log(o1.a); // 2
     </table>
 </div>
 
-<p>做一点改变</p>
+<h3 id="做一点改变">做一点改变</h3>
 
 <pre><code>function foo(obj) {
     with (obj) {
@@ -217,7 +219,7 @@ console.log(o1.a); // 2
     </table>
 </div>
 
-<p>再做一点改变</p>
+<h3 id="再做一点改变">再做一点改变</h3>
 
 <pre><code>function foo(obj) {
     with (obj) {
@@ -308,7 +310,7 @@ console.log(b); // 8 不好！b被泄漏到全局作用域中了!
     </table>
 </div>
 
-<p><strong>总结</strong></p>
+<h2 id="总结">总结</h2>
 
 <ul>
 <li>with块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。</li>
@@ -337,6 +339,8 @@ console.log(b); // 8 不好！b被泄漏到全局作用域中了!
     
         <span class="previous">&larr; <a href="http://hongliya.github.io/post/javascript_eval/" rel="prev">JavaScript：欺骗词法作用域之eval</a></span>
     
+    
+        <span class="next"><a href="http://hongliya.github.io/post/javascript_function_scope/" rel="next">JavaScript：函数作用域</a> &rarr;</span>
     
 </nav>
 

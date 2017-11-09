@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：函数作用域 | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.github.io/post/javascript_function_scope/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://hongliya.github.io/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="http://hongliya.github.io/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.github.io/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：函数作用域</h1>
+        <div class="meta">
+        2017-10-08 &nbsp;
+            
+            #<a href="/tags/%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F">函数作用域</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        
+
+<p>读书笔记《你不知道的JavaScript（上卷）》函数作用域。</p>
+
+<h2 id="自问自答">自问自答</h2>
+
+<ul>
+<li>问：函数作用域是指什么？</li>
+<li>答：函数作用域指的是函数内声明的全部变量都可以在<strong>整个函数</strong>的范围内使用及复用。</li>
+<li>问：整个函数也包括函数中嵌套的函数？</li>
+<li>答：包含。</li>
+</ul>
+
+<h2 id="实例分析">实例分析</h2>
+
+<pre><code>function foo(a) {
+    var b = 2;
+    function bar() {
+        console.log(c); // 3
+    }
+    bar();
+    var c = 3;
+}
+foo(1);
+bar(); // ReferenceError: bar is not defined
+console.log(a); // ReferenceError: a is not defined
+</code></pre>
+
+<p><strong>代码分析</strong></p>
+
+<ul>
+<li>全局作用域中包含一个标识符foo</li>
+<li>foo作用域中包含标识符a、b、bar、c，这些标识符在foo的内部都是可以访问的，但无法从foo外部的作用域访问到这些标识符</li>
+<li>bar有自己的作用域</li>
+</ul>
+
+<h2 id="自问自答-1">自问自答</h2>
+
+<ul>
+<li>问：函数作用域这种设计有什么好处呢？</li>
+<li>答：这种设计非常有用
+
+<ul>
+<li>能充分利用JavaScript变量可以根据需要改变值类型的“动态”特性。</li>
+<li>最小限度的暴露必要内容，类似某个模块或对象的API设计。</li>
+<li>避免同名标识符之间的冲突，冲突会导致变量的值被意外覆盖。</li>
+<li>如果不需要函数名（或者至少函数名可以不污染所在作用域），并且能够自动运行，将会更加理想。</li>
+</ul></li>
+</ul>
+
+<h2 id="实例分析-1">实例分析</h2>
+
+<pre><code>function doSomething(a) {
+    b = a + doSomethingElse(a * 2);
+    console.log(b * 3);
+}
+function doSomethingElse(a) {
+    return a - 1;
+}
+var b;
+doSomething(2); // 15
+</code></pre>
+
+<p>在这个代码片段中，变量b、函数doSomething和函数doSomethingElse都暴露在全局作用域中，但变量b和函数doSomethingElse应该是函数doSomething内部具体实现的“私有”内容，给予全局作用域对b和doSomethingElse的“访问权限”是没有必要的，而且可能会污染全局作用域，更为合理的设计是：</p>
+
+<pre><code>function doSomething(a) {
+    function doSomethingElse(a) {
+        return a - 1;
+    }
+    var b;
+    b = a + doSomethingElse(a * 2);
+    console.log(b * 3);
+}
+doSomething(2); // 15
+</code></pre>
+
+<p>现在b和doSomethingElse都无法从doSomething外部被访问，功能性和最终效果都没有受影响，但设计上将具体内容私有化了，符合最小暴露的原则，设计良好的软件都会依此进行实现。</p>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.github.io/post/javascript_with/" rel="prev">JavaScript：欺骗词法作用域之with</a></span>
+    
+    
+        <span class="next"><a href="http://hongliya.github.io/post/javascript_conflict/" rel="next">JavaScript：避免标识符冲突</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

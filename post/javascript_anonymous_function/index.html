@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：匿名函数和具名函数 | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.github.io/post/javascript_anonymous_function/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://hongliya.github.io/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="http://hongliya.github.io/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.github.io/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：匿名函数和具名函数</h1>
+        <div class="meta">
+        2017-10-10 &nbsp;
+            
+            #<a href="/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0">匿名函数和具名函数</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        
+
+<p>读书笔记《你不知道的JavaScript（上卷）》函数作用域。</p>
+
+<h2 id="自问自答">自问自答</h2>
+
+<ul>
+<li>问：什么是具名函数？</li>
+<li>答：具名就是具体的名字，就是一个有具体名字的函数，例如function foo() {}，函数的名字叫foo。</li>
+<li>问：什么是匿名函数？</li>
+<li>答：匿名就是没有名字，例如常见的回调函数setTimeout(function(){}, 1000)，这里第一个参数就是匿名函数，我们并不知道它的名字是什么。</li>
+</ul>
+
+<h3 id="匿名函数的缺点">匿名函数的缺点</h3>
+
+<blockquote>
+<ol>
+<li><p>匿名函数在栈追踪中不会显示出有意义的函数名，使得调试很困难。</p></li>
+
+<li><p>如果没有函数名，当函数需要引用自身时只能使用已经过期的arguments.callee引用， 比如在递归中。另一个函数需要引用自身的例子，是在事件触发后事件监听器需要解绑 自身。</p></li>
+
+<li><p>匿名函数省略了对于代码可读性/可理解性很重要的函数名。一个描述性的名称可以让 代码不言自明。</p></li>
+</ol>
+</blockquote>
+
+<p>始终给函数表达式命名是一个最佳实践，例如：</p>
+
+<pre><code>function setTimeout(function timeoutHandler() { // 快看，我有名字了! timeoutHandler
+    // ...
+}, 1000);
+</code></pre>
+
+<h2 id="函数定义的两种方式">函数定义的两种方式</h2>
+
+<h3 id="函数声明">函数声明</h3>
+
+<pre><code>function foo() {
+}
+</code></pre>
+
+<h3 id="函数表达式">函数表达式</h3>
+
+<pre><code>(function foo() {})
+</code></pre>
+
+<p><strong>立即执行的函数表达式</strong> IIFE（Immediately Invoked Function Expression）</p>
+
+<pre><code>(function foo() {})(); // 第一个()将函数变成表达式，第二个()执行了这个函数
+</code></pre>
+
+<p>IIFE 最常见的用法是使用一个匿名函数表达式</p>
+
+<pre><code>(function() {})(); // 第一个()将函数变成表达式，第二个()执行了这个函数
+</code></pre>
+
+<p>IIFE 的两种写法，功能上是一致的，选择哪种全凭个人喜好：</p>
+
+<pre><code>(function() {})(); // 第一种写法
+(function() {}()); // 第二种写法
+</code></pre>
+
+<h2 id="实例分析">实例分析</h2>
+
+<pre><code>var a = 2;
+(function IIFE(global) {
+    var a = 3;
+    console.log(a); // 3
+    console.log(global.a); // 2
+})(window);
+console.log(a); // 2
+</code></pre>
+
+<p>栈分析：</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg1">
+            <td>
+                <span>全局作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出结果 2</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>调用console.log(a)</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>IIFE函数表达式作用域 销毁</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出结果 2</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用console.log(global.a)</span>
+            </td>
+        </tr>
+        <tr class="bg3">
+            <td>
+                <span>console作用域 销毁</span>
+                <span>输出结果 3</span>
+                <span>console作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>
+                <span>调用console.log(a)</span>
+                <span>var a = 3</span>
+                <span>global = window</span>
+                <span>IIFE函数表达式作用域 创建</span>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>
+                <span>定义IIFE函数并立即调用，传参window</span>
+                <span>var a = 2</span>
+                <span>全局作用域 创建</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>这个模式的另外一个应用场景是解决 undefined 标识符的默认值被错误覆盖导致的异常(虽 然不常见)。将一个参数命名为 undefined，但是在对应的位置不传入任何值，这样就可以 保证在代码块中 undefined 标识符的值真的是 undefined:</p>
+
+<pre><code>(function IIFE() {
+    var a;
+    if (a === undefined) {
+        console.log('Undefined is safe here!');
+    }
+})(undefined);
+</code></pre>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.github.io/post/javascript_conflict/" rel="prev">JavaScript：避免标识符冲突</a></span>
+    
+    
+        <span class="next"><a href="http://hongliya.github.io/post/javascript_block_scope/" rel="next">JavaScript：块作用域</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

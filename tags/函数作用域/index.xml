@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>函数作用域 on sugar的读书笔记</title>
+    <link>http://hongliya.github.io/tags/%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <description>Recent content in 函数作用域 on sugar的读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.github.io/tags/%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：函数作用域</title>
+      <link>http://hongliya.github.io/post/javascript_function_scope/</link>
+      <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.github.io/post/javascript_function_scope/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》函数作用域。
+自问自答  问：函数作用域是指什么？ 答：函数作用域指的是函数内声明的全部变量都可以在整个函数的范围内使用及复用。 问：整个函数也包括函数中嵌套的函数？ 答：包含。  实例分析 function foo(a) { var b = 2; function bar() { console.log(c); // 3 } bar(); var c = 3; } foo(1); bar(); // ReferenceError: bar is not defined console.log(a); // ReferenceError: a is not defined  代码分析
+ 全局作用域中包含一个标识符foo foo作用域中包含标识符a、b、bar、c，这些标识符在foo的内部都是可以访问的，但无法从foo外部的作用域访问到这些标识符 bar有自己的作用域  自问自答  问：函数作用域这种设计有什么好处呢？ 答：这种设计非常有用  能充分利用JavaScript变量可以根据需要改变值类型的“动态”特性。 最小限度的暴露必要内容，类似某个模块或对象的API设计。 避免同名标识符之间的冲突，冲突会导致变量的值被意外覆盖。 如果不需要函数名（或者至少函数名可以不污染所在作用域），并且能够自动运行，将会更加理想。   实例分析 function doSomething(a) { b = a + doSomethingElse(a * 2); console.</description>
+    </item>
+    
+  </channel>
+</rss>

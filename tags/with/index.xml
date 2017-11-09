@@ -6,7 +6,7 @@
     <description>Recent content in With on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://hongliya.github.io/tags/with/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,16 +14,14 @@
     <item>
       <title>JavaScript：欺骗词法作用域之with</title>
       <link>http://hongliya.github.io/post/javascript_with/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>http://hongliya.github.io/post/javascript_with/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。
-自问自答
- 问：with是怎么欺骗（修改）词法作用域的呢？ 答：with可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。  实例分析
-function foo(obj) { with (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console.log(o1.a); // 2  栈分析：
-  全局作用域 销毁    console作用域销毁 数据结果 2 console作用域 创建   调用console.log(o1.a)  foo作用域 销毁   with作用域 销毁 改变o1.a = 2 with作用域 创建    调用with(obj) obj = o1 foo作用域 创建    调用foo(o1) o1 = { a: 3 } 全局作用域 创建     做一点改变</description>
+自问自答  问：with是怎么欺骗（修改）词法作用域的呢？ 答：with可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。  实例分析 function foo(obj) { with (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console.log(o1.a); // 2  栈分析：
+  全局作用域 销毁    console作用域销毁 数据结果 2 console作用域 创建   调用console.log(o1.a)  foo作用域 销毁   with作用域 销毁 改变o1.a = 2 with作用域 创建    调用with(obj) obj = o1 foo作用域 创建    调用foo(o1) o1 = { a: 3 } 全局作用域 创建     做一点改变 function foo(obj) { with (obj) { var a = 2; } } var o1 = { a: 3 }; foo(o1); console.</description>
     </item>
     
   </channel>

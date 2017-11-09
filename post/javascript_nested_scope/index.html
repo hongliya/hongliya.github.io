@@ -61,16 +61,18 @@
     <div class="article-header">
         <h1>JavaScript：嵌套作用域</h1>
         <div class="meta">
-        2017-11-03 &nbsp;
+        2017-10-03 &nbsp;
             
             #<a href="/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F">嵌套作用域</a>&nbsp;
         
         </div>
     </div>
     <article>
-        <p>读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。</p>
+        
 
-<p><strong>自问自答</strong></p>
+<p>读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。</p>
+
+<h2 id="自问自答">自问自答</h2>
 
 <ul>
 <li>问：作用域是什么？</li>
@@ -83,7 +85,7 @@
 <li>答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。</li>
 </ul>
 
-<p><strong>实例分析</strong></p>
+<h2 id="实例分析">实例分析</h2>
 
 <pre><code>function foo(a) {
     console.log(a+b);

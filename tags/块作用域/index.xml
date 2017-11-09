@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>块作用域 on sugar的读书笔记</title>
+    <link>http://hongliya.github.io/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <description>Recent content in 块作用域 on sugar的读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.github.io/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：块作用域</title>
+      <link>http://hongliya.github.io/post/javascript_block_scope/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.github.io/post/javascript_block_scope/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》块作用域。
+表面上看 JavaScript 并没有块作用域的相关功能，其实有。
+ with try/catch let  with with会创建一个新的作用域（块作用域），但不推荐使用，不说了。
+try/catch ES3规范中规定的try/catch的catch分句会创建一个新的作用域（块作用域），其中声明的变量仅在catch内部有效。
+实例分析 try { undefined(); } catch(err) { console.log(err); // TypeError: undefined is not a function } console.log(err); // ReferenceError: err is not defined  栈分析：
+  全局作用域 销毁    console作用域 销毁 输出 ReferenceError: err is not defined console作用域 创建    调用console.log(err)    catch作用域 销毁    console作用域 销毁 输出 TypeError: undefined is not a function console作用域 创建    catch作用域 销毁 调用console.</description>
+    </item>
+    
+  </channel>
+</rss>

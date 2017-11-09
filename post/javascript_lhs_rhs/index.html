@@ -61,14 +61,18 @@
     <div class="article-header">
         <h1>JavaScript：LHS和RHS</h1>
         <div class="meta">
-        2017-11-04 &nbsp;
+        2017-10-04 &nbsp;
             
             #<a href="/tags/lhs%E5%92%8Crhs">LHS和RHS</a>&nbsp;
         
         </div>
     </div>
     <article>
-        <p>读书笔记《你不知道的JavaScript（上卷）》作用域。</p>
+        
+
+<p>读书笔记《你不知道的JavaScript（上卷）》作用域。</p>
+
+<h2 id="什么是lhs和rhs">什么是LHS和RHS？</h2>
 
 <p>LHS和RHS是JavaScript引擎执行代码时查找变量的两种方式，L表示左侧，R表示右侧，指的是赋值操作的左侧和右侧。</p>
 
@@ -139,7 +143,7 @@ var c = foo(2);
 <li>获取b的值，对b进行RHS查询</li>
 </ol>
 
-<p>为什么要区分LHS查询和RHS查询？</p>
+<h2 id="为什么要区分lhs查询和rhs查询">为什么要区分LHS查询和RHS查询？</h2>
 
 <p>因为在变量还没有声明（在任何作用域中都无法找到该变量）的情况下，这两种查询的结果是不一样的。</p>
 
