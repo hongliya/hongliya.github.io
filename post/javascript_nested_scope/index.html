@@ -95,54 +95,44 @@ var b = 2;
 foo(2);
 </code></pre>
 
-<p>画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会返回结果然后弹出变量。</p>
+<p>画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会弹出变量然后销毁。</p>
 
 <ol>
 <li>开始创建全局作用域，把变量b压入栈；</li>
-<li>执行到foo(2)，创建foo作用域（绿色背景），把a压入栈，再把b压入栈；</li>
-<li>执行到console.log(a+b)，创建console作用域（红色背景），这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域；</li>
+<li>执行到foo(2)，创建foo作用域，把a压入栈，再把b压入栈；</li>
+<li>执行到console.log(a+b)，创建console作用域，这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域；</li>
 <li>foo作用域执行完后销毁，返回结果4。</li>
 </ol>
 
-<p>前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域（绿色背景）中无法查找的变量b，就会向下到全局作用域（白色背景）中查找。</p>
-
-<ul>
-<li>白色背景表示全局作用域</li>
-<li>绿色背景表示foo的作用域</li>
-<li>红色背景表示console的作用域</li>
-</ul>
+<p>前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域中无法查找的变量b，就会向下到全局作用域中查找。</p>
 
 <div class="stack">
     <table>
-        <tr class="bg1">
-            <td>
-                <span>全局作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg2">
-            <td>foo作用域 销毁</td>
-        </tr>
         <tr class="bg3">
+            <td>console作用域</td>
             <td>
-                <span>console作用域 销毁</span>
-                <span>一些列操作 输出结果4</span>
-                <span>console作用域 创建</span>
+                <ul>
+                    <li>输出结果 4</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>foo作用域</td>
             <td>
-                <span>调用console.log(a+b)</span>
-                <span>a + b = 4</span>
-                <span>b = 2</span>
-                <span>a = 2</span>
-                <span>foo作用域 创建</span>
+                <ul>
+                    <li>调用console.log(a+b)</li>
+                    <li>a + b = 4</li>
+                    <li>标识符a = 2</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
+            <td>全局作用域</td>
             <td>
-                <span>调用foo(2)</span>
-                <span>b = 2</span>
-                <span>全局作用域 创建</span>
+                <ul>
+                    <li>调用foo(2)</li>
+                    <li>b = 2</li>
+                </ul>
             </td>
         </tr>
     </table>

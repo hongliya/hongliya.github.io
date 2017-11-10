@@ -22,7 +22,8 @@
  with try/catch let  with with会创建一个新的作用域（块作用域），但不推荐使用，不说了。
 try/catch ES3规范中规定的try/catch的catch分句会创建一个新的作用域（块作用域），其中声明的变量仅在catch内部有效。
 实例分析 try { undefined(); } catch(err) { console.log(err); // TypeError: undefined is not a function } console.log(err); // ReferenceError: err is not defined  栈分析：
-  全局作用域 销毁    console作用域 销毁 输出 ReferenceError: err is not defined console作用域 创建    调用console.log(err)    catch作用域 销毁    console作用域 销毁 输出 TypeError: undefined is not a function console作用域 创建    catch作用域 销毁 调用console.</description>
+第一步：undefined()函数不存在，进入catch作用域，执行完后销毁。
+ console作用域   输出结果 &#39;TypeError: undefined is not a function&#39;    catch作用域   调用console.log(err) err = &#39;TypeError: undefined is not a function&#39;    全局作用域   调用undefined()      第一步：调用console.</description>
     </item>
     
     <item>
@@ -73,7 +74,8 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。
 自问自答  问：with是怎么欺骗（修改）词法作用域的呢？ 答：with可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。  实例分析 function foo(obj) { with (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console.log(o1.a); // 2  栈分析：
-  全局作用域 销毁    console作用域销毁 数据结果 2 console作用域 创建   调用console.log(o1.a)  foo作用域 销毁   with作用域 销毁 改变o1.a = 2 with作用域 创建    调用with(obj) obj = o1 foo作用域 创建    调用foo(o1) o1 = { a: 3 } 全局作用域 创建     做一点改变 function foo(obj) { with (obj) { var a = 2; } } var o1 = { a: 3 }; foo(o1); console.</description>
+第一步：调用with，with创建新的作用域，改变o1.a的值。
+ with作用域   obj.a = 2 (o1.a = 2)    foo作用域   调用with(obj) obj = o1    全局作用域   调用foo(o1) var o1 = { a: 3 }      第二步：with作用域销毁后，回到全局作用域调用console.</description>
     </item>
     
     <item>
@@ -86,7 +88,7 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。
 自问自答  问：eval是怎么欺骗（修改）词法作用域的呢？ 答：eval可以接受一个字符串作为参数，并将这个参数偷偷的放进词法作用域中，就好像写代码的时候它就在那里一样。举个例子：把eval比做一个超能力者，它可以修改一个人（名字叫A）的记忆，把一段别人的记忆插入到A的大脑中，让A以为这是自己的记忆。  实例分析 // 正常代码 function foo(str, a) { console.log(a, b); // 1, 2 } var b = 2; foo(&#39;var b = 3;&#39;, 1);  正常代码分析：
- 全局作用域 销毁  foo作用域 销毁   console作用域 销毁 一系列操作 输出结果 1,2 console作用域 创建    调用console.log(a, b) a = 1 str = &#39;var b = 3&#39; foo作用域 创建    调用foo(&#39;var b = 3;&#39;, 1) b = 2 全局作用域 创建     参数&amp;rsquo;var b = 3;&amp;lsquo;并未改变任何作用域，只是作为一个普通的字符串参数传进去而已，打印下str仍然是字符串&amp;rsquo;var b = 3;&amp;lsquo;。</description>
+ console作用域   输出结果 1, 2    foo作用域   调用console.log(a, b) a = 1 str = &#39;var b = 3&#39;    全局作用域   调用foo(&#39;var b = 3;&#39;, 1) b = 2      参数&amp;rsquo;var b = 3;&amp;lsquo;并未改变任何作用域，只是作为一个普通的字符串参数传进去而已，打印下str仍然是字符串&amp;rsquo;var b = 3;&amp;lsquo;。</description>
     </item>
     
     <item>
@@ -97,9 +99,9 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
       <guid>http://hongliya.github.io/post/javascript_tokenizing/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 作用域共有两种主要的工作模型  词法作用域 动态作用域  JavaScript并不具备动态作用域，它只有词法作用域，但后面的this机制某种程度上很像动态作用域，该笔记暂不讨论动态作用域。
-自问自答  问：该怎么理解词法作用域呢？ 答：这个要回忆下编译原理了。 问：编译器编译的第一步是什么还记得么？ 答：分词/词法分析（Tokenizing/lexing），就是把字符串分解成一个个的词法单元，也叫单词化。 问：这和词法作用域有什么关系呢？ 答：简单地说，词法作用域就是定义在词法分析阶段的作用域，换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。 问：这么说顺序是不变的么？ 答：大部分情况是这样的，不过还有一些欺骗作用域的方法，这些方法在词法分析器处理过后依然可以修改作用域，不过这些方法不推荐使用。 问：为什么不推荐使用呢？ 答：这个后面再谈&amp;hellip;  实例分析 function foo(a) { var b = a * 2; function bar(c) { console.log(c); } bar(b*3); } foo(2);  这个例子中共有三个主机嵌套的作用域，为了帮助理解，可以将它们想象成几个逐级包含的气泡，这里借助书中的图片。
+自问自答  问：该怎么理解词法作用域呢？ 答：这个要回忆下编译原理了。 问：编译器编译的第一步是什么还记得么？ 答：分词/词法分析（Tokenizing/lexing），就是把字符串分解成一个个的词法单元，也叫单词化。 问：这和词法作用域有什么关系呢？ 答：简单地说，词法作用域就是定义在词法分析阶段的作用域，换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。 问：这么说顺序是不变的么？ 答：大部分情况是这样的，不过还有一些欺骗作用域的方法，这些方法在词法分析器处理过后依然可以修改作用域，不过这些方法不推荐使用。 问：为什么不推荐使用呢？ 答：这个后面再谈&amp;hellip;  实例分析 function foo(a) { var b = a * 2; function bar(c) { console.log(a, b, c); } bar(b*3); } foo(2); // 2, 4, 12  这个例子中共有三个主机嵌套的作用域，为了帮助理解，可以将它们想象成几个逐级包含的气泡，这里借助书中的图片。
  包含着整个全局作用域，其中只有一个标识符：foo。 包含着foo所创建的作用域，其中有三个标识符：a、bar、b。 包含着bar所创建的作用域，其中只有一个标识符：c。  依然用栈分析下：
-  全局作用域 销毁   foo作用域 销毁  bar作用域 销毁   console作用域 销毁 一些列操作 输出结果 2,4,12 console作用域 创建    调用console.</description>
+ console作用域   输出结果 2, 4, 12    bar作用域   调用console.log(c) c = 12    foo作用域   调用bar(b * 3) b = a * 2 = 4 a = 2     全局作用域    调用foo(2)      词法作用域查找只会查找一级标识符，比如a、b、c。如果代码中引用了foo.</description>
     </item>
     
     <item>
@@ -132,9 +134,9 @@ function foo(a) { var b = a; return a + b; } var c = foo(2);  例4分析：这�
       
       <guid>http://hongliya.github.io/post/javascript_nested_scope/</guid>
       <description> 读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。
-自问自答  问：作用域是什么？ 答：作用域是一套规则。 问：一套什么样的规则？ 答：作用域是一套存储变量、修改和访问变量的规则。 问：作用域嵌套是什么鬼？ 答：当一个块或函数嵌套在另外一个块和函数中时，就发生了作用域的嵌套。 问：在嵌套作用域中我该怎么查找我需要的变量？ 答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。  实例分析 function foo(a) { console.log(a+b); } var b = 2; foo(2);  画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会返回结果然后弹出变量。
- 开始创建全局作用域，把变量b压入栈； 执行到foo(2)，创建foo作用域（绿色背景），把a压入栈，再把b压入栈； 执行到console.log(a+b)，创建console作用域（红色背景），这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域； foo作用域执行完后销毁，返回结果4。  前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域（绿色背景）中无法查找的变量b，就会向下到全局作用域（白色背景）中查找。
- 白色背景表示全局作用域 绿色背景表示foo的作用域 红色背景表示console的作用域    全局作用域 销毁   foo作用域 销毁   console作用域 销毁 一些列操作 输出结果4 console作用域 创建    调用console.log(a+b) a + b = 4 b = 2 a = 2 foo作用域 创建    调用foo(2) b = 2 全局作用域 创建     </description>
+自问自答  问：作用域是什么？ 答：作用域是一套规则。 问：一套什么样的规则？ 答：作用域是一套存储变量、修改和访问变量的规则。 问：作用域嵌套是什么鬼？ 答：当一个块或函数嵌套在另外一个块和函数中时，就发生了作用域的嵌套。 问：在嵌套作用域中我该怎么查找我需要的变量？ 答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。  实例分析 function foo(a) { console.log(a+b); } var b = 2; foo(2);  画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会弹出变量然后销毁。
+ 开始创建全局作用域，把变量b压入栈； 执行到foo(2)，创建foo作用域，把a压入栈，再把b压入栈； 执行到console.log(a+b)，创建console作用域，这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域； foo作用域执行完后销毁，返回结果4。  前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域中无法查找的变量b，就会向下到全局作用域中查找。
+ console作用域   输出结果 4    foo作用域   调用console.log(a+b) a + b = 4 标识符a = 2    全局作用域   调用foo(2) b = 2      </description>
     </item>
     
     <item>

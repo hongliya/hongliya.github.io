@@ -100,51 +100,56 @@ console.log(err); // ReferenceError: err is not defined
 
 <p>栈分析：</p>
 
+<p>第一步：undefined()函数不存在，进入catch作用域，执行完后销毁。</p>
+
 <div class="stack">
     <table>
-        <tr class="bg1">
-            <td>
-                <span>全局作用域 销毁</span>
-            </td>
-        </tr>
         <tr class="bg3">
+            <td>console作用域</td>
             <td>
-                <span>console作用域 销毁</span>
-                <span>输出 ReferenceError: err is not defined</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg1">
-            <td>
-                <span>调用console.log(err)</span>
+                <ul>
+                    <li>输出结果 'TypeError: undefined is not a function'</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>catch作用域</td>
             <td>
-                <span>catch作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg3">
-            <td>
-                <span>console作用域 销毁</span>
-                <span>输出 TypeError: undefined is not a function</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg2">
-            <td>
-                <span>catch作用域 销毁</span>
-                <span>调用console.log(err)</span>
-                <span>变量 err</span>
-                <span>catch作用域 创建</span>
+                <ul>
+                    <li>调用console.log(err)</li>
+                    <li>err = 'TypeError: undefined is not a function'</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
+            <td>全局作用域</td>
             <td>
-                <span>调用catch(err)</span>
-                <span>undefined()函数不存在</span>
-                <span>调用undefined()</span>
-                <span>全局作用域 创建</span>
+                <ul>
+                    <li>调用undefined()</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第一步：调用console.log(err)。</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg2">
+            <td>console作用域</td>
+            <td>
+                <ul>
+                    <li>输出结果 ReferenceError: err is not defined</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>调用console.log(err)</li>
+                </ul>
             </td>
         </tr>
     </table>
@@ -163,48 +168,52 @@ console.log(a); // ReferenceError: a is not defined
 
 <p>栈分析：</p>
 
+<p>第一步：全局作用域中找不到a，会报错。</p>
+
 <div class="stack">
     <table>
-        <tr class="bg1">
+        <tr class="bg2">
+            <td>console作用域</td>
             <td>
-                <span>全局作用域 销毁</span>
+                <ul>
+                    <li>输出结果 'ReferenceError: a is not defined'</li>
+                </ul>
             </td>
         </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>console.log(a)</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第二步：let作用域中可以一个本地变量，var a = 2;</p>
+
+<div class="stack">
+    <table>
         <tr class="bg3">
+            <td>console作用域</td>
             <td>
-                <span>console作用域 销毁</span>
-                <span>输出 ReferenceError: a is not defined</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg1">
-            <td>
-                <span>调用console.log(a)</span>
+                <ul>
+                    <li>输出结果 2</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>let作用域</td>
             <td>
-                <span>let作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg3">
-            <td>
-                <span>console作用域 销毁</span>
-                <span>输出 2</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg2">
-            <td>
-                <span>调用console.log(a)</span>
-                <span>a = 2</span>
-                <span>let作用域 创建</span>
+                <ul>
+                    <li>console.log(a)</li>
+                    <li>var a = 2</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
-            <td>
-                <span>全局作用域 创建</span>
-            </td>
+            <td>全局作用域</td>
         </tr>
     </table>
 </div>
@@ -256,6 +265,32 @@ console.log(a); // ReferenceError: a is not defined
 
 <p>通过使用这样的工具，我们就可以在使用块作用域时无需考虑目标平台是否是 ES6 环境， 因为 try/catch 从 ES3 开始就存在了(并且一直是这样工作的)。</p>
 </blockquote></li>
+</ul>
+
+<h2 id="const">const</h2>
+
+<p>除了let以外，ES6还引入了const，同样可以用来创建块作用域变量，其值是固定的常量，试图修改这个值的操作会引起错误。</p>
+
+<h3 id="实例分析-1">实例分析</h3>
+
+<pre><code>var foo = true;
+if (foo) {
+    var a = 2;
+    const b = 3; // 包含在if中的块作用域变量
+    a = 3; // 正常
+    b = 4; // 错误
+}
+console.log(a); // 3
+console.log(b); // ReferenceError: b is not defined
+</code></pre>
+
+<h2 id="总结">总结</h2>
+
+<ul>
+<li>函数是JavaScript中最常见的作用域单元，但不是唯一的作用域单元。</li>
+<li>块作用域指的是变量和函数不仅可以属于所处的作用域，也可以属于某个代码块（通常指{&hellip;}内部）。</li>
+<li>从ES3开始，try/catch结构在catch分句中具有块作用域。</li>
+<li>ES6中引入了let和const关键字，用来创建块作用域变量。</li>
 </ul>
 
         

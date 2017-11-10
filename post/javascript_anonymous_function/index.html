@@ -142,62 +142,93 @@ console.log(a); // 2
 
 <p>栈分析：</p>
 
+<p>第一步：立即执行IIFE函数，进入console作用域调用console.log(a)，执行后console作用域销毁。</p>
+
 <div class="stack">
     <table>
-        <tr class="bg1">
-            <td>
-                <span>全局作用域 销毁</span>
-            </td>
-        </tr>
         <tr class="bg3">
+            <td>console作用域</td>
             <td>
-                <span>console作用域 销毁</span>
-                <span>输出结果 2</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg1">
-            <td>
-                <span>调用console.log(a)</span>
+                <ul>
+                    <li>输出 3</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>IIFE作用域</td>
             <td>
-                <span>IIFE函数表达式作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg3">
-            <td>
-                <span>console作用域 销毁</span>
-                <span>输出结果 2</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg2">
-            <td>
-                <span>调用console.log(global.a)</span>
-            </td>
-        </tr>
-        <tr class="bg3">
-            <td>
-                <span>console作用域 销毁</span>
-                <span>输出结果 3</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg2">
-            <td>
-                <span>调用console.log(a)</span>
-                <span>var a = 3</span>
-                <span>global = window</span>
-                <span>IIFE函数表达式作用域 创建</span>
+                <ul>
+                    <li>调用console.log(a)</li>
+                    <li>global = window</li>
+                    <li>var a = 3;</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
+            <td>全局作用域</td>
             <td>
-                <span>定义IIFE函数并立即调用，传参window</span>
-                <span>var a = 2</span>
-                <span>全局作用域 创建</span>
+                <ul>
+                    <li>()(window);立即执行的函数IIFE</li>
+                    <li>a = 2</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第二步：进入console作用域调用console.log(global.a)，执行后console作用域销毁。</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg3">
+            <td>console作用域</td>
+            <td>
+                <ul>
+                    <li>输出 2</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg2">
+            <td>IIFE作用域</td>
+            <td>
+                <ul>
+                    <li>调用console.log(global.a)</li>
+                    <li>global = window</li>
+                    <li>var a = 3;</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>()(window);立即执行的函数IIFE</li>
+                    <li>a = 2</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第三步：IIEF作用域销毁，进入console作用域调用console.log(a)，执行后console作用域销毁。</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg2">
+            <td>console作用域</td>
+            <td>
+                <ul>
+                    <li>输出 2</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>调用console.log(a)</li>
+                    <li>a = 2</li>
+                </ul>
             </td>
         </tr>
     </table>

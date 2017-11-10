@@ -101,11 +101,11 @@
 <pre><code>function foo(a) {
     var b = a * 2;
     function bar(c) {
-        console.log(c);
+        console.log(a, b, c);
     }
     bar(b*3);
 }
-foo(2);
+foo(2); // 2, 4, 12
 </code></pre>
 
 <p>这个例子中共有三个主机嵌套的作用域，为了帮助理解，可以将它们想象成几个逐级包含的气泡，这里借助书中的图片。</p>
@@ -122,43 +122,41 @@ foo(2);
 
 <div class="stack">
     <table>
-        <tr class="bg1">
-            <td>
-                <span>全局作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg2">
-            <td>foo作用域 销毁</td>
-        </tr>
-        <tr class="bg3">
-            <td>bar作用域 销毁</td>
-        </tr>
         <tr class="bg4">
+            <td>console作用域</td>
             <td>
-                <span>console作用域 销毁</span>
-                <span>一些列操作 输出结果 2,4,12</span>
-                <span>console作用域 创建</span>
+                <ul>
+                    <li>输出结果 2, 4, 12</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg3">
+            <td>bar作用域</td>
             <td>
-                <span>调用console.log(a,b,c)</span>
-                <span>c = b*3 = 4*3 = 12</span>
-                <span>bar作用域 创建</span>
+                <ul>
+                    <li>调用console.log(c)</li>
+                    <li>c = 12</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>foo作用域</td>
             <td>
-                <span>调用bar(b*3)</span>
-                <span>b = a*2 = 2*2 = 4</span>
-                <span>a = 2</span>
-                <span>foo作用域 创建</span>
+                <ul>
+                    <li>调用bar(b * 3)</li>
+                    <li>b = a * 2 = 4</li>
+                    <li>a = 2</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
             <td>
-                <span>调用foo(2)</span>
-                <span>全局作用域 创建</span>
+                全局作用域
+            </td>
+            <td>
+                <ul>
+                    <li>调用foo(2)</li>
+                </ul>
             </td>
         </tr>
     </table>

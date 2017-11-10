@@ -99,45 +99,58 @@ console.log(o1.a); // 2
 
 <p>栈分析：</p>
 
+<p>第一步：调用with，with创建新的作用域，改变o1.a的值。</p>
+
 <div class="stack">
     <table>
-        <tr class="bg1">
-            <td>
-                <span>全局作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg4">
-            <td>
-                <span>console作用域销毁</span>
-                <span>数据结果 2</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg1">
-            <td>调用console.log(o1.a)</td>
-        </tr>
-        <tr class="bg2">
-            <td>foo作用域 销毁</td>
-        </tr>
         <tr class="bg3">
+            <td>with作用域</td>
             <td>
-                <span>with作用域 销毁</span>
-                <span>改变o1.a = 2</span>
-                <span>with作用域 创建</span>
+                <ul>
+                    <li>obj.a = 2 (o1.a = 2)</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>foo作用域</td>
             <td>
-                <span>调用with(obj)</span>
-                <span>obj = o1</span>
-                <span>foo作用域 创建</span>
+                <ul>
+                    <li>调用with(obj)</li>
+                    <li>obj = o1</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
+            <td>全局作用域</td>
             <td>
-                <span>调用foo(o1)</span>
-                <span>o1 = { a: 3 }</span>
-                <span>全局作用域 创建</span>
+                <ul>
+                    <li>调用foo(o1)</li>
+                    <li>var o1 = { a: 3 }</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第二步：with作用域销毁后，回到全局作用域调用console.log(o1.a);</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg2">
+            <td>console作用域</td>
+            <td>
+                <ul>
+                    <li>输出结果 2</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>调用console.log(o1.a)</li>
+                    <li>var o1 = { a: 2 } </li>
+                </ul>
             </td>
         </tr>
     </table>
@@ -173,47 +186,60 @@ console.log(o1.a); // 2
 
 <p>栈分析：</p>
 
+<p>第一步：调用with，with创建新的作用域，改变o1.a的值，跟上面实例的区别，只是with中var声明不会被限制在本作用域中，而是会提升到with所在的函数中，令人费解。</p>
+
 <div class="stack">
     <table>
-        <tr class="bg1">
-            <td>
-                <span>全局作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg4">
-            <td>
-                <span>console作用域销毁</span>
-                <span>数据结果 2</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg1">
-            <td>调用console.log(o1.a)</td>
-        </tr>
-        <tr class="bg2">
-            <td>foo作用域 销毁</td>
-        </tr>
         <tr class="bg3">
+            <td>with作用域</td>
             <td>
-                <span>with作用域 销毁</span>
-                <span>改变o1.a = 2</span>
-                <span>var声明的变量被添加到函数foo中</span>
-                <span>with作用域 创建</span>
+                <ul>
+                    <li>obj.a = 2 (o1.a = 2)</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>foo作用域</td>
             <td>
-                <span><em>var a（注意这里是后面添加的）</em></span>
-                <span>调用with(obj)</span>
-                <span>obj = o1</span>
-                <span>foo作用域 创建</span>
+                <ul>
+                    <li>with中var声明提升到了该作用域中，赋值仍在with作用域中</li>
+                    <li>调用with(obj)</li>
+                    <li>obj = o1</li>
+                    <li>o1 = { a: 3 }</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
+            <td>全局作用域</td>
             <td>
-                <span>调用foo(o1)</span>
-                <span>o1 = { a: 3 }</span>
-                <span>全局作用域 创建</span>
+                <ul>
+                    <li>调用foo(o1)</li>
+                    <li>o1 = { a: 3 }</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第二步：with作用域销毁后，回到全局作用域调用console.log(o1.a)。</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg2">
+            <td>console作用域</td>
+            <td>
+                <ul>
+                    <li>输出结果 2</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>调用console.log(o1.a)</li>
+                    <li>var o1 = { a: 2 } </li>
+                </ul>
             </td>
         </tr>
     </table>
@@ -251,60 +277,85 @@ console.log(b); // 8 不好！b被泄漏到全局作用域中了!
 
 <p>栈分析：</p>
 
+<p>第一步：非严格模式下，对obj.b LHS查找没找到，会在全局作用域中新建一个变量b。</p>
+
 <div class="stack">
     <table>
-        <tr class="bg1">
-            <td>
-                <span>全局作用域 销毁</span>
-            </td>
-        </tr>
-        <tr class="bg5">
-            <td>
-                <span>console作用域销毁</span>
-                <span>数据结果 8</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg1">
-            <td>
-                <span>调用console.log(b)</span>
-            </td>
-        </tr>
-        <tr class="bg4">
-            <td>
-                <span>console作用域销毁</span>
-                <span>数据结果 undefined</span>
-                <span>console作用域 创建</span>
-            </td>
-        </tr>
-        <tr class="bg1">
-            <td>
-                <span>调用console.log(o1.b)</span>
-            </td>
-        </tr>
-        <tr class="bg2">
-            <td>foo作用域 销毁</td>
-        </tr>
         <tr class="bg3">
+            <td>with作用域</td>
             <td>
-                <span>with作用域 销毁</span>
-                <span>o1中没有找到b，而且b没有用var定义，根据非严格模式下LHS查询，自动创建一个全局变量b</span>
-                <span>with作用域 创建</span>
+                <ul>
+                    <li>在全局作用域中新建一个变量b</li>
+                    <li>给obj.b赋值但没找到</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg2">
+            <td>foo作用域</td>
             <td>
-                <span>调用with(obj)</span>
-                <span>obj = o1</span>
-                <span>foo作用域 创建</span>
+                <ul>
+                    <li>调用with(obj)</li>
+                    <li>obj = o1</li>
+                </ul>
             </td>
         </tr>
         <tr class="bg1">
+            <td>全局作用域</td>
             <td>
-                <span><em>b = 8（注意这里是后面添加的）</em></span>
-                <span>调用foo(o1)</span>
-                <span>o1 = { a: 3 }</span>
-                <span>全局作用域 创建</span>
+                <ul>
+                    <li>调用foo(o1)</li>
+                    <li>o1 = { a: 3 }</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第二步：输出o1.b。</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg2">
+            <td>console作用域</td>
+            <td>
+                <ul>
+                    <li>输出结果 undefined</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>调用console.log(o1.b)</li>
+                    <li>b = 8</li>
+                    <li>o1 = { a: 3 }</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p>第三步：输出b。</p>
+
+<div class="stack">
+    <table>
+        <tr class="bg2">
+            <td>console作用域</td>
+            <td>
+                <ul>
+                    <li>输出结果 8</li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="bg1">
+            <td>全局作用域</td>
+            <td>
+                <ul>
+                    <li>调用console.log(b)</li>
+                    <li>b = 8</li>
+                    <li>o1 = { a: 3 }</li>
+                </ul>
             </td>
         </tr>
     </table>
