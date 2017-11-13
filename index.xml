@@ -6,10 +6,37 @@
     <description>Recent content on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://hongliya.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript：闭包</title>
+      <link>http://hongliya.github.io/post/javascript_closure/</link>
+      <pubDate>Fri, 13 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.github.io/post/javascript_closure/</guid>
+      <description> 读书笔记《你不知道的JavaScript（上卷）》作用域闭包。
+自问自答  问：怎么理解闭包呢？ 答：当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。 问：这样说的话，JavaScript中岂不是到处都是闭包？ 答：是的，JavaScript中闭包无处不在。  实例分析 此例子对应：当函数可以记住并访问所在作用域时，就产生了闭包。
+function foo() { var a = 2; function bar() { console.log(a); } bar(); } foo();  这个例子看起来就是非常常见的嵌套作用域例子，可能无法清晰的观察闭包，但bar()函数可以记住并访问所在的foo词法作用域（实际上也覆盖了全局作用域），这就产生了闭包。
+实例分析 下面的例子清晰的展示了闭包，对应：当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。
+function foo() { var a = 2; function bar() { console.log(a); } return bar; } var baz = foo(); baz(); // 2  foo作用域执行后并没有被销毁，内部作用域依然存在，bar本身在使用这个作用域，相当于打开一个访问foo作用域的通道（开挂了），bar在自己所在的词法作用域以外的地方执行了，但依然有对自己所在作用域的引用，这个引用就叫闭包。
+闭包使函数可以访问定义时的词法作用域。
+闭包的用处  可以读取函数内部的变量（如bar就算在外面执行，也能访问到foo内部的变量）。 让这些变量的值始终在内存中（如bar执行完成后foo作用域也不会销毁，而是一直保留在内存中，方便再次使用）。  </description>
+    </item>
+    
+    <item>
+      <title>JavaScript：声明提升（hoist）</title>
+      <link>http://hongliya.github.io/post/javascript_hoist/</link>
+      <pubDate>Thu, 12 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.github.io/post/javascript_hoist/</guid>
+      <description>读书笔记《你不知道的JavaScript（上卷）》提升。
+自问自答  问：声明提升是什么鬼？ 答：在JavaScript中，作用域中所有声明（包括变量声明和函数声明）会提升到改作用域的顶部，这就是声明提升。 问：只有声明会提升？赋值操作会不会一起提升？ 答：只有声明会提升，赋值操作和其他逻辑还在原地，如果赋值操作也提升会改变代码的执行顺序，造成非常严重的破坏。 问：该怎么理解这种声明提升呢？ 答：还记得编译原理的第一步么？碰到var a = 2;时，JavaScript会将其看成两个声明：  var a; 编译阶段进行。 a = 2; 执行阶段进行。   实例分析 a = 2; var a; console.log(a); // 2  上面代码实际上是按照以下流程处理的：
+var a; // 声明提前 a = 2; // 赋值操作留在原地 console.log(a); // 2  自问自答  问：函数表达式会提升？。 答：函数声明会被提升，但函数表达式不会提升。  实例分析：函数声明提升 foo(); function foo() { console.log(a); var a = 2; }  上面代码实际上是按照以下流程处理的：
+function foo() { // 函数foo提升 var a; // 声明提升 console.</description>
+    </item>
     
     <item>
       <title>JavaScript：块作用域</title>

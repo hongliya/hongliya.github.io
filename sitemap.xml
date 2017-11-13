@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://hongliya.github.io/post/javascript_closure/</loc>
+    <lastmod>2017-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hongliya.github.io/post/javascript_hoist/</loc>
+    <lastmod>2017-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://hongliya.github.io/post/javascript_block_scope/</loc>
     <lastmod>2017-10-11T00:00:00+00:00</lastmod>
   </url>
@@ -75,7 +85,7 @@
   
   <url>
     <loc>http://hongliya.github.io/categories/javascript/</loc>
-    <lastmod>2017-10-11T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -98,6 +108,12 @@
   </url>
   
   <url>
+    <loc>http://hongliya.github.io/tags/javascript%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2017-10-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://hongliya.github.io/tags/lhs%E5%92%8Crhs/</loc>
     <lastmod>2017-10-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -105,7 +121,7 @@
   
   <url>
     <loc>http://hongliya.github.io/post/</loc>
-    <lastmod>2017-10-11T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -129,7 +145,7 @@
   
   <url>
     <loc>http://hongliya.github.io/</loc>
-    <lastmod>2017-10-11T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -154,6 +170,12 @@
   <url>
     <loc>http://hongliya.github.io/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
     <lastmod>2017-10-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://hongliya.github.io/tags/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/</loc>
+    <lastmod>2017-10-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

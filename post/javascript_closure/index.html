@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：闭包 | sugar的读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.github.io/post/javascript_closure/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="http://hongliya.github.io/index.xml" rel="alternate" type="application/rss+xml" title="sugar的读书笔记" />
+  <link href="http://hongliya.github.io/index.xml" rel="feed" type="application/rss+xml" title="sugar的读书笔记" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.github.io/">sugar的读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：闭包</h1>
+        <div class="meta">
+        2017-10-13 &nbsp;
+            
+            #<a href="/tags/javascript%E9%97%AD%E5%8C%85">javascript闭包</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        
+
+<p>读书笔记《你不知道的JavaScript（上卷）》作用域闭包。</p>
+
+<h2 id="自问自答">自问自答</h2>
+
+<ul>
+<li>问：怎么理解闭包呢？</li>
+<li>答：当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。</li>
+<li>问：这样说的话，JavaScript中岂不是到处都是闭包？</li>
+<li>答：是的，JavaScript中闭包无处不在。</li>
+</ul>
+
+<h3 id="实例分析">实例分析</h3>
+
+<p>此例子对应：当函数可以记住并访问所在作用域时，就产生了闭包。</p>
+
+<pre><code>function foo() {
+    var a = 2;
+    function bar() {
+        console.log(a);
+    }
+    bar();
+}
+foo();
+</code></pre>
+
+<p>这个例子看起来就是非常常见的嵌套作用域例子，可能无法清晰的观察闭包，但bar()函数可以记住并访问所在的foo词法作用域（实际上也覆盖了全局作用域），这就产生了闭包。</p>
+
+<h3 id="实例分析-1">实例分析</h3>
+
+<p>下面的例子清晰的展示了闭包，对应：当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。</p>
+
+<pre><code>function foo() {
+    var a = 2;
+    function bar() {
+        console.log(a);
+    }
+    return bar;
+}
+var baz = foo();
+baz(); // 2
+</code></pre>
+
+<p>foo作用域执行后并没有被销毁，内部作用域依然存在，bar本身在使用这个作用域，相当于打开一个访问foo作用域的通道（开挂了），bar在自己所在的词法作用域以外的地方执行了，但依然有对自己所在作用域的引用，这个引用就叫闭包。</p>
+
+<p>闭包使函数可以访问定义时的词法作用域。</p>
+
+<h2 id="闭包的用处">闭包的用处</h2>
+
+<ol>
+<li>可以读取函数内部的变量（如bar就算在外面执行，也能访问到foo内部的变量）。</li>
+<li>让这些变量的值始终在内存中（如bar执行完成后foo作用域也不会销毁，而是一直保留在内存中，方便再次使用）。</li>
+</ol>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.github.io/post/javascript_hoist/" rel="prev">JavaScript：声明提升（hoist）</a></span>
+    
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
