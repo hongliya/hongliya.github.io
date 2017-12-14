@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on sugar的读书笔记</title>
-    <link>http://hongliya.github.io/categories/</link>
+    <link>http://hongliya.me/categories/</link>
     <description>Recent content in Categories on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://hongliya.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Javascript</title>
-      <link>http://hongliya.github.io/categories/javascript/</link>
+      <link>http://hongliya.me/categories/javascript/</link>
       <pubDate>Fri, 13 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/categories/javascript/</guid>
+      <guid>http://hongliya.me/categories/javascript/</guid>
       <description></description>
     </item>
     

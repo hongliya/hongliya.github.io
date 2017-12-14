@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>块作用域 on sugar的读书笔记</title>
-    <link>http://hongliya.github.io/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <link>http://hongliya.me/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
     <description>Recent content in 块作用域 on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hongliya.github.io/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：块作用域</title>
-      <link>http://hongliya.github.io/post/javascript_block_scope/</link>
+      <link>http://hongliya.me/post/javascript_block_scope/</link>
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_block_scope/</guid>
+      <guid>http://hongliya.me/post/javascript_block_scope/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》块作用域。
 表面上看 JavaScript 并没有块作用域的相关功能，其实有。
  with try/catch let  with with会创建一个新的作用域（块作用域），但不推荐使用，不说了。

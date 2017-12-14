@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eval on sugar的读书笔记</title>
-    <link>http://hongliya.github.io/tags/eval/</link>
+    <link>http://hongliya.me/tags/eval/</link>
     <description>Recent content in Eval on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hongliya.github.io/tags/eval/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/tags/eval/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：欺骗词法作用域之eval</title>
-      <link>http://hongliya.github.io/post/javascript_eval/</link>
+      <link>http://hongliya.me/post/javascript_eval/</link>
       <pubDate>Fri, 06 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_eval/</guid>
+      <guid>http://hongliya.me/post/javascript_eval/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。

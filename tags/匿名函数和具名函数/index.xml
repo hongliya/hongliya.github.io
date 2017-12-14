@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>匿名函数和具名函数 on sugar的读书笔记</title>
-    <link>http://hongliya.github.io/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/</link>
+    <link>http://hongliya.me/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/</link>
     <description>Recent content in 匿名函数和具名函数 on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hongliya.github.io/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：匿名函数和具名函数</title>
-      <link>http://hongliya.github.io/post/javascript_anonymous_function/</link>
+      <link>http://hongliya.me/post/javascript_anonymous_function/</link>
       <pubDate>Tue, 10 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_anonymous_function/</guid>
+      <guid>http://hongliya.me/post/javascript_anonymous_function/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》函数作用域。
 自问自答  问：什么是具名函数？ 答：具名就是具体的名字，就是一个有具体名字的函数，例如function foo() {}，函数的名字叫foo。 问：什么是匿名函数？ 答：匿名就是没有名字，例如常见的回调函数setTimeout(function(){}, 1000)，这里第一个参数就是匿名函数，我们并不知道它的名字是什么。  匿名函数的缺点   匿名函数在栈追踪中不会显示出有意义的函数名，使得调试很困难。
  如果没有函数名，当函数需要引用自身时只能使用已经过期的arguments.callee引用， 比如在递归中。另一个函数需要引用自身的例子，是在事件触发后事件监听器需要解绑 自身。

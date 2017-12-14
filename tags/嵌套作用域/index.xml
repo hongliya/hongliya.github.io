@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>嵌套作用域 on sugar的读书笔记</title>
-    <link>http://hongliya.github.io/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <link>http://hongliya.me/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
     <description>Recent content in 嵌套作用域 on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hongliya.github.io/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：嵌套作用域</title>
-      <link>http://hongliya.github.io/post/javascript_nested_scope/</link>
+      <link>http://hongliya.me/post/javascript_nested_scope/</link>
       <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_nested_scope/</guid>
+      <guid>http://hongliya.me/post/javascript_nested_scope/</guid>
       <description> 读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。
 自问自答  问：作用域是什么？ 答：作用域是一套规则。 问：一套什么样的规则？ 答：作用域是一套存储变量、修改和访问变量的规则。 问：作用域嵌套是什么鬼？ 答：当一个块或函数嵌套在另外一个块和函数中时，就发生了作用域的嵌套。 问：在嵌套作用域中我该怎么查找我需要的变量？ 答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。  实例分析 function foo(a) { console.log(a+b); } var b = 2; foo(2);  画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会弹出变量然后销毁。
  开始创建全局作用域，把变量b压入栈； 执行到foo(2)，创建foo作用域，把a压入栈，再把b压入栈； 执行到console.log(a+b)，创建console作用域，这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域； foo作用域执行完后销毁，返回结果4。  前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域中无法查找的变量b，就会向下到全局作用域中查找。

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sugar的读书笔记</title>
-    <link>http://hongliya.github.io/</link>
+    <link>http://hongliya.me/</link>
     <description>Recent content on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 13 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hongliya.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：闭包</title>
-      <link>http://hongliya.github.io/post/javascript_closure/</link>
+      <link>http://hongliya.me/post/javascript_closure/</link>
       <pubDate>Fri, 13 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_closure/</guid>
+      <guid>http://hongliya.me/post/javascript_closure/</guid>
       <description> 读书笔记《你不知道的JavaScript（上卷）》作用域闭包。
 自问自答  问：怎么理解闭包呢？ 答：当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。 问：这样说的话，JavaScript中岂不是到处都是闭包？ 答：是的，JavaScript中闭包无处不在。  实例分析 此例子对应：当函数可以记住并访问所在作用域时，就产生了闭包。
 function foo() { var a = 2; function bar() { console.log(a); } bar(); } foo();  这个例子看起来就是非常常见的嵌套作用域例子，可能无法清晰的观察闭包，但bar()函数可以记住并访问所在的foo词法作用域（实际上也覆盖了全局作用域），这就产生了闭包。
@@ -28,10 +28,10 @@ function foo() { var a = 2; function bar() { console.log(a); } return bar; } var
     
     <item>
       <title>JavaScript：声明提升（hoist）</title>
-      <link>http://hongliya.github.io/post/javascript_hoist/</link>
+      <link>http://hongliya.me/post/javascript_hoist/</link>
       <pubDate>Thu, 12 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_hoist/</guid>
+      <guid>http://hongliya.me/post/javascript_hoist/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》提升。
 自问自答  问：声明提升是什么鬼？ 答：在JavaScript中，作用域中所有声明（包括变量声明和函数声明）会提升到改作用域的顶部，这就是声明提升。 问：只有声明会提升？赋值操作会不会一起提升？ 答：只有声明会提升，赋值操作和其他逻辑还在原地，如果赋值操作也提升会改变代码的执行顺序，造成非常严重的破坏。 问：该怎么理解这种声明提升呢？ 答：还记得编译原理的第一步么？碰到var a = 2;时，JavaScript会将其看成两个声明：  var a; 编译阶段进行。 a = 2; 执行阶段进行。   实例分析 a = 2; var a; console.log(a); // 2  上面代码实际上是按照以下流程处理的：
 var a; // 声明提前 a = 2; // 赋值操作留在原地 console.log(a); // 2  自问自答  问：函数表达式会提升？。 答：函数声明会被提升，但函数表达式不会提升。  实例分析：函数声明提升 foo(); function foo() { console.log(a); var a = 2; }  上面代码实际上是按照以下流程处理的：
@@ -40,10 +40,10 @@ function foo() { // 函数foo提升 var a; // 声明提升 console.</description
     
     <item>
       <title>JavaScript：块作用域</title>
-      <link>http://hongliya.github.io/post/javascript_block_scope/</link>
+      <link>http://hongliya.me/post/javascript_block_scope/</link>
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_block_scope/</guid>
+      <guid>http://hongliya.me/post/javascript_block_scope/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》块作用域。
 表面上看 JavaScript 并没有块作用域的相关功能，其实有。
  with try/catch let  with with会创建一个新的作用域（块作用域），但不推荐使用，不说了。
@@ -55,10 +55,10 @@ try/catch ES3规范中规定的try/catch的catch分句会创建一个新的作�
     
     <item>
       <title>JavaScript：匿名函数和具名函数</title>
-      <link>http://hongliya.github.io/post/javascript_anonymous_function/</link>
+      <link>http://hongliya.me/post/javascript_anonymous_function/</link>
       <pubDate>Tue, 10 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_anonymous_function/</guid>
+      <guid>http://hongliya.me/post/javascript_anonymous_function/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》函数作用域。
 自问自答  问：什么是具名函数？ 答：具名就是具体的名字，就是一个有具体名字的函数，例如function foo() {}，函数的名字叫foo。 问：什么是匿名函数？ 答：匿名就是没有名字，例如常见的回调函数setTimeout(function(){}, 1000)，这里第一个参数就是匿名函数，我们并不知道它的名字是什么。  匿名函数的缺点   匿名函数在栈追踪中不会显示出有意义的函数名，使得调试很困难。
  如果没有函数名，当函数需要引用自身时只能使用已经过期的arguments.callee引用， 比如在递归中。另一个函数需要引用自身的例子，是在事件触发后事件监听器需要解绑 自身。
@@ -71,10 +71,10 @@ function setTimeout(function timeoutHandler() { // 快看，我有名字了! tim
     
     <item>
       <title>JavaScript：避免标识符冲突</title>
-      <link>http://hongliya.github.io/post/javascript_conflict/</link>
+      <link>http://hongliya.me/post/javascript_conflict/</link>
       <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_conflict/</guid>
+      <guid>http://hongliya.me/post/javascript_conflict/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》函数作用域。
 自问自答  问：标识符冲突是指什么？ 答：写的代码越来越长时可能会声明两个名字相同但用途不同的变量，无意间可能造成命名冲突。 问：名字冲突后会怎么样呢？ 答：冲突会导致变量的值被意外覆盖。  实例分析 function foo() { function bar(a) { i = 3; console.log(a + i); // 3, n个11 } for (var i = 0; i &amp;lt; 10; i++) { bar(i*2); } } foo();  转换成更易理解的代码：
 function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个11 } for (i = 0; i &amp;lt; 10; i++) { bar(i*2); } } foo();  栈分析：</description>
@@ -82,10 +82,10 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
     
     <item>
       <title>JavaScript：函数作用域</title>
-      <link>http://hongliya.github.io/post/javascript_function_scope/</link>
+      <link>http://hongliya.me/post/javascript_function_scope/</link>
       <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_function_scope/</guid>
+      <guid>http://hongliya.me/post/javascript_function_scope/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》函数作用域。
 自问自答  问：函数作用域是指什么？ 答：函数作用域指的是函数内声明的全部变量都可以在整个函数的范围内使用及复用。 问：整个函数也包括函数中嵌套的函数？ 答：包含。  实例分析 function foo(a) { var b = 2; function bar() { console.log(c); // 3 } bar(); var c = 3; } foo(1); bar(); // ReferenceError: bar is not defined console.log(a); // ReferenceError: a is not defined  代码分析
  全局作用域中包含一个标识符foo foo作用域中包含标识符a、b、bar、c，这些标识符在foo的内部都是可以访问的，但无法从foo外部的作用域访问到这些标识符 bar有自己的作用域  自问自答  问：函数作用域这种设计有什么好处呢？ 答：这种设计非常有用  能充分利用JavaScript变量可以根据需要改变值类型的“动态”特性。 最小限度的暴露必要内容，类似某个模块或对象的API设计。 避免同名标识符之间的冲突，冲突会导致变量的值被意外覆盖。 如果不需要函数名（或者至少函数名可以不污染所在作用域），并且能够自动运行，将会更加理想。   实例分析 function doSomething(a) { b = a + doSomethingElse(a * 2); console.</description>
@@ -93,10 +93,10 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
     
     <item>
       <title>JavaScript：欺骗词法作用域之with</title>
-      <link>http://hongliya.github.io/post/javascript_with/</link>
+      <link>http://hongliya.me/post/javascript_with/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_with/</guid>
+      <guid>http://hongliya.me/post/javascript_with/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。
@@ -107,10 +107,10 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
     
     <item>
       <title>JavaScript：欺骗词法作用域之eval</title>
-      <link>http://hongliya.github.io/post/javascript_eval/</link>
+      <link>http://hongliya.me/post/javascript_eval/</link>
       <pubDate>Fri, 06 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_eval/</guid>
+      <guid>http://hongliya.me/post/javascript_eval/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 欺骗词法作用域会导致性能下降，不推荐使用。
 但仍然要了解下原理。
@@ -120,10 +120,10 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
     
     <item>
       <title>JavaScript：词法作用域</title>
-      <link>http://hongliya.github.io/post/javascript_tokenizing/</link>
+      <link>http://hongliya.me/post/javascript_tokenizing/</link>
       <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_tokenizing/</guid>
+      <guid>http://hongliya.me/post/javascript_tokenizing/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
 作用域共有两种主要的工作模型  词法作用域 动态作用域  JavaScript并不具备动态作用域，它只有词法作用域，但后面的this机制某种程度上很像动态作用域，该笔记暂不讨论动态作用域。
 自问自答  问：该怎么理解词法作用域呢？ 答：这个要回忆下编译原理了。 问：编译器编译的第一步是什么还记得么？ 答：分词/词法分析（Tokenizing/lexing），就是把字符串分解成一个个的词法单元，也叫单词化。 问：这和词法作用域有什么关系呢？ 答：简单地说，词法作用域就是定义在词法分析阶段的作用域，换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。 问：这么说顺序是不变的么？ 答：大部分情况是这样的，不过还有一些欺骗作用域的方法，这些方法在词法分析器处理过后依然可以修改作用域，不过这些方法不推荐使用。 问：为什么不推荐使用呢？ 答：这个后面再谈&amp;hellip;  实例分析 function foo(a) { var b = a * 2; function bar(c) { console.log(a, b, c); } bar(b*3); } foo(2); // 2, 4, 12  这个例子中共有三个主机嵌套的作用域，为了帮助理解，可以将它们想象成几个逐级包含的气泡，这里借助书中的图片。
@@ -133,10 +133,10 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
     
     <item>
       <title>JavaScript：LHS和RHS</title>
-      <link>http://hongliya.github.io/post/javascript_lhs_rhs/</link>
+      <link>http://hongliya.me/post/javascript_lhs_rhs/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_lhs_rhs/</guid>
+      <guid>http://hongliya.me/post/javascript_lhs_rhs/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》作用域。
 什么是LHS和RHS？ LHS和RHS是JavaScript引擎执行代码时查找变量的两种方式，L表示左侧，R表示右侧，指的是赋值操作的左侧和右侧。
 看了书上的解释，感觉不是那么容易记忆，为了方便自己记忆，我总结如下：
@@ -156,10 +156,10 @@ function foo(a) { var b = a; return a + b; } var c = foo(2);  例4分析：这�
     
     <item>
       <title>JavaScript：嵌套作用域</title>
-      <link>http://hongliya.github.io/post/javascript_nested_scope/</link>
+      <link>http://hongliya.me/post/javascript_nested_scope/</link>
       <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_nested_scope/</guid>
+      <guid>http://hongliya.me/post/javascript_nested_scope/</guid>
       <description> 读书笔记《你不知道的JavaScript（上卷）》嵌套作用域。
 自问自答  问：作用域是什么？ 答：作用域是一套规则。 问：一套什么样的规则？ 答：作用域是一套存储变量、修改和访问变量的规则。 问：作用域嵌套是什么鬼？ 答：当一个块或函数嵌套在另外一个块和函数中时，就发生了作用域的嵌套。 问：在嵌套作用域中我该怎么查找我需要的变量？ 答：先在你当前的作用域中找，找不到就去你上级的作用域中找，如果还没有，就一直往上找，直到最外层作用域（全局作用域）中为止。  实例分析 function foo(a) { console.log(a+b); } var b = 2; foo(2);  画了一个简单栈的示意图，根据栈的后进先出规则，每个作用域执行完之后就会弹出变量然后销毁。
  开始创建全局作用域，把变量b压入栈； 执行到foo(2)，创建foo作用域，把a压入栈，再把b压入栈； 执行到console.log(a+b)，创建console作用域，这里粗略画出，实际上里面也有一系列操作，console.log执行完后console作用域销毁，回到foo的作用域； foo作用域执行完后销毁，返回结果4。  前面提到的向上层作用域查找，这里可以理解为在栈中向下查找，比如在foo的作用域中无法查找的变量b，就会向下到全局作用域中查找。
@@ -168,10 +168,10 @@ function foo(a) { var b = a; return a + b; } var c = foo(2);  例4分析：这�
     
     <item>
       <title>JavaScript：编译原理初探</title>
-      <link>http://hongliya.github.io/post/javascript_compile/</link>
+      <link>http://hongliya.me/post/javascript_compile/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_compile/</guid>
+      <guid>http://hongliya.me/post/javascript_compile/</guid>
       <description> 读书笔记《你不知道的JavaScript（上卷）》编译原理。
 JavaScript引擎进行编译的步骤和传统的编译语言非常相似，在某些环节可能比预想的要复杂。
 传统编译流程  第一步：分词／词法分析（Tokenizing/Lexing），将字符串分解成对编程语言有意义的代码块（又叫词法单元）。
@@ -199,10 +199,10 @@ JavaScript编译流程需要编译器和作用域共同完成。
     
     <item>
       <title>JavaScript：引擎初探</title>
-      <link>http://hongliya.github.io/post/javascript_engine/</link>
+      <link>http://hongliya.me/post/javascript_engine/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_engine/</guid>
+      <guid>http://hongliya.me/post/javascript_engine/</guid>
       <description>思考出自《你不知道的JavaScript（上卷）》，第一章讲编译原理提到JavaScript引擎。
 JavaScript到底是啥？ 维基百科的解释  JavaScript引擎是一个专门处理JavaScript脚本的虚拟机，一般会附带在网页浏览器之中。
  哦，似懂非懂。
@@ -215,10 +215,10 @@ JavaScript引擎本身也是一段程序，由代码编写而成，如Chrome的J
     
     <item>
       <title>tools: sublime配置文件</title>
-      <link>http://hongliya.github.io/post/tools_sublime/</link>
+      <link>http://hongliya.me/post/tools_sublime/</link>
       <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/tools_sublime/</guid>
+      <guid>http://hongliya.me/post/tools_sublime/</guid>
       <description>我的Sublime配置文件 编辑器版本：Sublime Text 2
 { // 主题文件路径 &amp;quot;color_scheme&amp;quot;: &amp;quot;Packages/Color Scheme - Default/Monokai.tmTheme&amp;quot;, // 字体 &amp;quot;font-face&amp;quot;: &amp;quot;Consolas&amp;quot;, // 字体大小 &amp;quot;font_size&amp;quot;: 20, // 行号边栏和文字的间距 &amp;quot;margin&amp;quot;: 0, // 突出显示当前光标所在的行 &amp;quot;highlight_line&amp;quot;: true, // 设置每一行到顶部，以像素为单位的间距，效果相当于行距 &amp;quot;line_padding_top&amp;quot;: 0.5, // 按space或tab时，实际会产生白色的点（一个空格一个点）或白色的横线 // 设置为none时，什么情况下都不显示这些点和线 // 设置为selection时，只显示选中状态下的点和线 // 设置为all时，则一直显示 &amp;quot;draw_white_space&amp;quot;: &amp;quot;all&amp;quot;, // 为true时，保存文件时会删除每行结束后多余的空格 &amp;quot;trim_trailing_white_space_on_save&amp;quot;: true, // 为true时，保存文件时光标会在文件的最后向下换一行 &amp;quot;ensure_newline_at_eof_on_save&amp;quot;: true, // 设置为false时，滚动到文本的最下方时，没有缓冲区 // 默认配置文件就是true，但缓冲区没有生效，这里重新定义下就生效了... &amp;quot;scroll_past_end&amp;quot;: true }  默认Sublime Text 2 配置文件  // 主题文件的路径 &amp;quot;color_scheme&amp;quot;: &amp;quot;Packages/Color Scheme - Default/Monokai.</description>
     </item>

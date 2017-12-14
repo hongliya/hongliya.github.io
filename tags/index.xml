@@ -2,138 +2,138 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on sugar的读书笔记</title>
-    <link>http://hongliya.github.io/tags/</link>
+    <link>http://hongliya.me/tags/</link>
     <description>Recent content in Tags on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hongliya.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Eval</title>
-      <link>http://hongliya.github.io/tags/eval/</link>
+      <link>http://hongliya.me/tags/eval/</link>
       <pubDate>Fri, 06 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/eval/</guid>
+      <guid>http://hongliya.me/tags/eval/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript引擎</title>
-      <link>http://hongliya.github.io/tags/javascript%E5%BC%95%E6%93%8E/</link>
+      <link>http://hongliya.me/tags/javascript%E5%BC%95%E6%93%8E/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/javascript%E5%BC%95%E6%93%8E/</guid>
+      <guid>http://hongliya.me/tags/javascript%E5%BC%95%E6%93%8E/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript编译原理</title>
-      <link>http://hongliya.github.io/tags/javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
+      <link>http://hongliya.me/tags/javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</guid>
+      <guid>http://hongliya.me/tags/javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript词法作用域</title>
-      <link>http://hongliya.github.io/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <link>http://hongliya.me/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
       <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <guid>http://hongliya.me/tags/javascript%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript闭包</title>
-      <link>http://hongliya.github.io/tags/javascript%E9%97%AD%E5%8C%85/</link>
+      <link>http://hongliya.me/tags/javascript%E9%97%AD%E5%8C%85/</link>
       <pubDate>Fri, 13 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/javascript%E9%97%AD%E5%8C%85/</guid>
+      <guid>http://hongliya.me/tags/javascript%E9%97%AD%E5%8C%85/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lhs和rhs</title>
-      <link>http://hongliya.github.io/tags/lhs%E5%92%8Crhs/</link>
+      <link>http://hongliya.me/tags/lhs%E5%92%8Crhs/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/lhs%E5%92%8Crhs/</guid>
+      <guid>http://hongliya.me/tags/lhs%E5%92%8Crhs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sublime配置文件</title>
-      <link>http://hongliya.github.io/tags/sublime%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+      <link>http://hongliya.me/tags/sublime%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/sublime%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+      <guid>http://hongliya.me/tags/sublime%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>With</title>
-      <link>http://hongliya.github.io/tags/with/</link>
+      <link>http://hongliya.me/tags/with/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/with/</guid>
+      <guid>http://hongliya.me/tags/with/</guid>
       <description></description>
     </item>
     
     <item>
       <title>函数作用域</title>
-      <link>http://hongliya.github.io/tags/%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <link>http://hongliya.me/tags/%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
       <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <guid>http://hongliya.me/tags/%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>匿名函数和具名函数</title>
-      <link>http://hongliya.github.io/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/</link>
+      <link>http://hongliya.me/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/</link>
       <pubDate>Tue, 10 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/</guid>
+      <guid>http://hongliya.me/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%85%B7%E5%90%8D%E5%87%BD%E6%95%B0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>命名空间</title>
-      <link>http://hongliya.github.io/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</link>
+      <link>http://hongliya.me/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</link>
       <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</guid>
+      <guid>http://hongliya.me/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>块作用域</title>
-      <link>http://hongliya.github.io/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <link>http://hongliya.me/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <guid>http://hongliya.me/tags/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>声明提升</title>
-      <link>http://hongliya.github.io/tags/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/</link>
+      <link>http://hongliya.me/tags/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/</link>
       <pubDate>Thu, 12 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/</guid>
+      <guid>http://hongliya.me/tags/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/</guid>
       <description></description>
     </item>
     
     <item>
       <title>嵌套作用域</title>
-      <link>http://hongliya.github.io/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <link>http://hongliya.me/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
       <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <guid>http://hongliya.me/tags/%E5%B5%8C%E5%A5%97%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
       <description></description>
     </item>
     

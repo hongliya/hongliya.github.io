@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>命名空间 on sugar的读书笔记</title>
-    <link>http://hongliya.github.io/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</link>
+    <link>http://hongliya.me/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/</link>
     <description>Recent content in 命名空间 on sugar的读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 09 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hongliya.github.io/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://hongliya.me/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript：避免标识符冲突</title>
-      <link>http://hongliya.github.io/post/javascript_conflict/</link>
+      <link>http://hongliya.me/post/javascript_conflict/</link>
       <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hongliya.github.io/post/javascript_conflict/</guid>
+      <guid>http://hongliya.me/post/javascript_conflict/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》函数作用域。
 自问自答  问：标识符冲突是指什么？ 答：写的代码越来越长时可能会声明两个名字相同但用途不同的变量，无意间可能造成命名冲突。 问：名字冲突后会怎么样呢？ 答：冲突会导致变量的值被意外覆盖。  实例分析 function foo() { function bar(a) { i = 3; console.log(a + i); // 3, n个11 } for (var i = 0; i &amp;lt; 10; i++) { bar(i*2); } } foo();  转换成更易理解的代码：
 function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个11 } for (i = 0; i &amp;lt; 10; i++) { bar(i*2); } } foo();  栈分析：</description>
