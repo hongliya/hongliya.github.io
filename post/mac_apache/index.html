@@ -6,7 +6,7 @@
   
   <meta charset="UTF-8">
   <title>
-    声明提升 | 读书笔记
+    Mac: Mac配置Apache | 读书笔记
   </title>
 
 
@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
 
   
-  <link rel="canonical" href="http://hongliya.me/tags/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/"/>
+  <link rel="canonical" href="http://hongliya.me/post/mac_apache/"/>
 
   
   <link rel="stylesheet" href="/css/sanitize.css">
@@ -57,24 +57,64 @@
   </header>
 
 
-<main id="list" role="main">
-    <div class="article-header light-gray">
-        <h1>#声明提升</h1>
-    </div>
-    
-    <div class="summary">
-        <h2>
-            <a href="http://hongliya.me/post/javascript_hoist/">JavaScript：声明提升（hoist） </a>
-        </h2>
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>Mac: Mac配置Apache</h1>
         <div class="meta">
-            2017-10-12 &nbsp;
+        2014-10-08 &nbsp;
             
-            #<a href="/tags/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87">声明提升</a>&nbsp;
-            
+            #<a href="/tags/macapache">mac,apache</a>&nbsp;
+        
         </div>
     </div>
+    <article>
+        <p>Mac自带了Apache环境，只需要启动就可以使用。</p>
+
+<p><strong>启动apache</strong></p>
+
+<pre><code>sudo apachectl start
+</code></pre>
+
+<p><strong>重启apache</strong></p>
+
+<pre><code>sudo apachectl restart
+</code></pre>
+
+<p><strong>打开Apache的配置文件</strong></p>
+
+<pre><code>sudo vi /etc/apache2/httpd.conf
+</code></pre>
+
+<p><strong>查看Apache的错误日志</strong></p>
+
+<pre><code>sudo vi /pravite/var/log/apache2/error_log
+</code></pre>
+
+<p><strong>配置web目录</strong></p>
+
+<p>修改两个地方</p>
+
+<ol>
+<li>DocumentRoot “你要设置的web目录”</li>
+<li>&lt;Directory “你要设置的web目录”&gt;</li>
+</ol>
+
+<p><img src="/images/apache.jpg" alt="images" /></p>
+
+        
+        
+    </article>
     
+
+
 </main>
+
+<nav class="pagination-single">
+    
+    
+        <span class="next"><a href="http://hongliya.me/post/tools_sublime/" rel="next">Tools: sublime配置文件</a> &rarr;</span>
+    
+</nav>
 
   
   <footer role="contentinfo">

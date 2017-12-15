@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on 读书笔记</title>
+    <link>http://hongliya.me/categories/mac/</link>
+    <description>Recent content in Mac on 读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Oct 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.me/categories/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac: Mac配置Apache</title>
+      <link>http://hongliya.me/post/mac_apache/</link>
+      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/mac_apache/</guid>
+      <description>Mac自带了Apache环境，只需要启动就可以使用。
+启动apache
+sudo apachectl start  重启apache
+sudo apachectl restart  打开Apache的配置文件
+sudo vi /etc/apache2/httpd.conf  查看Apache的错误日志
+sudo vi /pravite/var/log/apache2/error_log  配置web目录
+修改两个地方
+ DocumentRoot “你要设置的web目录” &amp;lt;Directory “你要设置的web目录”&amp;gt;  </description>
+    </item>
+    
+  </channel>
+</rss>

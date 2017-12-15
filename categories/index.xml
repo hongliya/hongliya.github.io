@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on sugar的读书笔记</title>
+    <title>Categories on 读书笔记</title>
     <link>http://hongliya.me/categories/</link>
-    <description>Recent content in Categories on sugar的读书笔记</description>
+    <description>Recent content in Categories on 读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -11,11 +11,29 @@
     
     
     <item>
+      <title>Css</title>
+      <link>http://hongliya.me/categories/css/</link>
+      <pubDate>Fri, 24 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/categories/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Javascript</title>
       <link>http://hongliya.me/categories/javascript/</link>
       <pubDate>Fri, 13 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>http://hongliya.me/categories/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>http://hongliya.me/categories/mac/</link>
+      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/categories/mac/</guid>
       <description></description>
     </item>
     

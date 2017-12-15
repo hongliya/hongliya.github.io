@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Javascript on sugar的读书笔记</title>
+    <title>Javascript on 读书笔记</title>
     <link>http://hongliya.me/categories/javascript/</link>
-    <description>Recent content in Javascript on sugar的读书笔记</description>
+    <description>Recent content in Javascript on 读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 13 Oct 2017 00:00:00 +0000</lastBuildDate>
@@ -214,7 +214,7 @@ JavaScript引擎本身也是一段程序，由代码编写而成，如Chrome的J
     </item>
     
     <item>
-      <title>tools: sublime配置文件</title>
+      <title>Tools: sublime配置文件</title>
       <link>http://hongliya.me/post/tools_sublime/</link>
       <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
       

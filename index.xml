@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>sugar的读书笔记</title>
+    <title>读书笔记</title>
     <link>http://hongliya.me/</link>
-    <description>Recent content on sugar的读书笔记</description>
+    <description>Recent content on 读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 13 Oct 2017 00:00:00 +0000</lastBuildDate>
@@ -214,13 +214,38 @@ JavaScript引擎本身也是一段程序，由代码编写而成，如Chrome的J
     </item>
     
     <item>
-      <title>tools: sublime配置文件</title>
+      <title>Css：css利用边框画三角形</title>
+      <link>http://hongliya.me/post/css_border/</link>
+      <pubDate>Fri, 24 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/css_border/</guid>
+      <description>.border { width: 100px; height: 100px; border: 5px solid red; margin-top: 10px; margin-bottom: 10px; } .border_color { border-top: 5px solid red; border-right: 5px solid yellow; border-bottom: 5px solid blue; border-left: 5px solid green; } .border_bold { border-width: 40px; } .border_inline { display: inline-block; margin-right: 10px; } .border_bolder { border-width: 50px; } .n_l { border-left-color: transparent; } .n_t { border-top-color: transparent; } .n_r { border-right-color: transparent; } .n_b { border-bottom-color: transparent; }  1.</description>
+    </item>
+    
+    <item>
+      <title>Tools: sublime配置文件</title>
       <link>http://hongliya.me/post/tools_sublime/</link>
       <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
       
       <guid>http://hongliya.me/post/tools_sublime/</guid>
       <description>我的Sublime配置文件 编辑器版本：Sublime Text 2
 { // 主题文件路径 &amp;quot;color_scheme&amp;quot;: &amp;quot;Packages/Color Scheme - Default/Monokai.tmTheme&amp;quot;, // 字体 &amp;quot;font-face&amp;quot;: &amp;quot;Consolas&amp;quot;, // 字体大小 &amp;quot;font_size&amp;quot;: 20, // 行号边栏和文字的间距 &amp;quot;margin&amp;quot;: 0, // 突出显示当前光标所在的行 &amp;quot;highlight_line&amp;quot;: true, // 设置每一行到顶部，以像素为单位的间距，效果相当于行距 &amp;quot;line_padding_top&amp;quot;: 0.5, // 按space或tab时，实际会产生白色的点（一个空格一个点）或白色的横线 // 设置为none时，什么情况下都不显示这些点和线 // 设置为selection时，只显示选中状态下的点和线 // 设置为all时，则一直显示 &amp;quot;draw_white_space&amp;quot;: &amp;quot;all&amp;quot;, // 为true时，保存文件时会删除每行结束后多余的空格 &amp;quot;trim_trailing_white_space_on_save&amp;quot;: true, // 为true时，保存文件时光标会在文件的最后向下换一行 &amp;quot;ensure_newline_at_eof_on_save&amp;quot;: true, // 设置为false时，滚动到文本的最下方时，没有缓冲区 // 默认配置文件就是true，但缓冲区没有生效，这里重新定义下就生效了... &amp;quot;scroll_past_end&amp;quot;: true }  默认Sublime Text 2 配置文件  // 主题文件的路径 &amp;quot;color_scheme&amp;quot;: &amp;quot;Packages/Color Scheme - Default/Monokai.</description>
+    </item>
+    
+    <item>
+      <title>Mac: Mac配置Apache</title>
+      <link>http://hongliya.me/post/mac_apache/</link>
+      <pubDate>Wed, 08 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/mac_apache/</guid>
+      <description>Mac自带了Apache环境，只需要启动就可以使用。
+启动apache
+sudo apachectl start  重启apache
+sudo apachectl restart  打开Apache的配置文件
+sudo vi /etc/apache2/httpd.conf  查看Apache的错误日志
+sudo vi /pravite/var/log/apache2/error_log  配置web目录
+修改两个地方
+ DocumentRoot “你要设置的web目录” &amp;lt;Directory “你要设置的web目录”&amp;gt;  </description>
     </item>
     
   </channel>
