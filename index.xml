@@ -239,6 +239,17 @@ JavaScript引擎本身也是一段程序，由代码编写而成，如Chrome的J
     </item>
     
     <item>
+      <title>Tools: sublime冒号后缩进问题</title>
+      <link>http://hongliya.me/post/tools_sublime_tab/</link>
+      <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/tools_sublime_tab/</guid>
+      <description>sublime冒号后缩进自动加分号的解决办法
+修改Key Bindings - User 文件
+[ { &amp;quot;keys&amp;quot;: [&amp;quot;ctrl+shift+a&amp;quot;], &amp;quot;command&amp;quot;: &amp;quot;alignment&amp;quot; }, { &amp;quot;keys&amp;quot;: [&amp;quot;tab&amp;quot;], &amp;quot;command&amp;quot;: &amp;quot;insert&amp;quot;, &amp;quot;args&amp;quot;: { &amp;quot;characters&amp;quot;: &amp;quot;\t&amp;quot; }, &amp;quot;context&amp;quot;: [ { &amp;quot;key&amp;quot;: &amp;quot;preceding_text&amp;quot;, &amp;quot;operator&amp;quot;: &amp;quot;regex_contains&amp;quot;, &amp;quot;operand&amp;quot;: &amp;quot;:$&amp;quot;, &amp;quot;match_all&amp;quot;: true } ] } ]  </description>
+    </item>
+    
+    <item>
       <title>Tools: sublime配置文件</title>
       <link>http://hongliya.me/post/tools_sublime/</link>
       <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>

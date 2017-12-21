@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    Tools: sublime冒号后缩进问题 | 读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.me/post/tools_sublime_tab/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  
+  <link href="http://hongliya.me/index.xml" rel="alternate" type="application/rss+xml" title="读书笔记" />
+  <link href="http://hongliya.me/index.xml" rel="feed" type="application/rss+xml" title="读书笔记" />
+
+  
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8d77bcdcbb5ebf27e074aaa1b4c755af";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.me/">读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>Tools: sublime冒号后缩进问题</h1>
+        <div class="meta">
+        2015-05-20 &nbsp;
+            
+            #<a href="/tags/sublime">sublime</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        <p>sublime冒号后缩进自动加分号的解决办法</p>
+
+<p>修改Key Bindings - User 文件</p>
+
+<pre><code>[
+    { &quot;keys&quot;: [&quot;ctrl+shift+a&quot;], &quot;command&quot;: &quot;alignment&quot; },
+    {
+        &quot;keys&quot;: [&quot;tab&quot;],
+        &quot;command&quot;: &quot;insert&quot;,
+        &quot;args&quot;:
+        {
+            &quot;characters&quot;: &quot;\t&quot;
+        },
+        &quot;context&quot;:
+        [
+            {
+                &quot;key&quot;: &quot;preceding_text&quot;,
+                &quot;operator&quot;: &quot;regex_contains&quot;,
+                &quot;operand&quot;: &quot;:$&quot;,
+                &quot;match_all&quot;: true
+            }
+        ]
+    }
+]
+</code></pre>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.me/post/tools_sublime/" rel="prev">Tools: sublime配置文件</a></span>
+    
+    
+        <span class="next"><a href="http://hongliya.me/post/css_border/" rel="next">Css：css利用边框画三角形</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

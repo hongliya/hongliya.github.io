@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sublime on 读书笔记</title>
+    <link>http://hongliya.me/tags/sublime/</link>
+    <description>Recent content in Sublime on 读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 May 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.me/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tools: sublime冒号后缩进问题</title>
+      <link>http://hongliya.me/post/tools_sublime_tab/</link>
+      <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/tools_sublime_tab/</guid>
+      <description>sublime冒号后缩进自动加分号的解决办法
+修改Key Bindings - User 文件
+[ { &amp;quot;keys&amp;quot;: [&amp;quot;ctrl+shift+a&amp;quot;], &amp;quot;command&amp;quot;: &amp;quot;alignment&amp;quot; }, { &amp;quot;keys&amp;quot;: [&amp;quot;tab&amp;quot;], &amp;quot;command&amp;quot;: &amp;quot;insert&amp;quot;, &amp;quot;args&amp;quot;: { &amp;quot;characters&amp;quot;: &amp;quot;\t&amp;quot; }, &amp;quot;context&amp;quot;: [ { &amp;quot;key&amp;quot;: &amp;quot;preceding_text&amp;quot;, &amp;quot;operator&amp;quot;: &amp;quot;regex_contains&amp;quot;, &amp;quot;operand&amp;quot;: &amp;quot;:$&amp;quot;, &amp;quot;match_all&amp;quot;: true } ] } ]  </description>
+    </item>
+    
+  </channel>
+</rss>
