@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    HTML：meta的一些用法 | 读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.me/post/html_meta/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  
+  <link href="http://hongliya.me/index.xml" rel="alternate" type="application/rss+xml" title="读书笔记" />
+  <link href="http://hongliya.me/index.xml" rel="feed" type="application/rss+xml" title="读书笔记" />
+
+  
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8d77bcdcbb5ebf27e074aaa1b4c755af";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.me/">读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>HTML：meta的一些用法</h1>
+        <div class="meta">
+        2017-03-27 &nbsp;
+            
+            #<a href="/tags/meta">meta</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        <p>1.name=&ldquo;keywords&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;keywords&quot; content=&quot;test&quot; /&gt;
+// keywords 为文档定义一组关键字，搜索引擎遇到这些关键字的时候会用这些关键字对文档分类
+</code></pre>
+
+<p>2.name=&ldquo;description&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;description&quot; content=&quot;test&quot; /&gt;
+// 告诉搜索引擎网站的主要内容
+</code></pre>
+
+<p>3.http-equiv=&ldquo;content-script-type&rdquo;</p>
+
+<pre><code>&lt;meta http-equiv=&quot;content-script-type&quot; content=&quot;text/javascript&quot; /&gt;
+// W3C网页规范，指明页面中脚本的类型
+</code></pre>
+
+<p>4.http-equiv=&ldquo;pragma&rdquo;</p>
+
+<pre><code>&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot; /&gt;
+// 禁止浏览器从本地计算机的缓存中访问页面内容，这样设定访问者将无法脱机浏览
+// 脱机浏览：设置脱机查看网页后，可以在计算机未连接到Internet时阅读网页内容。
+</code></pre>
+
+<p>5.http-equiv=&ldquo;cache-control&rdquo;</p>
+
+<pre><code>&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache, must-revalidate&quot; /&gt;
+// 防止html页面被缓存
+</code></pre>
+
+<p>6.http-equiv=&ldquo;expires&rdquo;</p>
+
+<pre><code>&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot; /&gt;
+&lt;meta http-equiv=&quot;expires&quot; content=&quot;Mon,12 May 2001 00:20:00 GMT&quot; /&gt;
+// 设定网页的到期时间，一旦过期必须到服务器上重新调用，需要注意的是必须使用GMT时间格式
+</code></pre>
+
+<p>7.name=&ldquo;viewport&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;&gt;
+// 强制让文档的宽度和设备的宽度保持1:1，并且文档的最大宽度比例是1.0，且不允许用户点击屏幕放大浏览
+</code></pre>
+
+<p>8.name=&ldquo;apple-mobile-web-app-capable&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
+// iphone设备中safari的私有meta标签，表示允许全屏模式浏览
+</code></pre>
+
+<p>9.name=&ldquo;apple-mobile-web-app-status-bar-style&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;
+// iphone的私有标签，指定iphone中Safari顶端状态条的样式
+</code></pre>
+
+<p>10.name=&ldquo;apple-mobile-web-app-capable&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
+// 网站开启对webAPP的支持
+</code></pre>
+
+<p>11.content=&ldquo;telephone=no&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt;
+// 告诉设备忽略将页面中的数字识别为电话号码
+</code></pre>
+
+<p>12.content=&ldquo;email=no&rdquo;</p>
+
+<pre><code>&lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot; /&gt;
+// 告诉设备忽略自动识别页面中的邮件地址
+// tips：ios不会自动识别页面中的邮件地址，android会自动识别页面中的邮件地址，并且会弹出框提示是否发送文件
+</code></pre>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.me/post/css_border/" rel="prev">Css：css利用边框画三角形</a></span>
+    
+    
+        <span class="next"><a href="http://hongliya.me/post/javascript_engine/" rel="next">JavaScript：引擎初探</a> &rarr;</span>
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

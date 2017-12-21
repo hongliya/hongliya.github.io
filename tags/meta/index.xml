@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meta on 读书笔记</title>
+    <link>http://hongliya.me/tags/meta/</link>
+    <description>Recent content in Meta on 读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 27 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.me/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTML：meta的一些用法</title>
+      <link>http://hongliya.me/post/html_meta/</link>
+      <pubDate>Mon, 27 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/html_meta/</guid>
+      <description>1.name=&amp;ldquo;keywords&amp;rdquo;
+&amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;test&amp;quot; /&amp;gt; // keywords 为文档定义一组关键字，搜索引擎遇到这些关键字的时候会用这些关键字对文档分类  2.name=&amp;ldquo;description&amp;rdquo;
+&amp;lt;meta name=&amp;quot;description&amp;quot; content=&amp;quot;test&amp;quot; /&amp;gt; // 告诉搜索引擎网站的主要内容  3.http-equiv=&amp;ldquo;content-script-type&amp;rdquo;
+&amp;lt;meta http-equiv=&amp;quot;content-script-type&amp;quot; content=&amp;quot;text/javascript&amp;quot; /&amp;gt; // W3C网页规范，指明页面中脚本的类型  4.http-equiv=&amp;ldquo;pragma&amp;rdquo;
+&amp;lt;meta http-equiv=&amp;quot;pragma&amp;quot; content=&amp;quot;no-cache&amp;quot; /&amp;gt; // 禁止浏览器从本地计算机的缓存中访问页面内容，这样设定访问者将无法脱机浏览 // 脱机浏览：设置脱机查看网页后，可以在计算机未连接到Internet时阅读网页内容。  5.http-equiv=&amp;ldquo;cache-control&amp;rdquo;
+&amp;lt;meta http-equiv=&amp;quot;cache-control&amp;quot; content=&amp;quot;no-cache, must-revalidate&amp;quot; /&amp;gt; // 防止html页面被缓存  6.http-equiv=&amp;ldquo;expires&amp;rdquo;
+&amp;lt;meta http-equiv=&amp;quot;expires&amp;quot; content=&amp;quot;0&amp;quot; /&amp;gt; &amp;lt;meta http-equiv=&amp;quot;expires&amp;quot; content=&amp;quot;Mon,12 May 2001 00:20:00 GMT&amp;quot; /&amp;gt; // 设定网页的到期时间，一旦过期必须到服务器上重新调用，需要注意的是必须使用GMT时间格式  7.name=&amp;ldquo;viewport&amp;rdquo;
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&amp;quot;&amp;gt; // 强制让文档的宽度和设备的宽度保持1:1，并且文档的最大宽度比例是1.0，且不允许用户点击屏幕放大浏览  8.</description>
+    </item>
+    
+  </channel>
+</rss>
