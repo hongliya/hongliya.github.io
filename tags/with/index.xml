@@ -18,7 +18,7 @@
       
       <guid>http://hongliya.me/post/javascript_with/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
-欺骗词法作用域会导致性能下降，不推荐使用。
+欺骗词法作用域会导致性能下降，不推荐使用，因为js解释器编译阶段会对性能进行优化，而使用eval或者with会破坏解释器对作用域的管理规则，解释器怕出问题就不会再优化，所以性能下降。
 但仍然要了解下原理。
 自问自答  问：with是怎么欺骗（修改）词法作用域的呢？ 答：with可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。  实例分析 function foo(obj) { with (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console.log(o1.a); // 2  栈分析：
 第一步：调用with，with创建新的作用域，改变o1.a的值。

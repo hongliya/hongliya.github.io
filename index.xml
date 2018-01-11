@@ -6,10 +6,37 @@
     <description>Recent content on 读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://hongliya.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript：检测数组</title>
+      <link>http://hongliya.me/post/javascript_isarray/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/javascript_isarray/</guid>
+      <description>记录如何检测一个对象是不是数组的问题。
+有限制的instanceof ECMAScript3规定，对于同一个全局作用域，使用instanceof操作符检测数组就能得到满意的结果：
+var colors = [&#39;red&#39;]; if (colors instanceof Array) { // colors是数组 }  使用instanceof操作符检测数组，在同一个全局执行环境中没有问题，但如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array构造函数，使用instanceof就不够用了。
+大部分浏览器支持的Array.isArray() 为了解决ECMAScript3中的问题，ECMAScript5新增了Array.isArray()方法来检测数组：
+var colors = [&#39;red&#39;]; if (Array.isArray(colors)) { // colors是数组 }  Array.isArray()方法优于instanceof，因为Array.isArray()能检测iframes。
+支持Array.isArray的浏览器有IE9+、Safari5+、Firefox4+、Chrome。
+Polyfill 兼容尚未实现Array.isArray()方法的浏览器
+var colors = [&#39;red&#39;]; if (!Array.isArray) { if (isArray(colors)) { // colors是数组 } } // 低版本浏览器检测数组 function isArray(value) { return Object.prototype.toString().call(value) === &amp;quot;[Object Array]&amp;quot;; }  在任何值上调用Object原生的toString()方法都会返回一个[Object NativeConstructorName]格式的字符串。每个类在内部都有一个[[Class]]属性，这个属性就制定了上述字符串中的构造函数名。由于原声数组的构造函数与全局作用域无关，因此使用toString()就能保证返回一致的值，利用这一点就可以自定义上面的isArray函数来检测低版本浏览器的数组。
+同样，也可以基于这一思路来检测某个值是不是原生函数或正则表达式：
+function isFunction(value) { return Object.prototype.toString().call(value) === &#39;[Object Function]&#39;; } function isRegExp(value) { return Object.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://hongliya.me/about/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/about/</guid>
+      <description>aaaa</description>
+    </item>
     
     <item>
       <title>JavaScript：闭包</title>
@@ -98,7 +125,7 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
       
       <guid>http://hongliya.me/post/javascript_with/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
-欺骗词法作用域会导致性能下降，不推荐使用。
+欺骗词法作用域会导致性能下降，不推荐使用，因为js解释器编译阶段会对性能进行优化，而使用eval或者with会破坏解释器对作用域的管理规则，解释器怕出问题就不会再优化，所以性能下降。
 但仍然要了解下原理。
 自问自答  问：with是怎么欺骗（修改）词法作用域的呢？ 答：with可以接受一个对象作为参数，并凭空创建了一个全新的词法作用域，但这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到with所处的函数作用域中。  实例分析 function foo(obj) { with (obj) { a = 2; } } var o1 = { a: 3 }; foo(o1); console.log(o1.a); // 2  栈分析：
 第一步：调用with，with创建新的作用域，改变o1.a的值。
@@ -112,7 +139,7 @@ function foo() { var i; function bar(a) { i = 3; console.log(a + i); // 3, n个1
       
       <guid>http://hongliya.me/post/javascript_eval/</guid>
       <description>读书笔记《你不知道的JavaScript（上卷）》词法作用域。
-欺骗词法作用域会导致性能下降，不推荐使用。
+欺骗词法作用域会导致性能下降，不推荐使用，因为js解释器编译阶段会对性能进行优化，而使用eval或者with会破坏解释器对作用域的管理规则，解释器怕出问题就不会再优化，所以性能下降。
 但仍然要了解下原理。
 自问自答  问：eval是怎么欺骗（修改）词法作用域的呢？ 答：eval可以接受一个字符串作为参数，并将这个参数偷偷的放进词法作用域中，就好像写代码的时候它就在那里一样。举个例子：把eval比做一个超能力者，它可以修改一个人（名字叫A）的记忆，把一段别人的记忆插入到A的大脑中，让A以为这是自己的记忆。  实例分析 // 正常代码 function foo(str, a) { console.log(a, b); // 1, 2 } var b = 2; foo(&#39;var b = 3;&#39;, 1);  正常代码分析：
  console作用域   输出结果 1, 2    foo作用域   调用console.log(a, b) a = 1 str = &#39;var b = 3&#39;    全局作用域   调用foo(&#39;var b = 3;&#39;, 1) b = 2      参数&amp;rsquo;var b = 3;&amp;lsquo;并未改变任何作用域，只是作为一个普通的字符串参数传进去而已，打印下str仍然是字符串&amp;rsquo;var b = 3;&amp;lsquo;。</description>
