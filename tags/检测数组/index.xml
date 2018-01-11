@@ -24,9 +24,9 @@ var colors = [&#39;red&#39;]; if (colors instanceof Array) { // colors是数组 
 var colors = [&#39;red&#39;]; if (Array.isArray(colors)) { // colors是数组 }  Array.isArray()方法优于instanceof，因为Array.isArray()能检测iframes。
 支持Array.isArray的浏览器有IE9+、Safari5+、Firefox4+、Chrome。
 Polyfill 兼容尚未实现Array.isArray()方法的浏览器
-var colors = [&#39;red&#39;]; if (!Array.isArray) { if (isArray(colors)) { // colors是数组 } } // 低版本浏览器检测数组 function isArray(value) { return Object.prototype.toString().call(value) === &amp;quot;[Object Array]&amp;quot;; }  在任何值上调用Object原生的toString()方法都会返回一个[Object NativeConstructorName]格式的字符串。每个类在内部都有一个[[Class]]属性，这个属性就制定了上述字符串中的构造函数名。由于原声数组的构造函数与全局作用域无关，因此使用toString()就能保证返回一致的值，利用这一点就可以自定义上面的isArray函数来检测低版本浏览器的数组。
+var colors = [&#39;red&#39;]; if (!Array.isArray) { if (isArray(colors)) { // colors是数组 } } // 低版本浏览器检测数组 function isArray(value) { return Object.prototype.toString.call(value) === &amp;quot;[Object Array]&amp;quot;; }  在任何值上调用Object原生的toString()方法都会返回一个[Object NativeConstructorName]格式的字符串。每个类在内部都有一个[[Class]]属性，这个属性就制定了上述字符串中的构造函数名。由于原声数组的构造函数与全局作用域无关，因此使用toString()就能保证返回一致的值，利用这一点就可以自定义上面的isArray函数来检测低版本浏览器的数组。
 同样，也可以基于这一思路来检测某个值是不是原生函数或正则表达式：
-function isFunction(value) { return Object.prototype.toString().call(value) === &#39;[Object Function]&#39;; } function isRegExp(value) { return Object.</description>
+function isFunction(value) { return Object.prototype.toString.call(value) === &#39;[Object Function]&#39;; } function isRegExp(value) { return Object.</description>
     </item>
     
   </channel>

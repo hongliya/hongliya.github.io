@@ -120,7 +120,7 @@ if (!Array.isArray) {
 
 // 低版本浏览器检测数组
 function isArray(value) {
-    return Object.prototype.toString().call(value) === &quot;[Object Array]&quot;;
+    return Object.prototype.toString.call(value) === &quot;[Object Array]&quot;;
 }
 </code></pre>
 
@@ -129,25 +129,25 @@ function isArray(value) {
 <p>同样，也可以基于这一思路来检测某个值是不是原生函数或正则表达式：</p>
 
 <pre><code>function isFunction(value) {
-    return Object.prototype.toString().call(value) === '[Object Function]';
+    return Object.prototype.toString.call(value) === '[Object Function]';
 }
 
 function isRegExp(value) {
-    return Object.prototype.toString().call(value) === '[Object RegExp]';
+    return Object.prototype.toString.call(value) === '[Object RegExp]';
 }
 
 </code></pre>
 
 <p>其他类型：</p>
 
-<pre><code>Object.prototype.toString().call(null);             // &quot;[Object Null]&quot;
-Object.prototype.toString().call(undefined);        // &quot;[Object Undefined]&quot;
-Object.prototype.toString().call(NaN);              // &quot;[Object Number]&quot;
-Object.prototype.toString().call('123');            // &quot;[Object String]&quot;
-Object.prototype.toString().call(123);              // &quot;[Object Number]&quot;
-Object.prototype.toString().call(true);             // &quot;[Object Boolean]&quot;
-Object.prototype.toString().call({});               // &quot;[Object Object]&quot;
-Object.prototype.toString().call(/\d{1}/);          // &quot;[Object RegExp]&quot;
+<pre><code>Object.prototype.toString.call(null);             // &quot;[Object Null]&quot;
+Object.prototype.toString.call(undefined);        // &quot;[Object Undefined]&quot;
+Object.prototype.toString.call(NaN);              // &quot;[Object Number]&quot;
+Object.prototype.toString.call('123');            // &quot;[Object String]&quot;
+Object.prototype.toString.call(123);              // &quot;[Object Number]&quot;
+Object.prototype.toString.call(true);             // &quot;[Object Boolean]&quot;
+Object.prototype.toString.call({});               // &quot;[Object Object]&quot;
+Object.prototype.toString.call(/\d{1}/);          // &quot;[Object RegExp]&quot;
 </code></pre>
 
         
