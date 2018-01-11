@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：一道测试题 | 读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.me/post/javascript_this_1/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  
+  <link href="http://hongliya.me/index.xml" rel="alternate" type="application/rss+xml" title="读书笔记" />
+  <link href="http://hongliya.me/index.xml" rel="feed" type="application/rss+xml" title="读书笔记" />
+
+  
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8d77bcdcbb5ebf27e074aaa1b4c755af";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.me/">读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：一道测试题</h1>
+        <div class="meta">
+        2018-01-11 &nbsp;
+            
+            #<a href="/tags/this">this</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        <p>记录一道测试题</p>
+
+<p>下面代码运行结果是？（单选）</p>
+
+<pre><code>var x = [].reverse;
+x();
+</code></pre>
+
+<ol type="A">
+    <li>[]</li>
+    <li>undefined</li>
+    <li>error</li>
+    <li>window</li>
+</ol>
+
+<p>官方答案：D</p>
+
+<p>个人倾向选C</p>
+
+<p>解析：</p>
+
+<p>如果这道题考查的是this指向问题，参考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">MDN</a>对Array.prototype.reverse()的解释：</p>
+
+<blockquote>
+<p>The reverse method transposes the elements of the calling array object in place, mutating the array, and returning a reference to the array.</p>
+</blockquote>
+
+<p>Array.prototype.reverse() 最后会返回this指向的调用者，x()的执行环境是全局作用域，那么最后非严格模式下返回的是window，严格模式下返回的是undefined。</p>
+
+<p>单看运行结果，虽然Array.prototype.reverse返回this，但这个 代码片段的运行结果仍然会报错，测试了几个浏览器，全部报了TypeError错误。</p>
+
+<p>Chrome</p>
+
+<pre><code>var x = [].reverse;
+x(); // Uncaught TypeError: Array.prototype.reverse called on null or undefined at reverse (native)
+</code></pre>
+
+<p>Firefox</p>
+
+<pre><code>var x = [].reverse;
+x(); // TypeError: can't convert undefined to object
+</code></pre>
+
+<p>Safari</p>
+
+<pre><code>var x = [].reverse;
+x(); // TypeError: undefined is not an object (evaluating 'x()')
+</code></pre>
+
+<p>发现了一个变态测试题的链接<a href="http://javascript-puzzlers.herokuapp.com/">JavaScript Puzzlers!</a></p>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.me/post/javascript_isarray/" rel="prev">JavaScript：检测数组</a></span>
+    
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

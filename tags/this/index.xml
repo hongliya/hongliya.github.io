@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>This on 读书笔记</title>
+    <link>http://hongliya.me/tags/this/</link>
+    <description>Recent content in This on 读书笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.me/tags/this/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript：一道测试题</title>
+      <link>http://hongliya.me/post/javascript_this_1/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/javascript_this_1/</guid>
+      <description>记录一道测试题
+下面代码运行结果是？（单选）
+var x = [].reverse; x();  [] undefined error window  官方答案：D
+个人倾向选C
+解析：
+如果这道题考查的是this指向问题，参考MDN对Array.prototype.reverse()的解释：
+ The reverse method transposes the elements of the calling array object in place, mutating the array, and returning a reference to the array.
+ Array.prototype.reverse() 最后会返回this指向的调用者，x()的执行环境是全局作用域，那么最后非严格模式下返回的是window，严格模式下返回的是undefined。
+单看运行结果，虽然Array.prototype.reverse返回this，但这个 代码片段的运行结果仍然会报错，测试了几个浏览器，全部报了TypeError错误。
+Chrome
+var x = [].reverse; x(); // Uncaught TypeError: Array.prototype.reverse called on null or undefined at reverse (native)  Firefox
+var x = [].reverse; x(); // TypeError: can&#39;t convert undefined to object  Safari</description>
+    </item>
+    
+  </channel>
+</rss>
