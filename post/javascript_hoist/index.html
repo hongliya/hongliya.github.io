@@ -195,6 +195,44 @@ foo();                  // 2
 <li>要注意避免重复声明，尤其是当普通变量和函数声明混合在一起的时候，否则会引起很多危险的问题。</li>
 </ul>
 
+<h2 id="测试题">测试题</h2>
+
+<p>单选题：下面代码的运行结果是什么？</p>
+
+<pre><code>var name = &quot;world&quot;;
+(function() {
+    if (typeof name === 'undefined') {
+        var name = 'Jack';
+        console.log('GoogleBy: ' + name);
+    } else {
+        console.log('Hello: ' + name);
+    }
+})();
+</code></pre>
+
+<ol type="A">
+    <li>GoogleBy Jack</li>
+    <li>Hello Jack</li>
+    <li>Hello undefined</li>
+    <li>Hello world</li>
+</ol>
+
+<p>分析：题目考查变量提升，转换为更易理解的代码：</p>
+
+<pre><code>var name = &quot;world&quot;;
+(function() {
+    var name;
+    if (typeof name === 'undefined') {
+        name = 'Jack';
+        console.log('GoogleBy: ' + name);
+    } else {
+        console.log('Hello: ' + name);
+    }
+})();
+</code></pre>
+
+<p>答案：A</p>
+
         
         
     </article>
