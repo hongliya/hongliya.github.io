@@ -6,10 +6,27 @@
     <description>Recent content in Posts on 读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://hongliya.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript：null和undefined的区别</title>
+      <link>http://hongliya.me/post/javascript_null_undefined/</link>
+      <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/javascript_null_undefined/</guid>
+      <description>相同点 1.Null和Undefined都只有一个值
+ Null的值是null Undefined的值是undefined  2.参与判断的时候都返回false
+!null // true !undefined // true  3.Null和Undefined都没有自己的方法
+不同点 1.null是关键字，undefined不是关键字
+var null; // Uncaught SyntaxError: Unexpected token null var undefined; // undefined  2.声明一个变量但未初始化时，该变量的默认值是undefined，null是已经初始化的一个空对象的指针
+var a; // undefined var b = null; // null  3.typeof检测类型时，null会返回&amp;rdquo;object&amp;rdquo;，undefined会返回&amp;rdquo;undefined&amp;rdquo;
+typeof null; // &amp;quot;object&amp;quot; typeof undefined; // &amp;quot;undefined&amp;quot;  4.null转换成数字是0，undefined转换成数字是NaN
+Number(null); // 0 Number(undefined); // undefined  开发中的注意事项 1.声明变量时尽量初始化一个值（但不要初始化为undefined），因为使用typeof操作符检测声明未赋值的变量和未声明的变量返回的结果都是&amp;rdquo;undefined&amp;rdquo;。
+var a; typeof a; // &amp;quot;undefined&amp;quot; typeof b; // &amp;quot;undefined&amp;quot; 注意b并未声明  3.</description>
+    </item>
     
     <item>
       <title>JavaScript：一道测试题</title>

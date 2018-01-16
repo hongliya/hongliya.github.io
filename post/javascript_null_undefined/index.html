@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：null和undefined的区别 | 读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.me/post/javascript_null_undefined/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  
+  <link href="http://hongliya.me/index.xml" rel="alternate" type="application/rss+xml" title="读书笔记" />
+  <link href="http://hongliya.me/index.xml" rel="feed" type="application/rss+xml" title="读书笔记" />
+
+  
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8d77bcdcbb5ebf27e074aaa1b4c755af";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.me/">读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：null和undefined的区别</h1>
+        <div class="meta">
+        2018-01-16 &nbsp;
+            
+            #<a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        
+
+<h2 id="相同点">相同点</h2>
+
+<p>1.Null和Undefined都只有一个值</p>
+
+<ul>
+<li>Null的值是null</li>
+<li>Undefined的值是undefined</li>
+</ul>
+
+<p>2.参与判断的时候都返回false</p>
+
+<pre><code>!null           // true
+!undefined      // true
+</code></pre>
+
+<p>3.Null和Undefined都没有自己的方法</p>
+
+<h2 id="不同点">不同点</h2>
+
+<p>1.null是关键字，undefined不是关键字</p>
+
+<pre><code>var null;       // Uncaught SyntaxError: Unexpected token null
+var undefined;  // undefined
+</code></pre>
+
+<p>2.声明一个变量但未初始化时，该变量的默认值是undefined，null是已经初始化的一个空对象的指针</p>
+
+<pre><code>var a;          // undefined
+var b = null;   // null
+</code></pre>
+
+<p>3.typeof检测类型时，null会返回&rdquo;object&rdquo;，undefined会返回&rdquo;undefined&rdquo;</p>
+
+<pre><code>typeof null;        // &quot;object&quot;
+typeof undefined;   // &quot;undefined&quot;
+</code></pre>
+
+<p>4.null转换成数字是0，undefined转换成数字是NaN</p>
+
+<pre><code>Number(null);       // 0
+Number(undefined);  // undefined
+</code></pre>
+
+<h2 id="开发中的注意事项">开发中的注意事项</h2>
+
+<p>1.声明变量时尽量初始化一个值（但不要初始化为undefined），因为使用typeof操作符检测声明未赋值的变量和未声明的变量返回的结果都是&rdquo;undefined&rdquo;。</p>
+
+<pre><code>var a;
+typeof a; // &quot;undefined&quot;
+typeof b; // &quot;undefined&quot; 注意b并未声明
+</code></pre>
+
+<p>3.</p>
+
+<p>2.判断一个值是否存在时，可以使用 value == null，因为开发中一般后台返回数据如果没有值会返回null，但如果明确知道要判断的值是null或undefined还是用 ===。</p>
+
+<pre><code>var a;
+a == null;          // true
+</code></pre>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.me/post/javascript_this_1/" rel="prev">JavaScript：一道测试题</a></span>
+    
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
