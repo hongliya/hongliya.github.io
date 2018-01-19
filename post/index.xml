@@ -6,10 +6,22 @@
     <description>Recent content in Posts on 读书笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://hongliya.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript：数组去重的几种思路和方法</title>
+      <link>http://hongliya.me/post/javascript_unique/</link>
+      <pubDate>Wed, 17 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/javascript_unique/</guid>
+      <description>对下面数组进行去重
+var arr = [1,2,3,4,5,&#39;1&#39;,&#39;2&#39;,3,4,5,6,7,8,&#39;a&#39;,&#39;b&#39;];  双重循环+break 思路分析：
+ 创建一个空数组res，用来存放去重后的数组 使用两层for循环，外层for循环原始数组arr，内层for循环结果数组res，每次从原始数组arr中取出一个元素与结果数组res的每一项对比 如果原始数组arr中取出的元素和结果数组res中的元素相同，则使用break跳出内层循环，如果内层结束都没有发现相等元素就将其存放到结果数组中  代码实现：
+var arr = [1,2,3,4,5,&#39;1&#39;,&#39;2&#39;,3,4,5,6,7,8,&#39;a&#39;,&#39;b&#39;]; var res = []; for (var i = 0, arrLen = arr.length; i &amp;lt; arrLen; i++) { for (var j = 0, resLen = res.length; j &amp;lt; resLen; j++) { if (arr[i] === res[j]) { break; // 跳出内层循环 } } if (j === resLen) { res.push(arr[i]); } } console.log(res);  双重循环+标签+continue 思路分析：</description>
+    </item>
     
     <item>
       <title>JavaScript：null和undefined的区别</title>

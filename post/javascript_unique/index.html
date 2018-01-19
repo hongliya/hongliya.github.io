@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    JavaScript：数组去重的几种思路和方法 | 读书笔记
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hongliya.me/post/javascript_unique/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  
+  <link href="http://hongliya.me/index.xml" rel="alternate" type="application/rss+xml" title="读书笔记" />
+  <link href="http://hongliya.me/index.xml" rel="feed" type="application/rss+xml" title="读书笔记" />
+
+  
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8d77bcdcbb5ebf27e074aaa1b4c755af";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="http://hongliya.me/">读书笔记</a></h1>
+        <h2>记笔记的过程就是在思考</h2>
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+<main id="single" role="main">
+    <div class="article-header">
+        <h1>JavaScript：数组去重的几种思路和方法</h1>
+        <div class="meta">
+        2018-01-17 &nbsp;
+            
+            #<a href="/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D">数组去重</a>&nbsp;
+        
+        </div>
+    </div>
+    <article>
+        
+
+<p>对下面数组进行去重</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+</code></pre>
+
+<h2 id="双重循环-break">双重循环+break</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>使用两层for循环，外层for循环原始数组arr，内层for循环结果数组res，每次从原始数组arr中取出一个元素与结果数组res的每一项对比</li>
+<li>如果原始数组arr中取出的元素和结果数组res中的元素相同，则使用break跳出内层循环，如果内层结束都没有发现相等元素就将其存放到结果数组中</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = [];
+
+for (var i = 0, arrLen = arr.length; i &lt; arrLen; i++) {
+    for (var j = 0, resLen = res.length; j &lt; resLen; j++) {
+        if (arr[i] === res[j]) {
+            break; // 跳出内层循环
+        }
+    }
+    if (j === resLen) {
+        res.push(arr[i]);
+    }
+}
+console.log(res);
+</code></pre>
+
+<h2 id="双重循环-标签-continue">双重循环+标签+continue</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>使用两层for循环，对外层循环使用标签</li>
+<li>外层for循环原始数组arr，内层for循环结果数组res，每次从原始数组arr中取出一个元素与结果数组res的每一项对比</li>
+<li>如果原始数组arr中取出的元素和结果数组res中的元素相同，则使用continue跳出内层循环，继续执行外层循环，内层循环结束后没有发现相等的元素就其存放到结果数组中</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = [];
+
+outer:
+for (var i = 0, arrLen = arr.length; i &lt; arrLen; i++) {
+    for (var j = 0, resLen = res.length; j &lt; resLen; j++) {
+        if (arr[i] === res[j]) {
+            continue outer; // 跳出内层循环，继续外层循环
+        }
+    }
+    res.push(arr[i]);
+}
+console.log(res);
+</code></pre>
+
+<p>标签语句不太常用，虽然联用break、continue和label语句能够执行负责的操作，但如果使用过度，也会给调试带来麻烦，建议如果使用label语句，一定要使用描述性的标签，同时不要嵌套过多的循环。</p>
+
+<h2 id="双重循环-函数-return">双重循环+函数+return</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>使用两层for循环，但把内层循环封装为一个函数</li>
+<li>外层for循环原始数组arr，函数内的for循环结果数组res，每次从原始数组arr中取出一个元素传入函数中比较</li>
+<li>如果原始数组arr中取出的元素和结果数组res中的元素相同，函数就会return true，否则return false，根据函数返回的结果判读是否把元素push到res中</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = [];
+
+function isRepeat(value, array) {
+    for (var i = 0, len = array.length; i &lt; len; i++) {
+        if (value === array[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+for (var i = 0, arrLen = arr.length; i &lt; arrLen; i++) {
+    if (!isRepeat(arr[i], res)) {
+        res.push(arr[i]);
+    }
+}
+console.log(res);
+</code></pre>
+
+<p>js中有四大中断语句：break、continue、return、thorw，用法都不一样，break、continue一般用于中断for循环，return主要用户函数的返回值，throw用来抛出错误。</p>
+
+<h2 id="双重循环-标志位-布尔类型">双重循环+标志位（布尔类型）</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>使用两层for循环，在内层循环外面定义一个标志isPush，初始化为true，默认表示push</li>
+<li>外层for循环原始数组arr，函数内的for循环结果数组res，每次从原始数组arr中取出一个元素与内层循环的每一项对比</li>
+<li>如果原始数组arr中取出的元素和结果数组res中的元素相同，把标志置为false，然后break，退出内层循环</li>
+<li>根据标志位的值判断是否把元素push到res中</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = [];
+
+for (var i = 0, arrLen = arr.length; i &lt; arrLen; i++) {
+    var isPush = true;
+    for (var j = 0, resLen = res.length; j &lt; resLen; j++) {
+        if (arr[i] === res[j]) {
+            isPush = false;
+            break;
+        }
+    }
+    if (isPush) {
+        res.push(arr[i]);
+    }
+}
+console.log(res);
+</code></pre>
+
+<h2 id="双重循环-对比自身-改变循环控制下标-不推荐的写法">双重循环+对比自身+改变循环控制下标（不推荐的写法）</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>使用两层for循环，两层for循环都是循环自身</li>
+<li>外层for循环从i = 0开始，内层循环从j = i + 1开始，如果重复就跳过，不重复就push到res中</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = [];
+
+for (var i = 0, arrLen = arr.length; i &lt; arrLen; i++) {
+    for (var j = i + 1; j &lt; arrLen; j++) {
+        if (arr[i] === res[j]) {
+            j = ++i;
+        }
+    }
+    res.push(arr[i]);
+}
+console.log(res);
+</code></pre>
+
+<p>这段代码看似简短，实则不好理解，这里 j = ++i 的目的是为了终止循环，所有好的程序员都会避免这么做，不要为了终止循环而胡乱改动for循环的下标，即使你能不假思索的知道这一取之多少，下一个阅读代码的人也会在上面花费时间，更详细的解释可以参考《代码大全第二版》377页。</p>
+
+<h2 id="单层循环-splice-改变循环控制下标">单层循环+splice+改变循环控制下标</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>使用两层for循环，两层for循环都是循环自身</li>
+<li>外层for循环从i = 0开始，内层循环从j = i + 1开始，如果重复就把后面的重复元素删除，同时j减1</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+
+for (var i = 0, i &lt; arr.length; i++) {
+    for (var j = i + 1; j &lt; arr.length; j++) {
+        if (arr[i] === res[j]) {
+            arr.splice(j, 1);
+            j--;
+        }
+    }
+}
+console.log(arr);
+</code></pre>
+
+<p>这段代码好理解，但还是不推荐循环内部直接改变控制循环的下标。</p>
+
+<h2 id="排序-单层循环-改变循环控制下标">排序+单层循环+改变循环控制下标</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>先对数组进行排序，这样相同的值就会排在一起，然后下标从0开始，比较第i项和第i+1项，如果相等就删除第i项</li>
+<li>删除的同时把i-1</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+
+arr.sort(function(a, b) {
+    return a - b;
+});
+
+for (var i = 0, i &lt; arr.length; i++) {
+    if (arr[i] === arr[i+1]) {
+        arr.splice(i, 1);
+        i--;
+    }
+}
+console.log(arr);
+</code></pre>
+
+<h2 id="单层循环-对象">单层循环+对象</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>创建一个空对象，利用对象的属性名称不重复的特点，把数组中的每个元素一次作为对象的属性来实现去重</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var obj = {};
+var res = [];
+
+for (var i = 0, arrLen = arr.length; i &lt; arrLen; i++) {
+    if (!obj[arr[i]]) {
+        res.push(arr[i]);
+        obj.arr[i] = true;
+    }
+}
+console.log(res);
+</code></pre>
+
+<p>这里借助了对象属性不重复的特点来实现数组去重，其实也是利用了语言特性。</p>
+
+<h2 id="新函数代替老方法-es5的indexof-对比新数组">新函数代替老方法 ES5的indexOf()+对比新数组</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>利用indexOf()方法判断数组中是否有重复的值实现去重</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = [];
+
+for (var i = 0, i &lt; arr.length; i++) {
+    if (res.indexOf(arr[i]) === -1) {
+        res.push(arr[i]);
+    }
+}
+console.log(res);
+</code></pre>
+
+<h2 id="新函数代替老方法-es5的indexof-foreach-对比自身">新函数代替老方法 ES5的indexOf()+forEach()+对比自身</h2>
+
+<p>思路分析：</p>
+
+<ul>
+<li>创建一个空数组res，用来存放去重后的数组</li>
+<li>利用indexOf()方法判断数组中是否有重复的值实现去重</li>
+</ul>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = [];
+
+arr.forEach(function(v, i){
+    if (arr.indexOf(v, i+1) === -1) {
+        res.push(arr[i]);
+    }
+});
+console.log(res);
+</code></pre>
+
+<h2 id="使用新函数代替老方法-es6的set">使用新函数代替老方法 ES6的set</h2>
+
+<p>代码实现：</p>
+
+<pre><code>var arr = [1,2,3,4,5,'1','2',3,4,5,6,7,8,'a','b'];
+var res = Array.form(new Set(arr));
+console.log(res);
+</code></pre>
+
+<p>ES5和ES6都提供了函数很方便使用，这跟调用其他库也没什么区别的，开发中适合这么用，但基本思路应该熟练掌握。</p>
+
+<h2 id="总结">总结</h2>
+
+<ul>
+<li>有很多种方法可以实现数组出重，但思路是相同的，ES5和ES6提供了更好用的函数来实现去重，开发中我们可以直接使用</li>
+<li>数组去重思路一是创建一个新数组，老数组和新数组进行对比，最后得到的结果保存在新数组中，老数组不变</li>
+<li>数组去重思路二是对数组本身进行操作，循环对比数组中的第i项和第i+1项，最后得到不重复的数组</li>
+<li>数组去重思路三是借助对象的不重复特点，把数组的每一项作为对象的属性实现去重</li>
+</ul>
+
+        
+        
+    </article>
+    
+
+
+</main>
+
+<nav class="pagination-single">
+    
+        <span class="previous">&larr; <a href="http://hongliya.me/post/javascript_null_undefined/" rel="prev">JavaScript：null和undefined的区别</a></span>
+    
+    
+</nav>
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>

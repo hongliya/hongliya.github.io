@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://hongliya.me/post/javascript_unique/</loc>
+    <lastmod>2018-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://hongliya.me/post/javascript_null_undefined/</loc>
     <lastmod>2018-01-16T00:00:00+00:00</lastmod>
   </url>
@@ -143,7 +148,7 @@
   
   <url>
     <loc>http://hongliya.me/categories/javascript/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -197,7 +202,7 @@
   
   <url>
     <loc>http://hongliya.me/post/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -280,6 +285,12 @@
   </url>
   
   <url>
+    <loc>http://hongliya.me/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</loc>
+    <lastmod>2018-01-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://hongliya.me/tags/%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84/</loc>
     <lastmod>2018-01-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -287,7 +298,7 @@
   
   <url>
     <loc>http://hongliya.me/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
