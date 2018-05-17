@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://hongliya.me/post/vue_environment/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://hongliya.me/post/javascript_unique/</loc>
     <lastmod>2018-01-17T00:00:00+00:00</lastmod>
   </url>
@@ -202,7 +207,7 @@
   
   <url>
     <loc>http://hongliya.me/post/</loc>
-    <lastmod>2018-01-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -233,6 +238,18 @@
   <url>
     <loc>http://hongliya.me/categories/tools/</loc>
     <lastmod>2015-05-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://hongliya.me/tags/vue/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://hongliya.me/categories/vue/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -298,7 +315,7 @@
   
   <url>
     <loc>http://hongliya.me/</loc>
-    <lastmod>2018-01-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

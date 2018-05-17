@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vue on 笔记</title>
+    <link>http://hongliya.me/tags/vue/</link>
+    <description>Recent content in Vue on 笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.me/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vue: Mac下Vue2.0环境配置</title>
+      <link>http://hongliya.me/post/vue_environment/</link>
+      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/vue_environment/</guid>
+      <description>一、安装Homebrew Homebrew是Mac系统下的软件包管理工具，用以简化Mac系统上的软件安装过程，相当于linux下的apt-get。
+Homebrew的安装很简单，打开终端输入如下指令：
+/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  安装完成后就可以在命令行状态中使用brew命令了，可以用brew help命令查看帮助，一些常见命令：
+brew -v // 查看版本 brew install 软件名 // 安装软件 brew search 软件名 // 搜索软件 brew uninstall 软件名 // 卸载软件 brew upgrade 软件名 // 更新具体软件 brew list // 显示已安装软件 brew info 软件名 // 查看软件信息 brew home 软件名 // 用浏览器打开官网网页查看软件信息 brew outdated // 查看哪些已经安装的软件需要更新 brew update // 更新所有软件，需要先安装git  二、安装Node.js Node.js是一个JavaScript的运行环境，使得JavaScript代码能够在服务器端运行，跨平台。Node.js使得程序可以脱离Apache或者IIS，作为独立的服务器运行。
+输入命令安装
+brew install nodejs  三、安装淘宝镜像 根据国情，很多资源在局域网里访问不了，于是淘宝提供了一个资源站，把外网的一些东西下载好放到该资源站上，这样我们就可以下载，这就是镜像。也可以不装，直接用npm，看自己情况。
+npm install -g cnpm --registry=https://registry.</description>
+    </item>
+    
+  </channel>
+</rss>

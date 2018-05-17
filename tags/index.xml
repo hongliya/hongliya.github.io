@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 读书笔记</title>
+    <title>Tags on 笔记</title>
     <link>http://hongliya.me/tags/</link>
-    <description>Recent content in Tags on 读书笔记</description>
+    <description>Recent content in Tags on 笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 24 Jul 2015 00:00:00 +0000</lastBuildDate>
@@ -116,6 +116,15 @@
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>http://hongliya.me/tags/this/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>http://hongliya.me/tags/vue/</link>
+      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/tags/vue/</guid>
       <description></description>
     </item>
     
