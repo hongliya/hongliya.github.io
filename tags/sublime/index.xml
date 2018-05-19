@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sublime on 笔记</title>
+    <title>Sublime on Sugar Note</title>
     <link>http://hongliya.me/tags/sublime/</link>
-    <description>Recent content in Sublime on 笔记</description>
+    <description>Recent content in Sublime on Sugar Note</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 May 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://hongliya.me/tags/sublime/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tools: 自定义sublime代码片段</title>
+      <link>http://hongliya.me/post/tools_sublime_snippet/</link>
+      <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/tools_sublime_snippet/</guid>
+      <description>重装了编辑器，记录下配置代码片段过程。
+Sublime Snippets  打开sublime text 工具栏选择Tools -&amp;gt; Developer -&amp;gt; New Snippet，默认出现如下代码  &amp;lt;snippet&amp;gt; &amp;lt;content&amp;gt;&amp;lt;![CDATA[ Hello, ${1:this} is a ${2:snippet}. ]]&amp;gt;&amp;lt;/content&amp;gt; &amp;lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&amp;gt; &amp;lt;!-- &amp;lt;tabTrigger&amp;gt;hello&amp;lt;/tabTrigger&amp;gt; --&amp;gt; &amp;lt;!-- Optional: Set a scope to limit where the snippet will trigger --&amp;gt; &amp;lt;!-- &amp;lt;scope&amp;gt;source.python&amp;lt;/scope&amp;gt; --&amp;gt; &amp;lt;!-- &amp;lt;description&amp;gt;my snippet&amp;lt;/description&amp;gt; --&amp;gt; &amp;lt;/snippet&amp;gt;  代码解释：
+&amp;lt;snippet&amp;gt; &amp;lt;!-- content标签里面是Snippet的内容 --&amp;gt; &amp;lt;!-- ${} 是指生成片段后，tab键可以选中的内容，${1:}是第一个，${2:}是第二个，以此类推 --&amp;gt; &amp;lt;content&amp;gt;&amp;lt;![CDATA[ Hello, ${1:this} is a ${2:snippet}.</description>
+    </item>
     
     <item>
       <title>Tools: sublime冒号后缩进问题</title>

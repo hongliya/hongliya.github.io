@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 笔记</title>
+    <title>Tags on Sugar Note</title>
     <link>http://hongliya.me/tags/</link>
-    <description>Recent content in Tags on 笔记</description>
+    <description>Recent content in Tags on Sugar Note</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 24 Jul 2015 00:00:00 +0000</lastBuildDate>
@@ -95,7 +95,7 @@
     <item>
       <title>Sublime</title>
       <link>http://hongliya.me/tags/sublime/</link>
-      <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
       
       <guid>http://hongliya.me/tags/sublime/</guid>
       <description></description>

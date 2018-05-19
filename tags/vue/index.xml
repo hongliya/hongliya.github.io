@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vue on 笔记</title>
+    <title>Vue on Sugar Note</title>
     <link>http://hongliya.me/tags/vue/</link>
-    <description>Recent content in Vue on 笔记</description>
+    <description>Recent content in Vue on Sugar Note</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Mar 2018 00:00:00 +0000</lastBuildDate>
