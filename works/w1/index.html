@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>外卖价格计算器</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+        }
+        .takeout-wrapper {
+            max-width: 400px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .form-group .label {
+        }
+        .form-group .input {
+            background: none;
+            border: none;
+            height: 34px;
+            display: block;
+            width: 100%;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            font-size: 16px;
+            padding: 8px;
+        }
+        .form-group .button {
+            width: 100%;
+            background: none;
+            border: none;
+            font-size: 16px;
+            text-align: center;
+            border: 1px solid #01b9ff;
+            border-radius: 4px;
+            height: 34px;
+            line-height: 34px;
+            background-color: #01b9ff;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+            transition: all .4s ease;
+            -webkit-transition: all .4s ease;
+        }
+        .form-group .button:hover {
+            background-color: #0097d0;
+        }
+        .price {
+            color: red;
+            font-weight: bold;
+        }
+        .takeout-result {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="takeout-wrapper">
+        <form>
+            <div class="form-group">
+                <label class="label">我的总价（元）：</label>
+                <input id="myCost" class="input" type="number" value="0" min="0" />
+            </div>
+            <div class="form-group">
+                <label class="label">点餐人数：</label>
+                <input id="takeoutNum" class="input" type="number" value="1" min="1" />
+            </div>
+            <div class="form-group">
+                <label class="label">打包盒（元）：</label>
+                <input id="packCost" class="input" type="number" value="0" min="0" />
+            </div>
+            <div  class="form-group">
+                <label class="label">配送费（元）：</label>
+                <input id="freightCost" class="input" type="number" value="0" min="0" />
+            </div>
+            <div  class="form-group">
+                <label class="label">其他费用（元）：</label>
+                <input id="otherCost" class="input" type="number" value="0" min="0" />
+            </div>
+            <div  class="form-group">
+                <label class="label">店铺优惠（元）：</label>
+                <input id="shopDiscount" class="input" type="number" value="0" min="0" />
+            </div>
+            <div  class="form-group">
+                <label class="label">红包优惠（元）：</label>
+                <input id="redPacketDiscount" class="input" type="number" value="0" min="0" />
+            </div>
+            <div  class="form-group">
+                <label class="label">其他优惠（元）：</label>
+                <input id="otherDiscount" class="input" type="number" value="0" min="0" />
+            </div>
+            <div  class="form-group">
+                <button id="computeBtn" class="button" type="button">计算</button>
+            </div>
+        </form>
+
+        <div id="takeoutRes" class="takeout-result">
+            <h2 id="message"></h2>
+            <p>
+                <span id="disMsg"></span>
+                <span id="discount" class="price"></span> 元
+            </p>
+            <p>
+                <span>我应付</span>
+                <span id="pay" class="price"></span> 元</p>
+        </div>
+    </div>
+
+    <script>
+        function G(id) {
+            return document.getElementById(id);
+        }
+
+        G('computeBtn').onclick = function() {
+
+            var packCost = Number(G('packCost').value);
+            var freightCost = Number(G('freightCost').value);
+            var otherCost = Number(G('otherCost').value);
+            var costTotal = packCost + freightCost + otherCost;
+
+            var shopDiscount = Number(G('shopDiscount').value);
+            var redPacketDiscount = Number(G('redPacketDiscount').value);
+            var otherDiscount = Number(G('otherDiscount').value);
+            var discountTotal = shopDiscount + redPacketDiscount + otherDiscount;
+
+            var myCost = Number(G('myCost').value);
+            var takeoutNum = Number(G('takeoutNum').value);
+            if (takeoutNum === 0) {
+                takeoutNum = 1;
+            }
+
+            var message = G('message');
+            var disMsg = G('disMsg');
+            var discount = G('discount');
+            var pay = G('pay');
+
+            var res = discountTotal - costTotal;
+            var price = Number((Math.abs(res) / takeoutNum).toFixed(2));
+            console.log(price);
+
+            if (res > 0) {
+                message.innerHTML = '恭喜，省钱了!';
+                disMsg.innerHTML = '每人优惠';
+                discount.innerHTML = price;
+                pay.innerHTML = myCost - price;
+                if (myCost - price < 0) {
+                    message.innerHTML = '撞大运了，吃饭不花钱!';
+                    pay.innerHTML = 0;
+                }
+            } else if (res < 0) {
+                message.innerHTML = '抱歉，得倒贴钱!';
+                disMsg.innerHTML = '每人倒贴';
+                discount.innerHTML = price;
+                pay.innerHTML = myCost + price;
+            } else {
+                message.innerHTML = '还行吧，不赔不赚！';
+                disMsg.innerHTML = '每人优惠';
+                discount.innerHTML = 0;
+                pay.innerHTML = myCost;
+            }
+
+            G('takeoutRes').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
