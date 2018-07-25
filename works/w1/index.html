@@ -154,7 +154,7 @@
                 message.innerHTML = '恭喜，省钱了!';
                 disMsg.innerHTML = '每人优惠';
                 discount.innerHTML = price;
-                pay.innerHTML = myCost - price;
+                pay.innerHTML = Math.round(myCost - price);
                 if (myCost - price < 0) {
                     message.innerHTML = '撞大运了，吃饭不花钱!';
                     pay.innerHTML = 0;
@@ -163,12 +163,12 @@
                 message.innerHTML = '抱歉，得倒贴钱!';
                 disMsg.innerHTML = '每人倒贴';
                 discount.innerHTML = price;
-                pay.innerHTML = myCost + price;
+                pay.innerHTML = Math.round(myCost + price);
             } else {
                 message.innerHTML = '还行吧，不赔不赚！';
                 disMsg.innerHTML = '每人优惠';
                 discount.innerHTML = 0;
-                pay.innerHTML = myCost;
+                pay.innerHTML = Math.round(myCost);
             }
 
             G('takeoutRes').style.display = 'block';
