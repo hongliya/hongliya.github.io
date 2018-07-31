@@ -1,0 +1,59 @@
+/*
+* @Author: 几只猫
+* @Date:   2018-07-31 20:48:20
+* @Last Modified by:   Administrator
+* @Last Modified time: 2018-07-31 21:44:49
+*/
+
+
+/* 盒模型 */
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+
+/* 清除浮动 */
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after {
+    content: '\200B';
+    clear: both;
+    display: block;
+    height: 0;
+}
+
+
+/* 链接样式 */
+
+a:link {
+    color: #5c9fd8;
+    transition: color .3s linear;
+}
+
+a:visited {}
+
+a:hover {
+    color: #ffc601;
+    text-decoration: none;
+}
+
+a:active {}
+
+
+/* 文字超出显示省略号 */
+
+.text-overflow {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    white-space: nowrap;
+}
