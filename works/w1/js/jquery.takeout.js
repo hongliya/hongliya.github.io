@@ -32,6 +32,7 @@
      * @return {[type]} [description]
      */
     TakeOut.prototype.toArray = function(str) {
+        str = str.replace(/，/g, ',');
         return str.split(',');
     };
 
@@ -68,7 +69,7 @@
         var dTotal = this.discountTotal(obj);
         // 总花费（打包盒+配送费+其他费用）
         var cTotal = this.costTotal(obj);
-        var res = (dTotal - cTotal) / obj.numbers;
+        var res = this.getFloat((dTotal - cTotal) / obj.numbers, 1);
         var resMsg = '';
         if (res > 0) {
             resMsg = '恭喜，省钱了！';
@@ -105,7 +106,8 @@
         }
         this.options.resList.html(str);
         var random = this.getRandom(0, obj.numbers-1) || 0;
-        this.options.who.html(obj.names[random] + '大佬');
+        var who = obj.names[random] || 'xxx';
+        this.options.who.html(who + '大佬');
     };
 
     /**
