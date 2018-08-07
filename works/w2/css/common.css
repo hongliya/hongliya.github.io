@@ -1,16 +1,16 @@
 /*
-* @Author: 几只猫
+* @Author: 有猫的程序员
 * @Date:   2018-07-31 20:48:20
-* @Last Modified by:   Administrator
-* @Last Modified time: 2018-07-31 21:44:49
+* @Last Modified by:   有猫的程序员
+* @Last Modified time: 2018-08-07 15:54:17
 */
 
 
 /* 盒模型 */
 
 *,
-*:after,
-*:before {
+*::after,
+*::before {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

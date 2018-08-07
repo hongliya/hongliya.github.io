@@ -4,175 +4,99 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title>外卖价格计算器</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        *,
-        *:after,
-        *:before {
-            box-sizing: border-box;
-        }
-        .takeout-wrapper {
-            max-width: 400px;
-            padding: 20px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .form-group .label {
-        }
-        .form-group .input {
-            background: none;
-            border: none;
-            height: 34px;
-            display: block;
-            width: 100%;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            font-size: 16px;
-            padding: 8px;
-        }
-        .form-group .button {
-            width: 100%;
-            background: none;
-            border: none;
-            font-size: 16px;
-            text-align: center;
-            border: 1px solid #01b9ff;
-            border-radius: 4px;
-            height: 34px;
-            line-height: 34px;
-            background-color: #01b9ff;
-            color: #fff;
-            cursor: pointer;
-            outline: none;
-            transition: all .4s ease;
-            -webkit-transition: all .4s ease;
-        }
-        .form-group .button:hover {
-            background-color: #0097d0;
-        }
-        .price {
-            color: red;
-            font-weight: bold;
-        }
-        .takeout-result {
-            display: none;
-        }
-    </style>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/takeout.css" />
 </head>
+
 <body>
     <div class="takeout-wrapper">
-        <form>
-            <div class="form-group">
-                <label class="label">我的总价（元）：</label>
-                <input id="myCost" class="input" type="number" value="" min="0" placeholder="0" />
+        <div class="left">
+            <form id="takeOutForm">
+                <div class="form-group">
+                    <label class="label">姓名：</label>
+                    <input class="input" type="text" name="names" value="闫飞,新磊,艳美,游鑫,利亚" placeholder="" />
+                    <small>多个姓名用英文逗号隔开，姓名和价格对应</small>
+                </div>
+                <div class="form-group">
+                    <label class="label">个人总价（元）：</label>
+                    <input class="input" type="text" name="totals" value="" placeholder="0" />
+                    <small>多个价格用英文逗号隔开</small>
+                </div>
+                <div class="form-group">
+                    <label class="label">点餐人数：</label>
+                    <input class="input" type="number" name="numbers" value="" min="1" placeholder="1" />
+                </div>
+                <div class="form-group">
+                    <label class="label">打包盒（元）：</label>
+                    <input class="input" type="number" name="packingCost" value="" min="0" placeholder="0" />
+                </div>
+                <div  class="form-group">
+                    <label class="label">配送费（元）：</label>
+                    <input class="input" type="number" name="deliveryCost" value="" min="0" placeholder="0" />
+                </div>
+                <div  class="form-group">
+                    <label class="label">其他费用（元）：</label>
+                    <input class="input" type="number" name="extraCost" value="" min="0" placeholder="0" />
+                </div>
+                <div  class="form-group">
+                    <label class="label">店铺优惠（元）：</label>
+                    <input class="input" type="number" name="restaurantDiscount" value="" min="0" placeholder="0" />
+                </div>
+                <div  class="form-group">
+                    <label class="label">红包优惠（元）：</label>
+                    <input class="input" type="number" name="luckDiscount" value="" min="0" placeholder="0" />
+                </div>
+                <div  class="form-group">
+                    <label class="label">其他优惠（元）：</label>
+                    <input class="input" type="number" name="extraDiscount" value="" min="0" placeholder="0" />
+                </div>
+                <div  class="form-group">
+                    <button id="computeBtn" class="button" type="button">计算</button>
+                </div>
+            </form>
+        </div>
+        <div id="resWrapper" class="right">
+            <div class="takeout-result">
+                <div id="resMsg" class="res-wrapper">
+                    <div class="title">优惠情况</div>
+                    <div class="content">
+                        <h2>恭喜，省钱了！</h2>
+                        <p>
+                            <span>每人优惠</span>
+                            <span class="price">0</span> 元
+                        </p>
+                    </div>
+                </div>
+                <div class="res-wrapper">
+                    <div class="title">详细账单</div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>原价（元）</th>
+                                    <th>折后（元）</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resList"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="res-wrapper">
+                    <div class="title">谁去拿外卖<small>（随机生成）</small></div>
+                    <div class="content">
+                        <p id="who" class="font40"></p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="label">点餐人数：</label>
-                <input id="takeoutNum" class="input" type="number" value="" min="1" placeholder="0" />
-            </div>
-            <div class="form-group">
-                <label class="label">打包盒（元）：</label>
-                <input id="packCost" class="input" type="number" value="" min="0" placeholder="0" />
-            </div>
-            <div  class="form-group">
-                <label class="label">配送费（元）：</label>
-                <input id="freightCost" class="input" type="number" value="" min="0" placeholder="0" />
-            </div>
-            <div  class="form-group">
-                <label class="label">其他费用（元）：</label>
-                <input id="otherCost" class="input" type="number" value="" min="0" placeholder="0" />
-            </div>
-            <div  class="form-group">
-                <label class="label">店铺优惠（元）：</label>
-                <input id="shopDiscount" class="input" type="number" value="" min="0" placeholder="0" />
-            </div>
-            <div  class="form-group">
-                <label class="label">红包优惠（元）：</label>
-                <input id="redPacketDiscount" class="input" type="number" value="" min="0" placeholder="0" />
-            </div>
-            <div  class="form-group">
-                <label class="label">其他优惠（元）：</label>
-                <input id="otherDiscount" class="input" type="number" value="" min="0" placeholder="0" />
-            </div>
-            <div  class="form-group">
-                <button id="computeBtn" class="button" type="button">计算</button>
-            </div>
-        </form>
-
-        <div id="takeoutRes" class="takeout-result">
-            <h2 id="message"></h2>
-            <p>
-                <span id="disMsg"></span>
-                <span id="discount" class="price"></span> 元
-            </p>
-            <p>
-                <span>我应付</span>
-                <span id="pay" class="price"></span> 元</p>
         </div>
     </div>
 
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.takeout.js"></script>
     <script>
-        function G(id) {
-            return document.getElementById(id);
-        }
 
-        G('computeBtn').onclick = function() {
-
-            var packCost = Number(G('packCost').value);
-            var freightCost = Number(G('freightCost').value);
-            var otherCost = Number(G('otherCost').value);
-            var costTotal = packCost + freightCost + otherCost;
-
-            var shopDiscount = Number(G('shopDiscount').value);
-            var redPacketDiscount = Number(G('redPacketDiscount').value);
-            var otherDiscount = Number(G('otherDiscount').value);
-            var discountTotal = shopDiscount + redPacketDiscount + otherDiscount;
-
-            var myCost = Number(G('myCost').value);
-            var takeoutNum = Number(G('takeoutNum').value);
-            if (takeoutNum === 0) {
-                takeoutNum = 1;
-            }
-
-            var message = G('message');
-            var disMsg = G('disMsg');
-            var discount = G('discount');
-            var pay = G('pay');
-
-            var res = discountTotal - costTotal;
-            var price = Number((Math.abs(res) / takeoutNum).toFixed(2));
-            console.log(price);
-
-            if (res > 0) {
-                message.innerHTML = '恭喜，省钱了!';
-                disMsg.innerHTML = '每人优惠';
-                discount.innerHTML = price;
-                pay.innerHTML = (myCost - price).toFixed(1);
-                if (myCost - price < 0) {
-                    message.innerHTML = '撞大运了，吃饭不花钱!';
-                    pay.innerHTML = 0;
-                }
-            } else if (res < 0) {
-                message.innerHTML = '抱歉，得倒贴钱!';
-                disMsg.innerHTML = '每人倒贴';
-                discount.innerHTML = price;
-                pay.innerHTML = (myCost + price).toFixed(1);
-            } else {
-                message.innerHTML = '还行吧，不赔不赚！';
-                disMsg.innerHTML = '每人优惠';
-                discount.innerHTML = 0;
-                pay.innerHTML = (myCost).toFixed(1);
-            }
-
-            G('takeoutRes').style.display = 'block';
-        };
     </script>
 </body>
 </html>
