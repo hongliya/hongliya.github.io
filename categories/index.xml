@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Sugar Note</title>
+    <title>Categories on 有猫的程序员</title>
     <link>http://hongliya.me/categories/</link>
-    <description>Recent content in Categories on Sugar Note</description>
+    <description>Recent content in Categories on 有猫的程序员</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -22,7 +22,7 @@
     <item>
       <title>Html</title>
       <link>http://hongliya.me/categories/html/</link>
-      <pubDate>Mon, 27 Mar 2017 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>http://hongliya.me/categories/html/</guid>
       <description></description>
