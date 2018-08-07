@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Html on 有猫的程序员</title>
+    <link>http://hongliya.me/tags/html/</link>
+    <description>Recent content in Html on 有猫的程序员</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hongliya.me/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTML:HTML标准模板</title>
+      <link>http://hongliya.me/post/html_template/</link>
+      <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://hongliya.me/post/html_template/</guid>
+      <description>HTML标准模版
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;zh-CN&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot; /&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;quot; /&amp;gt; &amp;lt;title&amp;gt;HTML标准模版&amp;lt;/title&amp;gt; &amp;lt;!-- css文件 --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;文件路径图&amp;quot; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;!-- js文件 --&amp;gt; &amp;lt;script src=&amp;quot;文件路径&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  代码解析：
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;quot; /&amp;gt;  上述代码表示：强制文档的宽度与设备宽度一致，且不允许用户单击屏幕放大浏览。</description>
+    </item>
+    
+  </channel>
+</rss>
