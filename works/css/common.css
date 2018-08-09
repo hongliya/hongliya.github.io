@@ -1,0 +1,49 @@
+/*
+* @Author: 有猫的程序员
+* @Date:   2018-08-09 15:32:45
+* @Last Modified by:   有猫的程序员
+* @Last Modified time: 2018-08-09 15:33:15
+*/
+
+a:hover {
+    text-decoration: none;
+}
+
+header {
+    height: 60px;
+    color: #fff;
+    background: #555;
+    text-align: center;
+}
+
+header h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    line-height: 60px;
+}
+
+header h1 a {
+    color: inherit;
+}
+
+.page {
+    padding: 20px;
+    width: 640px;
+    margin: 0 auto;
+}
+
+.page li {
+    border-bottom: 1px dotted #ddd;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.page a {
+    display: block;
+    padding: 10px;
+}
+
+.page a:hover {
+    color: orange;
+}
