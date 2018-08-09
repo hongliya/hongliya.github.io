@@ -1,0 +1,75 @@
+/*
+* @Author: 有猫的程序员
+* @Date:   2018-08-09 15:49:41
+* @Last Modified by:   有猫的程序员
+* @Last Modified time: 2018-08-09 16:52:49
+*/
+.page-wrapper {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.label1 {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+.label1:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    border-top: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 8px solid #fff;
+    border-left: 20px solid transparent;
+}
+
+.label2 {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    width: 160px;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 14px;
+}
+.label2:before,
+.label2:after {
+    position: absolute;
+    content: '';
+}
+.label2:before {
+    left: 2px;
+    bottom: -4px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: red;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+.label2:after {
+    width: 20px;
+    height: 30px;
+    background-color: red;
+    top: 0;
+    right: -10px;
+    transform: skew(30deg,0);
+    -webkit-transform: skew(30deg,0);
+    -moz-transform: skew(30deg,0);
+    -o-transform: skew(30deg,0);
+    -ms-transform: skew(30deg,0);
+    transform: skew(30deg,0);
+}
