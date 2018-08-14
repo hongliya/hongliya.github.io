@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>展开全部</title>
+    <style>
+        .highlight {
+            color: red;
+        }
+        .highlight a {
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-sub">
+        <ul>
+            <li>
+                <a href="#">狸花</a>
+                <i>（12）</i>
+            </li>
+            <li>
+                <a href="#">布偶</a>
+                <i>（23）</i>
+            </li>
+            <li>
+                <a href="#">三花</a>
+                <i>（11）</i>
+            </li>
+            <li>
+                <a href="#">英短</a>
+                <i>（34）</i>
+            </li>
+            <li>
+                <a href="#">美短</a>
+                <i>（21）</i>
+            </li>
+            <li>
+                <a href="#">暹罗</a>
+                <i>（33）</i>
+            </li>
+            <li>
+                <a href="#">薮猫</a>
+                <i>（45）</i>
+            </li>
+            <li>
+                <a href="#">老虎</a>
+                <i>（44）</i>
+            </li>
+            <li>
+                <a href="#">豹子</a>
+                <i>（16）</i>
+            </li>
+            <li>
+                <a href="#">吉娃娃</a>
+                <i>（123）</i>
+            </li>
+            <li>
+                <a href="#">斗牛犬</a>
+                <i>（93）</i>
+            </li>
+            <li>
+                <a href="#">德牧</a>
+                <i>（73）</i>
+            </li>
+            <li>
+                <a href="#">泰迪</a>
+                <i>（63）</i>
+            </li>
+            <li>
+                <a href="#">北极熊</a>
+                <i>（123）</i>
+            </li>
+            <li>
+                <a href="#">鸵鸟</a>
+                <i>（13）</i>
+            </li>
+            <li>
+                <a href="#">其他</a>
+                <i>（1235）</i>
+            </li>
+        </ul>
+        <div class="showmore">
+            <a href="#">
+                <span>显示全部</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        /**
+         * jquery
+         */
+        $(function() {
+            var $list = $('ul li:gt(7):not(:last)');
+            $list.hide();
+            var $toggleBtn = $('div.showmore > a');
+            $toggleBtn.click(function() {
+                if ($list.is(':visible')) {
+                    $list.hide();
+                    $(this).find('span').text('显示全部');
+                    $('ul li').removeClass('highlight');
+                } else {
+                    $list.show();
+                    $(this).find('span').text('收起');
+                    $('ul li').filter(':contains("三花"), :contains("北极熊")').addClass('highlight');
+                }
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

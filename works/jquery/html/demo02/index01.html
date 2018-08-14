@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jquery操作DOM</title>
+    <style>
+        div {
+            padding: 20px;
+            border: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p title="选择你最喜欢的动物">你最喜欢的动物是？</p>
+        <ul>
+            <li title="猫">猫</li>
+            <li title="狗">狗</li>
+            <li title="猪">猪</li>
+        </ul>
+    </div>
+
+    <div>
+        <input id="email" type="text" value="请输入邮箱地址" />
+    </div>
+
+    <div>
+        <select id="single">
+            <option>选项1</option>
+            <option>选项2</option>
+            <option>选项3</option>
+        </select>
+    </div>
+
+    <div>
+        <select id="multiple" multiple="multiple">
+            <option selected>选项1</option>
+            <option>选项2</option>
+            <option>选项3</option>
+            <option selected>选项4</option>
+        </select>
+    </div>
+
+    <div>
+        <input type="checkbox" value="check1">check1
+        <input type="checkbox" value="check2">check2
+        <input type="checkbox" value="check3">check3
+        <input type="checkbox" value="check4">check4
+    </div>
+
+    <div>
+        <input type="radio" name="radio" value="radio1">radio1
+        <input type="radio" name="radio" value="radio2">radio2
+        <input type="radio" name="radio" value="radio3">radio3
+        <input type="radio" name="radio" value="radio4">radio4
+    </div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        /**
+         * jquery
+         */
+        $(function() {
+            var $li = $('ul li:eq(1)');
+            var liText = $li.text();
+            console.log(liText);
+
+            var $para = $('p');
+            var pText = $para.attr('title');
+            console.log(pText);
+
+            var $li1 = $('<li title="鹦鹉">鹦鹉</li>');
+            var $li2 = $('<li title="猫头鹰">猫头鹰</li>');
+            $('ul').append($li1);
+            $('ul').append($li2);
+
+            $('#email').focus(function() {
+                var txtValue = $(this).val();
+                if (txtValue === this.defaultValue) {
+                    $(this).val('');
+                }
+            });
+            $('#email').blur(function() {
+                var txtValue = $(this).val();
+                if (txtValue === '') {
+                    $(this).val(this.defaultValue);
+                }
+            });
+
+            $('#single').val('选项3');
+            $('#multiple').val(['选项2', '选项3']);
+            $(':checkbox').val(['check2', 'check3']);
+            // $(':radio').val(['radio2']);
+            $('[value="radio3"]:radio').attr('checked', true);
+        });
+    </script>
+</body>
+</html>

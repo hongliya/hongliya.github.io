@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jquery操作DOM-children</title>
+    <style>
+        div {
+            padding: 20px;
+            border: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <p title="选择你最喜欢的动物">你最喜欢的动物是？</p>
+    <ul>
+        <li title="猫">猫</li>
+        <li title="狗">狗</li>
+        <li title="猪">猪</li>
+    </ul>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        /**
+         * jquery
+         */
+        $(function() {
+            var $bodyChildren = $('body').children();
+            console.log($bodyChildren);
+
+            var $pChildren = $('p').children();
+            console.log($pChildren);
+
+            var $ulChildren = $('ul').children();
+            console.log($ulChildren);
+
+            var $pNext = $('p').next();
+            console.log($pNext);
+
+            var $ulPrev = $('ul').prev();
+            console.log($ulPrev);
+
+            $(document).bind('click', function(e) {
+                console.log(e.target);
+                $(e.target).closest('li').css('color', 'red');
+            });
+        });
+    </script>
+</body>
+</html>

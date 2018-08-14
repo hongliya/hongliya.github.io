@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>给所有的p元素绑定onclick事件</title>
+    <style>
+        p {
+            background: #eee;
+            padding: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>给所有的p元素绑定onclick事件</h1>
+    <p>p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1p1</p>
+    <p>p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2p2</p>
+    <p>p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3p3</p>
+    <p>p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4p4</p>
+    <p>p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5</p>
+    <p>p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6p6</p>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        /**
+         * 原生js
+         */
+        window.onload = function() {
+            var items = document.getElementsByTagName('p');
+            for (var i = 0; i < items.length; i++) {
+                items[i].onclick = function() {
+                    console.log('原生js')
+                };
+            }
+        };
+
+        /**
+         * jquery
+         */
+        $(function() {
+            $('p').click(function() {
+                console.log('jquery');
+            });
+        });
+    </script>
+</body>
+</html>

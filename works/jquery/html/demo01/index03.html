@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>复选框个数</title>
+</head>
+
+<body>
+
+    <input type="checkbox" name="check" value="1" checked="checked" />
+    <input type="checkbox" name="check" value="2" />
+    <input type="checkbox" name="check" value="3" checked="checked" />
+    <input id="btn" type="button" value="你选中的个数" />
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        /**
+         * 原生js
+         */
+        window.onload = function() {
+            var btn = document.getElementById('btn');
+            btn.onclick = function() {
+                var arrays = [];
+                var items = document.getElementsByName('check');
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].checked) {
+                        arrays.push(items.value);
+                    }
+                }
+                alert(arrays.length);
+            };
+        };
+
+        /**
+         * jquery
+         */
+        $(function() {
+            $('#btn').click(function() {
+                // var length = $('input[name="check"]:checked').length;
+                // alert(length);
+            });
+        });
+    </script>
+</body>
+</html>

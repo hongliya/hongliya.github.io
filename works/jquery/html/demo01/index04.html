@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jquery选择器</title>
+    <style>
+        div,
+        span {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            float: left;
+            width: 380px;
+            height: 380px;
+            background: #aaa;
+            font-size: 17px;
+        }
+
+        div.mini {
+            width: 100px;
+            height: 100px;
+            font-size: 14px;
+        }
+
+        div.hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one" class="one">
+        div id="one" class="one"
+        <div class="mini">class="mini"</div>
+    </div>
+
+    <div id="two" class="one" title="test">
+        div id="two" class="one" title="test"
+        <div class="mini" title="other">div class="mini" title="other"</div>
+        <div class="mini" title="test">div class="mini" title="test"</div>
+    </div>
+
+    <div class="one">
+        div class="one"
+        <div class="mini">div class="mini"</div>
+        <div class="mini">div class="mini"</div>
+        <div class="mini">div class="mini"</div>
+        <div class="mini">div class="mini"</div>
+    </div>
+
+    <div class="one">
+        div class="one"
+        <div class="mini">div class="mini"</div>
+        <div class="mini">div class="mini"</div>
+        <div class="mini">div class="mini"</div>
+        <div class="mini" title="test">div class="mini" title="test"</div>
+    </div>
+
+    <div class="one" style="display:none;">div class="one" style="display:none;"</div>
+
+    <div class="hide">div class="hide"</div>
+
+    <div>
+        div
+        <input type="hidden" size="8" />div input[type="hidden"]
+    </div>
+
+    <span id="mover">span id="mover"</span>
+
+    <div>
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <h3>h3</h3>
+    </div>
+
+    <div></div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            // 改变id为one元素的背景色
+            // $('#one').css('background', '#f88');
+            // $('.mini').css('background', 'green');
+            // $('div').css('background', '#999');
+            // $('*').css('background', '#bfa');
+            // $('span, #two').css('background', 'orange');
+            // $('body div').css('background', 'orange');
+            // $('body > div').css('background', 'orange');
+
+            // $('.one + div').css('background', 'orange');
+            // $('.one').next('div').css('background', 'orange');
+            // $('.one').nextAll('div').css('background', 'orange');
+            // $('#two ~ div').css('background', 'orange');
+            // $('#two').siblings('div').css('background', 'orange');
+
+            // $('div:first').css('background', 'red');
+            // $('div:last').css('background', 'red');
+            // $('div:not(.one)').css('background', 'red');
+            // $('div:even').css('background', 'red');
+            // $('div:odd').css('background', 'red');
+            // $('div:eq(3)').css('background', 'red');
+            // $('div:gt(3)').css('background', 'red');
+            // $('div:lt(3)').css('background', 'red');
+
+            // $(':header').css('background', 'red');
+            // $(':animated').css('background', 'red');
+            // $(':focus').css('background', 'red');
+
+            // $("div:contains('two')").css('background', 'red');
+            // $('div:empty').css('background', 'red');
+            // $('div:has(h1)').css('background', 'red');
+            // $('div:parent').css('background', 'red');
+            // $('div:visible').css('background', 'red');
+            // $('div:visible').css('background', 'red');
+            $('div:hidden').show(3000);
+        });
+    </script>
+</body>
+</html>
+

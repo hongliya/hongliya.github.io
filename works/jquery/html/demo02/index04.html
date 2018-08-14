@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>超链接提示效果</title>
+    <link rel="stylesheet" href="../../css/reset.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <style>
+        div {
+            padding: 30px;
+            text-align: center;
+        }
+        ul > li {
+            float: left;
+            width: 25%;
+            padding: 10px;
+        }
+        li > a {
+            display: block;
+        }
+        li img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <a class="tooltip" href="../../images/01.jpg" title="疯人院">
+                    <img src="../../images/01.jpg" alt="疯人院" />
+                </a>
+            </li>
+            <li>
+                <a class="tooltip" href="../../images/02.jpg" title="小猪佩奇">
+                    <img src="../../images/02.jpg" alt="小猪佩奇" />
+                </a>
+            </li>
+            <li>
+                <a class="tooltip" href="../../images/01.jpg" title="疯人院222222">
+                    <img src="../../images/01.jpg" alt="疯人院222222" />
+                </a>
+            </li>
+            <li>
+                <a class="tooltip" href="../../images/02.jpg" title="小猪佩奇222222">
+                    <img src="../../images/02.jpg" alt="小猪佩奇222222" />
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            var x = 10;
+            var y = 20;
+
+            $('a.tooltip').mouseover(function(e) {
+                this.myTitle = this.title;
+                this.myHref = this.href;
+                this.title = '';
+                this.href = '#';
+                var tooltip = '<div id="tooltip">'
+                        + '<img src="'+ this.myHref +'" alt="'+ this.myTitle +'" />'
+                        + '<div>'+ this.myTitle +'</div>'
+                    + '</div>';
+                $('body').append(tooltip);
+                $('#tooltip').css({
+                    'position': 'absolute',
+                    'top': (e.pageY + y) + 'px',
+                    'left': (e.pageX + x) + 'px'
+                }).show('fast');
+            })
+            .mouseout(function(e) {
+                this.title = this.myTitle;
+                this.href = this.myHref;
+                $('#tooltip').remove();
+            })
+            .mousemove(function(e) {
+                $('#tooltip').css({
+                    'top': (e.pageY + y) + 'px',
+                    'left': (e.pageX + x) + 'px'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

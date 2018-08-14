@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>超链接提示效果</title>
+    <style>
+        div {
+            padding: 30px;
+            text-align: center;
+            font-size: 50px;
+        }
+        a {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <a class="tooltip" href="#" title="超链接提示效果1">提示提示提示提示提示</a>
+    </div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            var x = 10;
+            var y = 20;
+            $('a.tooltip').mouseover(function(e) {
+                // 显示title
+                this.myTitle = this.title;
+                this.title = '';
+                var tooltip = '<div id="toolTip">'+ this.myTitle +'</div>';
+                $('body').append(tooltip);
+                $('#toolTip').css({
+                    'position': 'absolute',
+                    'top': (e.pageY + x) + 'px',
+                    'left': (e.pageX + y) + 'px'
+                }).show('fast');
+            }).mouseout(function() {
+                // 隐藏title
+                this.title = this.myTitle;
+                $('#toolTip').remove();
+            }).mousemove(function(e) {
+                $('#toolTip').css({
+                    'top': (e.pageY + x) + 'px',
+                    'left': (e.pageX + y) + 'px'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
