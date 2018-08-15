@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jquery动画</title>
+    <link rel="stylesheet" href="../../css/reset.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <style>
+        .panel {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .panel .head {
+            padding: 10px;
+            background: #eee;
+            cursor: pointer;
+        }
+        .panel .content {
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            display: none;
+        }
+        .panel .highlight {
+            background: #ff3300;
+            color: #fff;
+        }
+
+        .box1 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: orange;
+            border: 1px solid #000;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .box2 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid #000;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .box3 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: green;
+            border: 1px solid #000;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div id="panel" class="panel">
+            <h5 class="head">What is jQuery?</h5>
+            <div class="content">
+                <p>jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个开源项目。</p>
+                <p>jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了...</p>
+            </div>
+        </div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            $('#panel .head').bind('click', function() {
+                var $content = $(this).next();
+                if ($content.is(':visible')) {
+                    $(this).removeClass('highlight');
+                    // $content.hide(600);
+                    // $content.fadeOut();
+                    $content.slideUp();
+                } else {
+                    $(this).addClass('highlight');
+                    // $content.show(600);
+                    // $content.fadeIn();
+                    $content.slideDown();
+                }
+            });
+
+            $('.box1').click(function() {
+                $(this).animate({
+                    // 'left': '500px'
+                    'left': '+=100px',
+                    'height': '200px'
+                }, 300);
+            });
+
+            $('.box2').click(function() {
+                $(this).animate({
+                    'left': '400px'
+                }, 300).animate({
+                    'height': '200px'
+                }, 300);
+            });
+
+            $('.box3').css('opacity', '0.5');
+            $('.box3').click(function() {
+                // $(this).animate({
+                //     'left': '400px',
+                //     'height': '200px',
+                //     'opacity': 1
+                // }, 3000).animate({
+                //     'top': '200px',
+                //     'width': '200px'
+                // }, 3000).fadeOut('slow');
+
+                if (!$(this).is(':animated')) {
+                    $(this).animate({
+                        'left': '400px',
+                        'height': '200px',
+                        'opacity': 1
+                    }, 3000).animate({
+                        'top': '200px',
+                        'width': '200px'
+                    }, 3000, function() {
+                        $(this).css('border', '5px solid #000');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

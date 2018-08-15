@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jquery事件-bind</title>
+    <link rel="stylesheet" href="../../css/reset.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <style>
+        .panel {
+            border: 1px solid #ddd;
+        }
+        .panel .head {
+            padding: 10px;
+            background: #eee;
+            cursor: pointer;
+        }
+        .panel .content {
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            display: none;
+        }
+        .panel .highlight {
+            background: #ff3300;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div id="panel" class="panel">
+            <h5 class="head">What is jQuery?</h5>
+            <div class="content">
+                <p>jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个开源项目。</p>
+                <p>jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            $('#panel .head').bind('click', function() {
+                var $content = $(this).next();
+                if ($content.is(':visible')) {
+                    $(this).removeClass('highlight');
+                    $content.hide();
+                } else {
+                    $(this).addClass('highlight');
+                    $content.show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

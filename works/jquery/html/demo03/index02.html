@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jquery事件-事件冒泡</title>
+    <link rel="stylesheet" href="../../css/reset.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background: #f80;
+        }
+        .box1 .box2 {
+            width: 100px;
+            height: 100px;
+            background: #000;
+        }
+        .box1,
+        .box2 {
+            cursor: pointer;
+        }
+
+        div {
+            border: 1px solid #ddd;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            background: #eee;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="box1">
+            <div class="box2"></div>
+        </div>
+
+        <div>
+            <button id="btn" type="button">button</button>
+            <button id="delAllClick" type="button">移除</button>
+        </div>
+
+        <div>
+            <button id="one" type="button">one</button>
+        </div>
+
+        <div>
+            <button id="myClick" type="button">myClick</button>
+        </div>
+
+        <div>
+            <input id="inputBtn" type="text" />
+        </div>
+
+        <div>
+            <button id="h3Del" type="button">h3-event-remove</button>
+            <h3 id="h3">事件 命名空间</h3>
+        </div>
+
+        <div>
+            <button id="btnH4" type="button">只触发click事件</button>
+            <h4 id="h4">不同命名空间的事件</h4>
+        </div>
+    </div>
+
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            $('.box2').bind('click', function(e) {
+                console.log('box2');
+                e.stopPropagation();
+                console.log(e);
+                console.log(e.type);
+                console.log(e.target);
+                console.log(e.relatedTarget);
+            });
+            $('.box1').bind('click', function(e) {
+                console.log('box1');
+                e.stopPropagation();
+            });
+            $('body').bind('click', function() {
+                console.log('body');
+            });
+
+            $('#btn').bind('click', function() {
+                console.log(1);
+            }).bind('click', function() {
+                console.log(2);
+            }).bind('click', function() {
+                console.log(3);
+            });
+
+            $('#delAllClick').bind('click', function() {
+                $('#btn').unbind();
+            });
+
+            $('#one').one('click', function() {
+                console.log('one');
+            });
+
+            // $('#btn').trigger('click');
+
+            $('#myClick').bind('ccc', function(e, msg1, msg2) {
+                console.log('这是自定义事件哦~~~~~~');
+                console.log(msg1);
+                console.log(msg2);
+            });
+            $('#myClick').trigger('ccc', ['hahaha', 'xxxxx']);
+
+            $('#inputBtn').bind('focus', function() {
+                console.log('input focus');
+                $(this).css('border', '1px solid red');
+            });
+            // trigger会触发绑定的事件和浏览器的默认行为
+            // $('#inputBtn').trigger('focus');
+            // triggerHandler只触发绑定的事件，不会触发浏览器的默认行为
+            $('#inputBtn').triggerHandler('focus');
+
+            $('#h3').bind('click.plugin', function() {
+                $(this).parent().append('<p>click.plugin事件</p>');
+            });
+            $('#h3').bind('mouseover.plugin', function() {
+                $(this).parent().append('<p>mouseover.plugin事件</p>');
+            });
+            $('#h3').bind('dblclick', function() {
+                $(this).parent().append('<p>dblclick事件</p>');
+            });
+            $('#h3Del').bind('click', function() {
+                $('#h3').unbind('.plugin');
+            });
+
+            $('#h4').bind('click', function() {
+                $(this).parent().append('<p>click</p>');
+            });
+            $('#h4').bind('click.plugin', function() {
+                $(this).parent().append('<p>click.plugin</p>');
+            });
+            $('#btnH4').click(function() {
+                $('#h4').trigger('click!');//!表示不包含在任何命名空间中的事件
+            });
+        });
+    </script>
+</body>
+</html>
