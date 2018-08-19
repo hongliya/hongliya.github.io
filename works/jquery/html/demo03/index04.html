@@ -12,29 +12,61 @@
         .v-show .v-caption {
             height: 50px;
             line-height: 50px;
-        }
-        .v-show .v-content {
-            padding: 10px;
+            padding: 0 10px;
         }
         .v-show .v-caption h2,
-        .v-show .v-caption .highlight-tip,
+        .v-show .v-caption .pagination,
         .v-show .v-caption .change-btn {
             float: left;
+            margin-right: 10px;
+        }
+        .v-show .pagination > span {
+            margin-right: 4px;
+        }
+        .v-show .pagination > span.active {
+            color: red;
+        }
+        .v-show .change-btn > span {
+            border: 1px solid #ddd;
+            font-size: 14px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
         }
         .v-show .v-caption em {
             float: right;
         }
         .v-show .v-content {
+            position: relative;
+            width: 100%;
             border-top: 1px solid #ddd;
+            padding: 10px;
+            overflow: hidden;
+        }
+        .v-show .v-content .v-content-list {
+            position: relative;
+            width: 1600px;
         }
         .v-show .v-content li {
             float: left;
-            width: 25%;
+            width: 156px;
             padding: 5px;
+        }
+        .v-show .v-content h4 {
+            color: #333;
+            font-size: 14px;
+        }
+        .v-show .v-content span {
+            color: #999;
+            font-size: 14px;
+        }
+        .v-show .v-content a {
+            color: inherit;
         }
         .v-show .v-content img {
             width: 100%;
         }
+
         .v-page {
             width: 640px;
             margin: 0 auto;
@@ -48,12 +80,7 @@
         <div class="v-show">
             <div class="v-caption clearfix">
                 <h2>卡通动漫</h2>
-                <div class="highlight-tip">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                </div>
+                <div class="pagination"></div>
                 <div class="change-btn">
                     <span class="prev">上一页</span>
                     <span class="next">下一页</span>
@@ -68,6 +95,18 @@
                                 <img src="../../images/01.jpg" alt="" />
                             </a>
                             <h4>
+                                <a href="#">刺客五六七</a>
+                            </h4>
+                            <span>
+                                播放：
+                                <em>1897</em>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../../images/02.jpg" alt="" />
+                            </a>
+                            <h4>
                                 <a href="#">haizeiwang</a>
                             </h4>
                             <span>
@@ -78,6 +117,30 @@
                         <li>
                             <a href="#">
                                 <img src="../../images/01.jpg" alt="" />
+                            </a>
+                            <h4>
+                                <a href="#">刺客五六七</a>
+                            </h4>
+                            <span>
+                                播放：
+                                <em>1897</em>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../../images/01.jpg" alt="" />
+                            </a>
+                            <h4>
+                                <a href="#">haizeiwang</a>
+                            </h4>
+                            <span>
+                                播放：
+                                <em>1897</em>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../../images/02.jpg" alt="" />
                             </a>
                             <h4>
                                 <a href="#">haizeiwang</a>
@@ -113,31 +176,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <img src="../../images/01.jpg" alt="" />
-                            </a>
-                            <h4>
-                                <a href="#">haizeiwang</a>
-                            </h4>
-                            <span>
-                                播放：
-                                <em>1897</em>
-                            </span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../images/01.jpg" alt="" />
-                            </a>
-                            <h4>
-                                <a href="#">haizeiwang</a>
-                            </h4>
-                            <span>
-                                播放：
-                                <em>1897</em>
-                            </span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="../../images/01.jpg" alt="" />
+                                <img src="../../images/02.jpg" alt="" />
                             </a>
                             <h4>
                                 <a href="#">haizeiwang</a>
@@ -168,7 +207,63 @@
     <script src="../../lib/jquery-3.3.1.min.js"></script>
     <script>
         $(function() {
+            var page = 1;
+            var pageSize = 4;
+            var $btnNext = $('.next');
+            var $btnPrev = $('.prev');
 
+            var $parent = $('.v-show');
+            var $content = $parent.find('div.v-content');
+            var $contentList = $parent.find('div.v-content-list');
+            var $pagination = $('.pagination');
+
+            var width = $content.width();
+            var len = $contentList.find('li').length;
+            var pageCount = Math.ceil(len/pageSize);
+            var str = '';
+            for (var i = 0; i < pageCount; i++) {
+                if (i === 0) {
+                    str += '<span class="active">'+ (i+1) +'</span>';
+                } else {
+                    str += '<span>'+ (i+1) +'</span>';
+                }
+            }
+            $pagination.html(str);
+
+            $btnNext.click(function() {
+                var $this = $(this);
+                if (!$contentList.is(':animated')) {
+                    if (page === pageCount) {
+                        $contentList.animate({
+                            left: 0
+                        }, 350);
+                        page = 1;
+                    } else {
+                        $contentList.animate({
+                            left: '-=' + width
+                        }, 350);
+                        page++;
+                    }
+                    $pagination.find('span').eq((page-1)).addClass('active').siblings().removeClass('active');
+                }
+            });
+
+            $btnPrev.click(function() {
+                if (!$contentList.is(':animated')) {
+                    if (page === 1) {
+                        $contentList.animate({
+                            left: '-=' + (width * (pageCount - 1))
+                        }, 350);
+                        page = pageCount;
+                    } else {
+                        $contentList.animate({
+                            left: '+=' + width
+                        }, 350);
+                        page--;
+                    }
+                    $pagination.find('span').eq((page-1)).addClass('active').siblings().removeClass('active');
+                }
+            });
         });
     </script>
 </body>
