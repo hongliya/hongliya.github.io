@@ -2,7 +2,7 @@
 * @Author: 有猫的程序员
 * @Date:   2018-08-07 15:10:59
 * @Last Modified by:   有猫的程序员
-* @Last Modified time: 2019-03-05 11:42:46
+* @Last Modified time: 2019-03-05 11:44:18
 */
 
 *,
@@ -94,7 +94,7 @@ body {
     position: relative;
 }
 .input-group > input {
-    padding-right: 36px;
+    padding-right: 36px !important;
 }
 .input-group > span {
     position: absolute;
