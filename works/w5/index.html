@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="keywords" content="理财收益计算器" />
+    <meta name="description" content="理财收益计算器" />
+    <title>收益计算器</title>
+
+    <link rel="stylesheet" href="css/reset.min.css" />
+    <link rel="stylesheet" href="css/takeout.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app" class="takeout-wrapper">
+        <div class="left">
+            <form id="takeOutForm">
+                <div class="form-group">
+                    <label class="label">本金</label>
+                    <div class="input-group">
+                        <input v-model="money" class="input" type="number" name="money" value="" placeholder="请输入本金" />
+                        <span>元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">利率</label>
+                    <div class="input-group">
+                        <input v-model="rate" class="input" type="number" name="rate" value="" placeholder="请输入年利率" />
+                        <span>%</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">周期</label>
+                    <div class="input-group">
+                        <input v-model="days" class="input" type="number" name="days" value="" min="1" placeholder="请输入购买天数" />
+                        <span>天</span>
+                    </div>
+                    <small>购买天数（一年按365天算）</small>
+                </div>
+                <div  class="form-group">
+                    <button class="button" type="button" @click="submit">计算</button>
+                </div>
+            </form>
+        </div>
+        <div class="right">
+            <div class="takeout-result">
+                <div class="res-wrapper">
+                    <div class="title">计算结果</div>
+                    <div class="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>本金（元）</th>
+                                    <th>分红（元）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{money}}</td>
+                                    <td>{{payoff}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            money: 10000,
+            rate: 4.2,
+            days: 90,
+            payoff: 0
+        },
+        methods: {
+            submit: function() {
+                this.payoff = Math.round(this.money * (this.rate / 100) * (this.days / 365)).toFixed(2);
+            }
+        }
+    });
+</script>
+</html>
