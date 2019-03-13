@@ -33,9 +33,10 @@ export default {
   components: {
     Logo
   },
-  asyncData({store, route, userAgent}) {
+  asyncData({store, route, userAgent, userIp}) {
     return {
       userAgent,
+      userIp,
       list: [
         'a',
         'b',
