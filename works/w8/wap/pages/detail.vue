@@ -1,8 +1,7 @@
 <template>
   <section class="container">
     <div>
-      定位
-      <nuxt-link to="/detail">detail</nuxt-link>
+      <nuxt-link to="/">index</nuxt-link>
       <!-- <logo />
       <h1 class="title">
         wap
@@ -32,16 +31,6 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
-  },
-  asyncData({store, route, userAgent}) {
-    return {
-      userAgent,
-      list: [
-        'a',
-        'b',
-        'c'
-      ]
-    }
   }
 }
 </script>
