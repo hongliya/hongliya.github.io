@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        debugger;
+        function Foo() {
+            getName = function() {
+                alert(1);
+                return this;
+            };
+        }
+        var getName;
+        function getName() { alert(5); }
+        Foo.getName = function() { alert(2); }
+        Foo.prototype.getName = function() { alert(3); }
+        getName = function() { alert(4); }
+        getName();
+
+        // ----------------------------------------
+        // function Foo() {
+        //     getName = function() {
+        //         alert(1);
+        //         return this;
+        //     };
+        // }
+        // function getName() { alert(5); }
+        // var getName = undefined;
+        // Foo.getName = function() { alert(2); }
+        // Foo.prototype.getName = function() { alert(3); }
+        // getName = function() { alert(4); }
+        // getName();
+
+    </script>
+</body>
+</html>
