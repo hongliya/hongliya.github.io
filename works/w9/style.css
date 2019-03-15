@@ -1,0 +1,25 @@
+/*
+* @Author: 有猫的程序员
+* @Date:   2019-03-15 09:41:11
+* @Last Modified by:   有猫的程序员
+* @Last Modified time: 2019-03-15 10:09:07
+*/
+
+.flex {
+    display: -webkit-flex;
+    display: flex;
+    width: 500px;
+    height:  300px;
+    border: 1px solid red;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    /* align-content: flex-start; */
+}
+
+.flex .item {
+    background: yellow;
+    border: 1px solid #ddd;
+    flex-grow: 0;
+}
