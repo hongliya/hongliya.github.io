@@ -1,19 +1,22 @@
 {
+    // 版本，必须项，目前都为2
     "manifest_version": 2,
-  
+    // 插件名称，必须项
     "name": "隐藏NBA球赛评分",
+    // 插件描述
     "description": "隐藏NBA球赛评分，无负担看球赛",
+    // 插件版本，必须项
     "version": "1.0",
-  
+    // 权限申请
     "permissions": [
-      "tabs",
-      "activeTab"
+        "tabs", // 标签
+        "activeTab"
     ],
     "browser_action": {
-      "default_icon": {
-        "19": "images/icon19.png",
-        "38": "images/icon38.png"
-      },
-      "default_popup": "popup.html"
+        "default_icon": {
+            "19": "images/icon19.png",
+            "38": "images/icon38.png"
+        },
+        "default_popup": "popup.html"
     }
-  }
+}

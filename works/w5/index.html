@@ -8,61 +8,224 @@
     <title>收益计算器</title>
 
     <link rel="stylesheet" href="css/reset.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="css/takeout.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/vue.js"></script>
 </head>
 
 <body>
-    <div id="app" class="takeout-wrapper">
-        <div class="left">
-            <form id="takeOutForm">
-                <div class="form-group">
-                    <label class="label">本金</label>
-                    <div class="input-group">
-                        <input v-model="money" class="input" type="number" name="money" value="" placeholder="请输入本金" />
-                        <span>元</span>
+    <header>
+        <h1><a href="javascript:window.location.reload();">理财收益计算器</a></h1>
+    </header>
+
+    <div id="app" class="takeout-wrapper" v-cloak>
+        <ul class="nav clearfix">
+            <li :class="{active: type === 1}" @click="switchType(1)">收益计算</li>
+            <li :class="{active: type === 2}" @click="switchType(2)">转让收益计算</li>
+        </ul>
+        <!-- 收益计算 -->
+        <div class="clearfix" v-show="type === 1">
+            <div class="left">
+                <form id="takeOutForm">
+                    <div class="form-group">
+                        <label class="label">本金</label>
+                        <div class="input-group">
+                            <input v-model="money1" class="input" type="number" value="" placeholder="请输入本金" />
+                            <span>元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">利率</label>
+                        <div class="input-group">
+                            <input v-model="rate1" class="input" type="number" value="" placeholder="请输入年利率" />
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">周期</label>
+                        <div class="input-group">
+                            <input v-model="days1" class="input" type="number" value="" min="1" placeholder="请输入购买天数" />
+                            <span>天</span>
+                        </div>
+                        <small>购买天数（一年按365天算）</small>
+                    </div>
+                    <div  class="form-group">
+                        <button class="button" type="button" @click="submit1">计算</button>
+                    </div>
+                </form>
+            </div>
+            <div class="right">
+                <div class="takeout-result">
+                    <div class="res-wrapper">
+                        <div class="title">计算结果</div>
+                        <div class="content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>本金（元）</th>
+                                        <th>收益（元）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{money1}}</td>
+                                        <td>{{payoff1}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="label">利率</label>
-                    <div class="input-group">
-                        <input v-model="rate" class="input" type="number" name="rate" value="" placeholder="请输入年利率" />
-                        <span>%</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="label">周期</label>
-                    <div class="input-group">
-                        <input v-model="days" class="input" type="number" name="days" value="" min="1" placeholder="请输入购买天数" />
-                        <span>天</span>
-                    </div>
-                    <small>购买天数（一年按365天算）</small>
-                </div>
-                <div  class="form-group">
-                    <button class="button" type="button" @click="submit">计算</button>
-                </div>
-            </form>
+            </div>
         </div>
-        <div class="right">
-            <div class="takeout-result">
-                <div class="res-wrapper">
-                    <div class="title">计算结果</div>
-                    <div class="content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>本金（元）</th>
-                                    <th>分红（元）</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{money}}</td>
-                                    <td>{{payoff}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <!-- 转让收益计算 -->
+        <div class="clearfix" v-show="type === 2">
+            <div class="left">
+                <form id="takeOutForm">
+                    <div class="form-group">
+                        <label class="label">本金</label>
+                        <div class="input-group">
+                            <input v-model="money" class="input" type="number" name="money" value="" placeholder="请输入本金" />
+                            <span>元</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">原利率</label>
+                        <div class="input-group">
+                            <input v-model="rate" class="input" type="number" name="rate" value="" placeholder="请输入年利率" />
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">计划转让利率</label>
+                        <div class="input-group">
+                            <input v-model="transferRate" class="input" type="number" value="" placeholder="请输入年利率" />
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">原天数</label>
+                        <div class="input-group">
+                            <input v-model="days" class="input" type="number" name="days" value="" min="1" placeholder="请输入购买天数" />
+                            <span>天</span>
+                        </div>
+                        <small>购买天数（一年按365天算）</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">剩余天数</label>
+                        <div class="input-group">
+                            <input v-model="transferDays" class="input" type="number" value="" min="1" placeholder="请输入购买天数" />
+                            <span>天</span>
+                        </div>
+                        <small>剩余天数（一年按365天算）</small>
+                    </div>
+                    <div  class="form-group">
+                        <button class="button" type="button" @click="submit">计算</button>
+                    </div>
+                </form>
+            </div>
+            <div class="right">
+                <div class="takeout-result">
+                    <div class="res-wrapper">
+                        <div class="title">计算结果</div>
+                        <div class="content">
+                            <table>
+                                <caption>{{days}}天到期收益</caption>
+                                <thead>
+                                    <tr>
+                                        <th>本金（元）</th>
+                                        <th>利率（%）</th>
+                                        <th>收益（元）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{money}}</td>
+                                        <td>{{rate}}</td>
+                                        <td>{{payoff}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <caption>{{hasDays}}天到期收益</caption>
+                                <thead>
+                                    <tr>
+                                        <th>本金（元）</th>
+                                        <th>利率（%）</th>
+                                        <th>收益（元）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{money}}</td>
+                                        <td>{{rate}}</td>
+                                        <td>{{hasDaysPayoff}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <caption>理财转让</caption>
+                                <thead>
+                                    <tr>
+                                        <th>转手金额（元）</th>
+                                        <th>差价（元）</th>
+                                        <th>手续费（元）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{transferMoney}}</td>
+                                        <td>{{differ}}</td>
+                                        <td>
+                                            <span class="color9">0元</span>
+                                            <span class="color9 through">{{charges}}元</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3">
+                                            <p class="tips"><em>手续费说明：</em>转让价格的0.05%，最少25元；优惠期间0元，优惠时间2018.01.01-2020.01.01</p>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <table class="gray">
+                                <caption>2020.01.01扣除手续费后</caption>
+                                <thead>
+                                    <tr>
+                                        <th>到手金额（元）</th>
+                                        <th>手续费（元）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{finalMoney}}</td>
+                                        <td>
+                                            <span class="color9 through">{{charges}}元</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <table>
+                                <caption>买家{{transferDays}}天到期收益</caption>
+                                <thead>
+                                    <tr>
+                                        <th>本金（元）</th>
+                                        <th>利率（%）</th>
+                                        <th>收益（元）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{money}}</td>
+                                        <td>{{transferRate}}</td>
+                                        <td>{{transferPayoff}}</td>
+                                    </tr>
+                                </tbody>
+                            </table> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,14 +237,71 @@
     var app = new Vue({
         el: '#app',
         data: {
-            money: 10000,
+            type: 1,
+
+            // 收益计算
+            money1: 50000,
+            rate1: 4.2,
+            days1: 90,
+            payoff1: 0,
+
+            // 转让收益计算
+            money: 50000,
             rate: 4.2,
             days: 90,
-            payoff: 0
+            payoff: 0,
+            transferRate: 3.9,
+            transferDays: 60,
+            transferPayoff: 0,
+            transferMoney: 0,
+            hasDays: 0, // 持有天数
+            hasDaysPayoff: 0,
+            differ: 0,
+            charges: 25,
+            finalMoney: 0
+        },
+        mounted: function() {
+            this.$nextTick(function() {
+                this.submit1();
+                this.submit();
+            });
         },
         methods: {
+            /**
+             * [switch 切换计算方式]
+             * @param  {[type]} value [description]
+             * @return {[type]}       [description]
+             */
+            switchType: function(value) {
+                this.type = value;
+            },
+            /**
+             * [submit1 收益计算]
+             * @return {[type]} [description]
+             */
+            submit1: function() {
+                this.payoff1 = Math.round(this.money1 * (this.rate1 / 100) * (this.days1 / 365)).toFixed(2);
+            },
+            /**
+             * [submit 转让收益计算]
+             * @return {[type]} [description]
+             */
             submit: function() {
+                this.hasDays = this.days - this.transferDays;
+
                 this.payoff = Math.round(this.money * (this.rate / 100) * (this.days / 365)).toFixed(2);
+                this.hasDaysPayoff = Math.round(this.money * (this.rate / 100) * (this.hasDays / 365)).toFixed(2);
+
+                this.transferPayoff = Math.round(this.money * (this.transferRate / 100) * (this.transferDays / 365)).toFixed(2);
+                this.transferMoney = Number(this.money) + (this.payoff - this.transferPayoff);
+
+                this.differ = this.payoff - this.transferPayoff - this.hasDaysPayoff;
+
+                this.charges = (this.transferMoney * 0.05 / 100).toFixed(2);
+                if (this.charges < 25) {
+                    this.charges = 25;
+                }
+                this.finalMoney = this.transferMoney - this.charges;
             }
         }
     });
