@@ -1,0 +1,15 @@
+.tel-wrapper {
+    padding-top: 50px;
+}
+.tel-wrapper h1 {
+    text-align: center;
+}
+.tel-wrapper a {
+    display: block;
+    border: 1px solid #aaa;
+    margin: 20px;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+}

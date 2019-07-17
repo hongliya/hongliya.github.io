@@ -1,8 +1,8 @@
 /*
 * @Author: 有猫的程序员
 * @Date:   2018-08-09 15:49:41
-* @Last Modified by:   有猫的程序员
-* @Last Modified time: 2018-08-09 16:52:49
+* @Last Modified by:   sugar
+* @Last Modified time: 2019-07-17 14:44:56
 */
 .page-wrapper {
     padding: 20px;
@@ -72,4 +72,43 @@
     -o-transform: skew(30deg,0);
     -ms-transform: skew(30deg,0);
     transform: skew(30deg,0);
+}
+
+.label3 {
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    font-family: DIN-Bold;
+    font-weight: bold;
+    text-align: center;
+    width: 32px;
+    height: 28px;
+    color: #fff;
+    background: #bdc0c6;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.label3:after {
+    position: absolute;
+    bottom: -7px;
+    left: 3px;
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #bdc0c6;
+    border-right: 13px solid transparent;
+    border-bottom: 0 solid transparent;
+    border-left: 13px solid transparent;
+}
+.label3:nth-child(1),
+.label3:nth-child(2),
+.label3:nth-child(3) {
+    background: #39404A;
+    color: #F6C12E;
+}
+.label3:nth-child(1):after,
+.label3:nth-child(2):after,
+.label3:nth-child(3):after {
+    border-top-color: #39404A;
 }
