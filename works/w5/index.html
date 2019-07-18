@@ -66,12 +66,14 @@
                                     <tr>
                                         <th>本金（元）</th>
                                         <th>收益（元）</th>
+                                        <th>每天收益（元）</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>{{money1}}</td>
                                         <td>{{payoff1}}</td>
+                                        <td>{{dayPayoff1}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -245,6 +247,7 @@
             rate1: 4.2,
             days1: 90,
             payoff1: 0,
+            dayPayoff1: 0,
 
             // 转让收益计算
             money: 50000,
@@ -282,6 +285,7 @@
              */
             submit1: function() {
                 this.payoff1 = Math.round(this.money1 * (this.rate1 / 100) * (this.days1 / 365)).toFixed(2);
+                this.dayPayoff1 = (this.payoff1 / this.days1).toFixed(2);
             },
             /**
              * [submit 转让收益计算]
