@@ -82,6 +82,9 @@
                 </div>
             </div>
         </div>
+
+        <div id="echarts" ref="echarts" class="echarts"></div>
+
         <!-- 转让收益计算 -->
         <div class="clearfix" v-show="type === 2">
             <div class="left">
@@ -236,6 +239,7 @@
     </div>
 </body>
 
+<script src="js/echarts.min.js"></script>
 <script>
     var app = new Vue({
         el: '#app',
@@ -248,6 +252,9 @@
             days1: 90,
             payoff1: 0,
             dayPayoff1: 0,
+
+            earnings: [],
+            earning: [],
 
             // 转让收益计算
             money: 50000,
@@ -286,6 +293,83 @@
             submit1: function() {
                 this.payoff1 = (this.money1 * (this.rate1 / 100) * (this.days1 / 365)).toFixed(2);
                 this.dayPayoff1 = (this.payoff1 / this.days1).toFixed(2);
+
+                this.earnings = [];
+                this.earning = [];
+                for (var i = 1; i <= 60; i++) {
+                    var a1 = (this.money1 * (this.rate1 / 100) * (i / 365)).toFixed(2);
+                    var a2 = (a1 / i).toFixed(2);
+                    this.earnings.push(i);
+                    this.earning.push(a2);
+                }
+
+                var myChart =  echarts.init(this.$refs.echarts, null, {renderer: 'svg'});
+                var minValue = this.getMinValue(this.earning);
+                // var option = {
+                //     tooltip : {
+                //         trigger: 'axis',
+                //         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                //             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                //         }
+                //     },
+                //     xAxis: {
+                //         type: 'category',
+                //         data: this.earnings
+                //     },
+                //     yAxis: {
+                //         min: minValue,
+                //         type: 'value'
+                //     },
+                //     series: [{
+                //         data: this.earning,
+                //         type: 'bar'
+                //     }]
+                // };
+                var option = {
+                    title : {
+                        text: '到账金额',
+                        subtext: '',
+                        x:'center'
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                        data: ['本金','收益']
+                    },
+                    series : [
+                        {
+                            name: '访问来源',
+                            type: 'pie',
+                            radius : '55%',
+                            center: ['50%', '60%'],
+                            data:[
+                                {value: this.money1, name: '本金'},
+                                {value: this.payoff1, name: '收益'}
+                            ],
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            },
+            getMinValue: function(datas) {
+                var min = datas[0];
+                for (var i = 0; i < datas.length; i++) {
+                    if (min >= datas[i]) {
+                        min = datas[i];
+                    }
+                }
+                return min;
             },
             /**
              * [submit 转让收益计算]
@@ -294,6 +378,7 @@
             submit: function() {
                 this.hasDays = this.days - this.transferDays;
 
+                // this.payoff = Math.round(this.money * (this.rate / 100) * (this.days / 365)).toFixed(2);
                 this.payoff = (this.money * (this.rate / 100) * (this.days / 365)).toFixed(2);
                 this.hasDaysPayoff = (this.money * (this.rate / 100) * (this.hasDays / 365)).toFixed(2);
 
