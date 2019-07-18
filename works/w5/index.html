@@ -300,7 +300,7 @@
                 this.transferPayoff = (this.money * (this.transferRate / 100) * (this.transferDays / 365)).toFixed(2);
                 this.transferMoney = Number(this.money) + (this.payoff - this.transferPayoff);
 
-                this.differ = this.payoff - this.transferPayoff - this.hasDaysPayoff;
+                this.differ = (this.payoff - this.transferPayoff - this.hasDaysPayoff).toFixed(2);
 
                 this.charges = (this.transferMoney * 0.05 / 100).toFixed(2);
                 if (this.charges < 25) {
