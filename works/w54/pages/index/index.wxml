@@ -1,0 +1,116 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="header">
+        <text class="{{activeIndex == 1 ? 'active' : ''}}" data-type="1" bindtap="selectType">理财收益计算</text>
+        <text class="{{activeIndex == 2 ? 'active' : ''}}" data-type="2" bindtap="selectType">理财转让计算</text>
+    </view>
+    <view hidden="{{activeIndex != 1}}">
+        <view class="form">
+            <view class="form-group">
+                <text>本金</text>
+                <input type="number" data-model="money1" bindinput="inputWatch" value="{{money1}}" />
+                <text>元</text>
+            </view>
+            <view class="form-group">
+                <text>利率</text>
+                <input type="digit" data-model="rate1" bindinput="inputWatch" value="{{rate1}}" />
+                <text>%</text>
+            </view>
+            <view class="form-group">
+                <text>周期</text>
+                <input type="number" data-model="days1" bindinput="inputWatch" value="{{days1}}" />
+                <text>天</text>
+            </view>
+            <button type="primary" size="default" bindtap="submit1">算一算</button>
+        </view>
+        <view class="table-container">
+            <view class="table">
+                <view class="theader">
+                    <view class="tr">
+                        <view class="th">本金（元）</view>
+                        <view class="th">收益（元）</view>
+                        <view class="th">每日收益（元）</view>
+                    </view>
+                </view>
+                <view class="tbody">
+                    <view class="tr">
+                        <view class="td">{{money1}}</view>
+                        <view class="td red">{{payoff1}}</view>
+                        <view class="td red">{{dayPayoff1}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view hidden="{{activeIndex !=2 }}">
+        <view class="form">
+            <view class="form-group">
+                <text>本金</text>
+                <input type="number" data-model="money" bindinput="inputWatch" value="{{money}}" />
+                <text>元</text>
+            </view>
+            <view class="form-group">
+                <text>原利率</text>
+                <input type="digit" data-model="rate" bindinput="inputWatch" value="{{rate}}" />
+                <text>%</text>
+            </view>
+            <view class="form-group">
+                <text>计划转让利率</text>
+                <input type="digit" data-model="transferRate" bindinput="inputWatch" value="{{transferRate}}" />
+                <text>%</text>
+            </view>
+            <view class="form-group">
+                <text>原天数</text>
+                <input type="number" data-model="days" bindinput="inputWatch" value="{{days}}" />
+                <text>天</text>
+            </view>
+            <view class="form-group">
+                <text>剩余天数</text>
+                <input type="number" data-model="transferDays" bindinput="inputWatch" value="{{transferDays}}" />
+                <text>天</text>
+            </view>
+            <button type="primary" size="default" bindtap="submit">算一算</button>
+        </view>
+        <view class="table-container">
+            <view class="table">
+                <view class="theader">
+                    <view class="tr">
+                        <view class="th">转手金额（元）</view>
+                        <view class="th">差价（元）</view>
+                        <view class="th">手续费（元）</view>
+                    </view>
+                </view>
+                <view class="tbody">
+                    <view class="tr">
+                        <view class="td">{{transferMoney}}</view>
+                        <view class="td red">{{differ}}</view>
+                        <view class="td color9">
+                            <text>0元</text>
+                            <text class="through">{{charges}}元</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="tips">
+                <text class="em">手续费说明（招行）：</text>转让价格的0.05%，最少25元；优惠期间0元，优惠时间2018.01.01-2020.01.01
+            </view>
+            <view class="table color9">
+                <view class="caption">2020.01.01扣除手续费后</view>
+                <view class="theader">
+                    <view class="tr">
+                        <view class="th">到手金额（元）</view>
+                        <view class="th">手续费（元）</view>
+                    </view>
+                </view>
+                <view class="tbody">
+                    <view class="tr">
+                        <view class="td">{{finalMoney}}</view>
+                        <view class="td">
+                            <text class="through">{{charges}}元</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

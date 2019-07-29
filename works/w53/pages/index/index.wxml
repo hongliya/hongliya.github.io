@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view>
+  <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="收益计算">
+      <van-cell-group>
+        <van-field
+          value="{{ value }}"
+          placeholder="请输入用户名"
+          border="{{ false }}"
+          bind:change="onChange"
+        />
+      </van-cell-group>
+      <van-button type="primary" size="large">算一算</van-button>
+    </van-tab>
+    <van-tab title="转让收益计算">
+      lgjdfl
+    </van-tab>
+  </van-tabs>
+</view>
